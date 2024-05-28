@@ -13,10 +13,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         System.out.println("""
-            ////////////////////////////////////////////////////////////////////////
-            // For Unicode characters having code point less than 65,535 (0xFFFF) //
-            ////////////////////////////////////////////////////////////////////////
-            """);
+                ////////////////////////////////////////////////////////////////////////
+                // For Unicode characters having code point less than 65,535 (0xFFFF) //
+                ////////////////////////////////////////////////////////////////////////
+                """);
 
         String l1 = Charsets.stringToBinaryEncoding(LETTER, "UTF-32");
         String l2 = Charsets.stringToBinaryEncoding(LETTER, StandardCharsets.UTF_16BE.name());
@@ -50,7 +50,7 @@ public class Main {
         System.out.println("EMOJI (UTF_8): " + e4);
 
         System.out.println();
-        
+
         String s1 = Charsets.stringToBinaryEncoding(STR, "UTF-32");
         String s2 = Charsets.stringToBinaryEncoding(STR, StandardCharsets.UTF_16BE.name());
         String s3 = Charsets.stringToBinaryEncoding(STR, StandardCharsets.UTF_16LE.name());

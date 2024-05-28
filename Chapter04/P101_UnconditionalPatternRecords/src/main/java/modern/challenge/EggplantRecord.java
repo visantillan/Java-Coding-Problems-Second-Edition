@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public record EggplantRecord(SeedRecord seed, float weight) implements Fruit {}
+public record EggplantRecord(SeedRecord seed, float weight) implements Fruit {
+}

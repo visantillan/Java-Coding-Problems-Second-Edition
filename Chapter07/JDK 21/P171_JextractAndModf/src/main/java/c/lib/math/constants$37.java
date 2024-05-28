@@ -6,35 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+
 final class constants$37 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$37() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "powf",
-        constants$26.const$5
+            "powf",
+            constants$26.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "powl",
-        constants$12.const$0
+            "powl",
+            constants$12.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sqrtf",
-        constants$13.const$3
+            "sqrtf",
+            constants$13.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sqrtl",
-        constants$10.const$2
+            "sqrtl",
+            constants$10.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "erf",
-        constants$10.const$2
+            "erf",
+            constants$10.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "erff",
-        constants$13.const$3
+            "erff",
+            constants$13.const$3
     );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$37() {
+    }
 }
 
 

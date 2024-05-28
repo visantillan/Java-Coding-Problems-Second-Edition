@@ -6,6 +6,7 @@ import com.google.common.jimfs.Jimfs;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.SimpleFileServer;
 import com.sun.net.httpserver.SimpleFileServer.OutputLevel;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
@@ -34,10 +35,10 @@ public class Main {
 
         Path books = docs.resolve("books.txt"); // /docs/books.txt
         Files.write(books, ImmutableList.of(
-                "Java Coding Problems 1st Edition",
-                "Java Coding Problems 2st Edition",
-                "jOOQ Masterclass",
-                "The Complete Coding Interview Guide in Java"),
+                        "Java Coding Problems 1st Edition",
+                        "Java Coding Problems 2st Edition",
+                        "jOOQ Masterclass",
+                        "The Complete Coding Interview Guide in Java"),
                 StandardCharsets.UTF_8);
 
         return docs.toAbsolutePath();

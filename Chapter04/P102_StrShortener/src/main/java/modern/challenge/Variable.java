@@ -1,3 +1,4 @@
 package modern.challenge;
 
-record Variable(String name) implements Str {}
+record Variable(String name) implements Str {
+}

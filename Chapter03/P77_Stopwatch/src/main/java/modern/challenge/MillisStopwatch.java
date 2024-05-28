@@ -20,23 +20,23 @@ public final class MillisStopwatch {
 
     //elaspsed time in nanoseconds
     public long getElapsedTime() {
-                
+
         if (running) {
             return System.currentTimeMillis() - startTime;
         } else {
-            return stopTime - startTime;            
-        }        
+            return stopTime - startTime;
+        }
     }
-    
+
     //elaspsed time in millisecods
-    public long elapsedTimeToNanos(long millistime) {                
-        
+    public long elapsedTimeToNanos(long millistime) {
+
         return TimeUnit.NANOSECONDS.convert(millistime, TimeUnit.MILLISECONDS);
     }
-    
+
     //elaspsed time in seconds
-    public long elapsedTimeToSeconds(long millistime) {                
-        
+    public long elapsedTimeToSeconds(long millistime) {
+
         return TimeUnit.SECONDS.convert(millistime, TimeUnit.MILLISECONDS);
     }
 }

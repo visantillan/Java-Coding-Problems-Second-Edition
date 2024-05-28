@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>java.modern.challenge</groupId>
     <artifactId>P42_SnippetsInJavadoc</artifactId>
@@ -9,17 +10,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        
+
         <javadoc.version>3.4.1</javadoc.version>
     </properties>
     <name>P42_SnippetsInJavadoc</name>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc.version}</version>                
+                <version>${javadoc.version}</version>
                 <executions>
                     <execution>
                         <id>maven-javadocs</id>
@@ -32,8 +33,10 @@
                 <configuration>
                     <source>21</source>
                     <target>21</target>
-                    <additionalJOption> --snippet-path C:\SBPBP\GitHub\Java-Coding-Problems-Second-Edition\Chapter02\P42_SnippetsInJavadoc\src\snippet-src</additionalJOption>                  
-                </configuration>           
+                    <additionalJOption>--snippet-path
+                        C:\SBPBP\GitHub\Java-Coding-Problems-Second-Edition\Chapter02\P42_SnippetsInJavadoc\src\snippet-src
+                    </additionalJOption>
+                </configuration>
             </plugin>
         </plugins>
     </build>

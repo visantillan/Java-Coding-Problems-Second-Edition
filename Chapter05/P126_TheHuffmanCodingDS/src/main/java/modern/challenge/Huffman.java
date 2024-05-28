@@ -14,27 +14,6 @@ public class Huffman {
     private StringBuilder encodedStr;
     private StringBuilder decodedStr;
 
-    private final class Node {
-        
-        private Node left;
-        private Node right;
-
-        private final Character character;
-        private final Integer frequency;
-        
-        private Node(Character character, Integer frequency) {
-            this.character = character;
-            this.frequency = frequency;
-        }
-
-        private Node(Character character, Integer frequency, Node left, Node right) {
-            this.character = character;
-            this.frequency = frequency;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public void tree(String str) {
 
         if (str == null || str.isBlank()) {
@@ -58,7 +37,7 @@ public class Huffman {
         for (Entry<Character, Integer> entry : frequency.entrySet()) {
             queue.add(new Node(entry.getKey(), entry.getValue()));
         }
-        
+
         while (queue.size() != 1) {
 
             Node left = queue.poll();
@@ -66,7 +45,8 @@ public class Huffman {
 
             int sum = left.frequency + right.frequency;
 
-            queue.add(new Node(null, sum, left, right));        }
+            queue.add(new Node(null, sum, left, right));
+        }
 
         this.root = queue.peek();
     }
@@ -84,7 +64,7 @@ public class Huffman {
         for (char character : this.str.toCharArray()) {
             this.encodedStr.append(codes.get(character));
             System.out.print(codes.get(character) + "(" + character + ") ");
-        }        
+        }
 
         return this.encodedStr.toString();
     }
@@ -111,7 +91,7 @@ public class Huffman {
 
         this.decodedStr = new StringBuilder();
 
-        if (isLeaf(this.root)) {           
+        if (isLeaf(this.root)) {
             int copyFrequency = this.root.frequency;
             while (copyFrequency-- > 0) {
                 decodedStr.append(root.character);
@@ -147,5 +127,25 @@ public class Huffman {
 
     private boolean isLeaf(Node root) {
         return root.left == null && root.right == null;
+    }
+
+    private final class Node {
+
+        private final Character character;
+        private final Integer frequency;
+        private Node left;
+        private Node right;
+
+        private Node(Character character, Integer frequency) {
+            this.character = character;
+            this.frequency = frequency;
+        }
+
+        private Node(Character character, Integer frequency, Node left, Node right) {
+            this.character = character;
+            this.frequency = frequency;
+            this.left = left;
+            this.right = right;
+        }
     }
 }

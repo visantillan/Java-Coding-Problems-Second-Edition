@@ -25,8 +25,8 @@ public class Main {
         ByteBuffer echoedBuffer = ByteBuffer.allocateDirect(MAX_SIZE_OF_PACKET);
 
         // create a datagram channel
-        try (DatagramChannel dchannel 
-                = DatagramChannel.open(StandardProtocolFamily.INET)) {
+        try (DatagramChannel dchannel
+                     = DatagramChannel.open(StandardProtocolFamily.INET)) {
 
             // optionally, configure the client side options
             dchannel.setOption(StandardSocketOptions.SO_RCVBUF, 4 * 1024);
@@ -48,10 +48,10 @@ public class Main {
                     dchannel.read(echoedBuffer);
 
                     echoedBuffer.flip();
-                    
+
                     cBuffer = chdecoder.decode(echoedBuffer);
                     System.out.println(cBuffer.toString());
-                    
+
                     echoedBuffer.clear();
 
                 } else {
@@ -60,7 +60,7 @@ public class Main {
             } else {
                 System.out.println("Cannot open the channel");
             }
-        } catch (SecurityException | IOException ex) {        
+        } catch (SecurityException | IOException ex) {
             System.err.println(ex);
             // handle exception
         }

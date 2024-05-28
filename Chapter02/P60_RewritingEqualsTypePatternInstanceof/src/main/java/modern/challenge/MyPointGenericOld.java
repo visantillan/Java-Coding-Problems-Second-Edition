@@ -3,7 +3,7 @@ package modern.challenge;
 import java.util.Objects;
 
 public final class MyPointGenericOld<E> {
-    
+
     private final E x;
     private final E y;
     private final E z;
@@ -22,20 +22,20 @@ public final class MyPointGenericOld<E> {
         hash = 83 * hash + Objects.hashCode(this.z);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-        
+
         if (this == obj) {
             return true;
         }
-        
+
         if (!(obj instanceof MyPointGenericOld<?>)) {
-		return false;
+            return false;
         }
-        
+
         final MyPointGenericOld<?> other = (MyPointGenericOld<?>) obj;
-        
-        return (this.x == other.x && this.y == other.y && this.z == other.z);            
-    }       
+
+        return (this.x == other.x && this.y == other.y && this.z == other.z);
+    }
 }

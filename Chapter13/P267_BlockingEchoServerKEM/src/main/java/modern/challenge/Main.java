@@ -31,8 +31,8 @@ public class Main {
 
     private static SecretKey secretKeySender;
 
-    public static void main(String[] args) 
-            throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, 
+    public static void main(String[] args)
+            throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException,
             NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 
         ByteBuffer buffer = ByteBuffer.allocate(44);
@@ -90,7 +90,7 @@ public class Main {
                                 cipher.init(Cipher.DECRYPT_MODE, secretKeySender);
                                 String decMessage = new String(cipher.doFinal(message), Charset.defaultCharset());
                                 System.out.println(decMessage);
-                                
+
                                 cipher.init(Cipher.ENCRYPT_MODE, secretKeySender);
                                 socketChannel.write(ByteBuffer.wrap(
                                         cipher.doFinal("The generated password is: O98S!".getBytes())));

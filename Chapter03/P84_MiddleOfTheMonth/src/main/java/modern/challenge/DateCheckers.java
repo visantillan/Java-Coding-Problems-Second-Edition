@@ -11,8 +11,8 @@ public final class DateCheckers {
     }
 
     public static Date middleOfTheMonthV1(Date date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given date cannot be null");
         }
 
@@ -26,14 +26,14 @@ public final class DateCheckers {
 
         return calendar.getTime();
     }
-    
+
     public static LocalDate middleOfTheMonthV2(LocalDate date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given date cannot be null");
         }
-        
-        return LocalDate.of(date.getYear(), date.getMonth(), 
-                date.lengthOfMonth() / 2);        
+
+        return LocalDate.of(date.getYear(), date.getMonth(),
+                date.lengthOfMonth() / 2);
     }
 }

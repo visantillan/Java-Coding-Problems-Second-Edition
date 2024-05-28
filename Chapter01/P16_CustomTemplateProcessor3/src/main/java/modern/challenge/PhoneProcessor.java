@@ -2,6 +2,7 @@ package modern.challenge;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.lang.StringTemplate.Processor;
 import java.util.regex.Pattern;
@@ -12,7 +13,7 @@ public class PhoneProcessor implements Processor<JsonNode, IllegalArgumentExcept
             "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}");
 
     @Override
-    public JsonNode process(StringTemplate stringTemplate) throws IllegalArgumentException {       
+    public JsonNode process(StringTemplate stringTemplate) throws IllegalArgumentException {
 
         for (Object value : stringTemplate.values()) {
 
@@ -23,7 +24,7 @@ public class PhoneProcessor implements Processor<JsonNode, IllegalArgumentExcept
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        
+
         try {
             return mapper.readTree(StringTemplate.interpolate(
                     stringTemplate.fragments(), stringTemplate.values()));

@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         // ArrayList
-        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));        
+        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));
 
         // before JDK 21        
         list.remove(0);               // remove the first element
@@ -29,8 +29,8 @@ public class Main {
 
         // JDK 21
         list.removeFirst();
-        list.removeLast();        
-        
+        list.removeLast();
+
         // LinkedList
         List<String> linkedlist = new LinkedList<>(Arrays.asList("one", "two", "three", "four", "five"));
 
@@ -40,34 +40,34 @@ public class Main {
 
         // JDK 21
         linkedlist.removeFirst();
-        linkedlist.removeLast();        
-        
+        linkedlist.removeLast();
+
         // LinkedHashSet
         SequencedSet<String> linkedhashset = new LinkedHashSet<>(Arrays.asList("one", "two", "three", "four", "five"));
-        
+
         // before JDK 21           
         linkedhashset.remove("one");
-        linkedhashset.remove("five");        
+        linkedhashset.remove("five");
         // or, use the code for getting the first/last elements and call remove on those
 
         // JDK 21
         linkedhashset.removeFirst();
         linkedhashset.removeLast();
-                
+
         // SortedSet
-        SortedSet<String> sortedset = new TreeSet<>(Arrays.asList("one", "two", "three", "four", "five"));        
+        SortedSet<String> sortedset = new TreeSet<>(Arrays.asList("one", "two", "three", "four", "five"));
 
         // before JDK 21       
-        
+
         String first = sortedset.first();
         sortedset.remove(first);
         String last = sortedset.last();
         sortedset.remove(last);
-        
+
         // JDK 21
         sortedset.removeFirst();
-        sortedset.removeLast();                    
-               
+        sortedset.removeLast();
+
         // LinkedHashMap
         SequencedMap<Integer, String> linkedhashmap = new LinkedHashMap<>();
         linkedhashmap.put(1, "one");
@@ -90,7 +90,7 @@ public class Main {
         // JDK 21
         linkedhashmap.pollFirstEntry();
         linkedhashmap.pollLastEntry();
-                
+
         // SortedMap
         SortedMap<Integer, String> sortedmap = new TreeMap<>();
         sortedmap.put(1, "one");
@@ -98,21 +98,21 @@ public class Main {
         sortedmap.put(3, "three");
         sortedmap.put(4, "four");
         sortedmap.put(5, "five");
-        
+
         // before JDK 21
         // sortedmap.remove(1);
         // sortedmap.remove(5, "five");     
         Integer fkey = sortedmap.firstKey();
-        String fval = sortedmap.get(fkey);  
-        
-        Integer lkey = sortedmap.lastKey();       
-        String lval = sortedmap.get(lkey);  
+        String fval = sortedmap.get(fkey);
+
+        Integer lkey = sortedmap.lastKey();
+        String lval = sortedmap.get(lkey);
 
         sortedmap.remove(fkey);
         sortedmap.remove(fkey, fval);
         sortedmap.remove(lkey);
         sortedmap.remove(lkey, lval);
-        
+
         // JDK 21                
         sortedmap.pollFirstEntry();
         sortedmap.pollLastEntry();

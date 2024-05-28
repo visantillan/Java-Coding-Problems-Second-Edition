@@ -9,66 +9,6 @@ public class IntervalTree {
 
     private Node root;
 
-    public static final class Interval {
-
-        private final int min, max;
-
-        public Interval(int min, int max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        private boolean overlaps(Interval thiz) {
-
-            if (thiz.max < this.min) {
-                return false;
-            }
-
-            return this.max >= thiz.min;
-        }
-
-        private int compareTo(Interval thiz) {
-
-            if (this.min < thiz.min) {
-                return -1;
-            } else if (this.min > thiz.min) {
-                return 1;
-            } else if (this.max < thiz.max) {
-                return -1;
-            } else if (this.max > thiz.max) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        @Override
-        public String toString() {
-            return "[" + min + ", " + max + "]";
-        }
-    }
-
-    private final class Node {
-
-        private final Interval interval;
-        private final Integer maxInterval;
-
-        private Node left;
-        private Node right;
-
-        private int size;
-        private int maxSubstree;
-
-        Node(Interval interval, Integer maxInterval) {
-
-            this.interval = interval;
-            this.maxInterval = maxInterval;
-
-            this.size = 1;
-            this.maxSubstree = interval.max;
-        }
-    }
-
     public void insert(Interval interval) {
         root = insert(root, interval);
     }
@@ -274,26 +214,15 @@ public class IntervalTree {
         }
     }
 
-    public enum TraversalOrder {
-        PRE,
-        IN,
-        POST,
-        LEVEL
-    }
-
     public void print(TraversalOrder to) {
 
         switch (to) {
             // DFS
-            case IN ->
-                printInOrder(root);
-            case PRE ->
-                printPreOrder(root);
-            case POST ->
-                printPostOrder(root);
+            case IN -> printInOrder(root);
+            case PRE -> printPreOrder(root);
+            case POST -> printPostOrder(root);
             // BFS
-            case LEVEL ->
-                printLevelOrder(root);
+            case LEVEL -> printLevelOrder(root);
         }
     }
 
@@ -340,6 +269,73 @@ public class IntervalTree {
             if (current.right != null) {
                 queue.add(current.right);
             }
+        }
+    }
+
+    public enum TraversalOrder {
+        PRE,
+        IN,
+        POST,
+        LEVEL
+    }
+
+    public static final class Interval {
+
+        private final int min, max;
+
+        public Interval(int min, int max) {
+            this.min = min;
+            this.max = max;
+        }
+
+        private boolean overlaps(Interval thiz) {
+
+            if (thiz.max < this.min) {
+                return false;
+            }
+
+            return this.max >= thiz.min;
+        }
+
+        private int compareTo(Interval thiz) {
+
+            if (this.min < thiz.min) {
+                return -1;
+            } else if (this.min > thiz.min) {
+                return 1;
+            } else if (this.max < thiz.max) {
+                return -1;
+            } else if (this.max > thiz.max) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "[" + min + ", " + max + "]";
+        }
+    }
+
+    private final class Node {
+
+        private final Interval interval;
+        private final Integer maxInterval;
+
+        private Node left;
+        private Node right;
+
+        private int size;
+        private int maxSubstree;
+
+        Node(Interval interval, Integer maxInterval) {
+
+            this.interval = interval;
+            this.maxInterval = maxInterval;
+
+            this.size = 1;
+            this.maxSubstree = interval.max;
         }
     }
 }

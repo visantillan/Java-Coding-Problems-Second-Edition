@@ -30,10 +30,10 @@ public final class Zipper {
                     children.add((T) unwrapZipper(zipped));
                 }
             }
-            
+
             return original;
         } else {
-            
+
             return (T) node;
         }
     }

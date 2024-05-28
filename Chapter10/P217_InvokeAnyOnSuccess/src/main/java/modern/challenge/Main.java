@@ -21,33 +21,33 @@ public class Main {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-        
+
         buildTestingTeam();
     }
-    
+
     public static TestingTeam buildTestingTeam() throws InterruptedException, ExecutionException {
-        
+
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
             String result = executor.invokeAny(
                     List.of(() -> fetchTester(1), () -> fetchTester(2), () -> fetchTester(3))
             );
-            
+
             logger.info(result);
-            
+
             return new TestingTeam(result);
-        }       
+        }
     }
 
     public static String fetchTester(int id) throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
-        
+
         // intentionally added a delay of 1-5 seconds
         Thread.sleep(Duration.ofMillis(ThreadLocalRandom.current().nextLong(5000)));
-        
+
         HttpRequest requestGet = HttpRequest.newBuilder()
-                .GET()                 
+                .GET()
                 .uri(URI.create("https://reqres.in/api/users/" + id))
                 .build();
 

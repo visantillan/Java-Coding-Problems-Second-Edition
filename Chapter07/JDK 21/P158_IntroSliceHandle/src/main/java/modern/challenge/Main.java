@@ -46,7 +46,7 @@ public class Main {
             );
 
             System.out.println();
-            System.out.println("\n The third sequence of 10:" 
+            System.out.println("\n The third sequence of 10:"
                     + Arrays.toString(
                     ((MemorySegment) mHandle.invoke(segment, 3))
                             .toArray(ValueLayout.JAVA_DOUBLE)));

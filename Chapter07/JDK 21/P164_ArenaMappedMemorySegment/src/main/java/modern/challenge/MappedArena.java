@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.nio.channels.FileChannel;
+
 import static java.nio.channels.FileChannel.MapMode.READ_WRITE;
+
 import java.nio.file.Path;
+
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 import static java.nio.file.StandardOpenOption.READ;
 import static java.nio.file.StandardOpenOption.SPARSE;
@@ -34,7 +37,7 @@ public class MappedArena implements Arena {
                 CREATE_NEW, SPARSE, READ, WRITE)) {
 
             return file.map(READ_WRITE, 0, byteSize, shared);
-            
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,5 +51,5 @@ public class MappedArena implements Arena {
     @Override
     public void close() {
         shared.close();
-    }  
+    }
 }

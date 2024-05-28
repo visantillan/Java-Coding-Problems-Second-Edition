@@ -36,7 +36,7 @@ public class Main {
                 10, ValueLayout.JAVA_DOUBLE);
 
         // VarHandle[varType=double, coord=[interface java.lang.foreign.MemorySegment, long, long]]
-        VarHandle sphandle = seq.varHandle(PathElement.sequenceElement());                
+        VarHandle sphandle = seq.varHandle(PathElement.sequenceElement());
 
         try (Arena arena = Arena.ofConfined()) {
 
@@ -57,7 +57,7 @@ public class Main {
         System.out.println("\nSingle sequence layout using array element: ");
 
         // VarHandle[varType=double, coord=[interface java.lang.foreign.MemorySegment, long, long]]
-        VarHandle sahandle = ValueLayout.JAVA_DOUBLE.arrayElementVarHandle();        
+        VarHandle sahandle = ValueLayout.JAVA_DOUBLE.arrayElementVarHandle();
 
         try (Arena arena = Arena.ofConfined()) {
 
@@ -83,7 +83,7 @@ public class Main {
         // VarHandle[varType=double, coord=[interface java.lang.foreign.MemorySegment, long, long, long]]
         VarHandle nphandle = nestedseq.varHandle(
                 PathElement.sequenceElement(),
-                PathElement.sequenceElement());        
+                PathElement.sequenceElement());
 
         try (Arena arena = Arena.ofConfined()) {
 
@@ -106,6 +106,6 @@ public class Main {
                     System.out.printf("\nx = %.2f", nphandle.get(segment, 0L, i, j));
                 }
             }
-        }       
+        }
     }
 }

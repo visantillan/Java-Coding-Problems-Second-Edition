@@ -17,17 +17,27 @@ public class Main {
         List<Thread> vtThreads = IntStream.range(0, 5)
                 .mapToObj(i -> Thread.ofVirtual().unstarted(() -> {
 
-            if (i == 0) { logger.info(Thread.currentThread().toString()); }
+                    if (i == 0) {
+                        logger.info(Thread.currentThread().toString());
+                    }
 
-            try { Thread.sleep(1000); } catch (InterruptedException ex) {}
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                    }
 
-            if (i == 0) { logger.info(Thread.currentThread().toString()); }
-        })).toList();
-        
+                    if (i == 0) {
+                        logger.info(Thread.currentThread().toString());
+                    }
+                })).toList();
+
 
         vtThreads.forEach(Thread::start);
         vtThreads.forEach(thread -> {
-            try { thread.join(); } catch (InterruptedException ex) {}
-        });               
+            try {
+                thread.join();
+            } catch (InterruptedException ex) {
+            }
+        });
     }
 }

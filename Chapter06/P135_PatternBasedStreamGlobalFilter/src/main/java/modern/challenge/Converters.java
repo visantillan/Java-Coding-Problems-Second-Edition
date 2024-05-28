@@ -18,7 +18,7 @@ public final class Converters {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        try ( ObjectOutputStream ois = new ObjectOutputStream(baos)) {
+        try (ObjectOutputStream ois = new ObjectOutputStream(baos)) {
             ois.writeObject(obj);
         }
 
@@ -30,8 +30,8 @@ public final class Converters {
     public static Object bytesToObject(byte[] bytes)
             throws IOException, ClassNotFoundException {
 
-        try ( InputStream is = new ByteArrayInputStream(bytes);  
-                ObjectInputStream ois = new ObjectInputStream(is)) {
+        try (InputStream is = new ByteArrayInputStream(bytes);
+             ObjectInputStream ois = new ObjectInputStream(is)) {
 
             return ois.readObject();
         }

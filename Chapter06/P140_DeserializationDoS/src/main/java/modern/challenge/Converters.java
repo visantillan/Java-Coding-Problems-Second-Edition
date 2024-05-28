@@ -18,11 +18,11 @@ public final class Converters {
     public static byte[] objectToBytes(Serializable obj) throws IOException {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        
-        try ( ObjectOutputStream ois = new ObjectOutputStream(baos)) {
+
+        try (ObjectOutputStream ois = new ObjectOutputStream(baos)) {
             ois.writeObject(obj);
         }
-        
+
         baos.close();
 
         return baos.toByteArray();
@@ -30,13 +30,13 @@ public final class Converters {
 
     public static Object bytesToObject(byte[] bytes, ObjectInputFilter filter)
             throws IOException, ClassNotFoundException {
-                
-        try ( InputStream is = new ByteArrayInputStream(bytes);
-                ObjectInputStream ois = new ObjectInputStream(is)) {
-            
+
+        try (InputStream is = new ByteArrayInputStream(bytes);
+             ObjectInputStream ois = new ObjectInputStream(is)) {
+
             System.out.println("Deserializing ...");
             ois.setObjectInputFilter(filter);
-            
+
             return ois.readObject();
         }
     }

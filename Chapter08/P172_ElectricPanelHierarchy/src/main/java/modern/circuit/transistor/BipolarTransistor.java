@@ -1,3 +1,4 @@
 package modern.circuit.transistor;
 
-public class BipolarTransistor extends Transistor {}
+public class BipolarTransistor extends Transistor {
+}

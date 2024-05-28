@@ -1,7 +1,11 @@
 package modern.challenge;
 
-class Heater {}
-class Stove extends Heater {}
+class Heater {
+}
+
+class Stove extends Heater {
+}
+
 class Chimney extends Heater {
 
     private final boolean electric;

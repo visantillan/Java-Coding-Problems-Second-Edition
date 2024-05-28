@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public final class Hospital {
-    
+
     private Hospital() {
         throw new AssertionError("Cannot be instantiated");
     }
@@ -22,8 +22,8 @@ public final class Hospital {
         
         return "Cabinet closed";
     }    
-    */        
-    
+    */
+
     public static String cabinet(Staff staff) {
         
         /*
@@ -31,7 +31,7 @@ public final class Hospital {
             return "Cabinet of " + dr.specialty() + ". Doctor: " + dr.name();
         }
         */
-                
+
         if (staff instanceof Doctor(String name, String specialty)) { // record pattern matching
             return "Cabinet of " + name + ". Doctor: " + specialty;
         }        
@@ -49,16 +49,18 @@ public final class Hospital {
                     + dr.name() + ", Resident: " + name;
         }
         */
-                                              
-        if (staff instanceof Resident(String rsname, 
-                                      Doctor(String drname, String specialty))) { // record pattern matching
-            return "Cabinet of " + specialty + ". Doctor: " 
+
+        if (staff instanceof Resident(
+                String rsname,
+                Doctor(String drname, String specialty)
+        )) { // record pattern matching
+            return "Cabinet of " + specialty + ". Doctor: "
                     + drname + ", Resident: " + rsname;
-        }                                               
+        }
 
         return "Cabinet closed";
     }
-        
+
     public static String reception(Object o) {
         
         /*
@@ -78,15 +80,19 @@ public final class Hospital {
                   + ap.date() + " to the doctor " + ap.doctor().name() + " (" + ap.doctor().specialty() + ").";
         }
         */
-        
-        if (o instanceof Patient(var ptname, var npi, 
-                        Appointment(var date, 
-                        Doctor (var drname, var specialty)))) {
-        
-          return "Patient " + ptname + " (NPI: " + npi + ") has an appointment at " 
-                  + date + " to the doctor " + drname + " (" + specialty + ").";
+
+        if (o instanceof Patient(
+                var ptname, var npi,
+                Appointment(
+                        var date,
+                        Doctor(var drname, var specialty)
+                )
+        )) {
+
+            return "Patient " + ptname + " (NPI: " + npi + ") has an appointment at "
+                    + date + " to the doctor " + drname + " (" + specialty + ").";
         }
-        
+
         return "";
-    }    
+    }
 }

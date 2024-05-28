@@ -12,14 +12,14 @@ import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class Main {
-    
+
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws InterruptedException {
-        
+
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-        
+
         logger.info("Sleeping 15s ... ");
         Thread.sleep(Duration.ofSeconds(15)); // connect 'jconsole' while sleeping
         logger.info("Done ... ");
@@ -32,7 +32,7 @@ public class Main {
         }, 500, 500, TimeUnit.MILLISECONDS);
 
         long start = System.currentTimeMillis();
-        
+
         try (ExecutorService executorFixed = Executors.newFixedThreadPool(200)) {
             IntStream.range(0, 10_000).forEach(i -> {
                 executorFixed.submit(() -> {
@@ -42,7 +42,7 @@ public class Main {
                 });
             });
         }
-        
+
         logger.info(() -> "Time (ms): " + (System.currentTimeMillis() - start));
     }
 }

@@ -1,6 +1,7 @@
 package modern.challenge;
 
 import com.sun.management.HotSpotDiagnosticMXBean;
+
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.net.URI;
@@ -27,7 +28,7 @@ public class Main {
                 "[%1$tT] [%4$-7s] %5$s %n");
 
         try (ShutdownOnSuccess scope
-                = new StructuredTaskScope.ShutdownOnSuccess<String>()) {
+                     = new StructuredTaskScope.ShutdownOnSuccess<String>()) {
 
             Stream.of(1, 2, 3)
                     .<Callable<String>>map(id -> () -> fetchTester(id))

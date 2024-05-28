@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public class ApplicationDependency {
-    
+
     private final long id;
     private final String name;
     private String dependencies;
@@ -17,14 +17,14 @@ public class ApplicationDependency {
 
     public String getName() {
         return name;
-    }   
-    
+    }
+
     public String getDependencies() {
         return dependencies;
-    }  
-    
+    }
+
     private void downloadDependencies() {
-           
+
         dependencies = "list of dependencies downloaded from repository " + Math.random();
-    }    
+    }
 }

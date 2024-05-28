@@ -20,24 +20,24 @@ public class Main {
         heap.decreaseKey(5, 4);
         System.out.println("\nAfter decreasing 5 to 4:");
         heap.inOrder();
-        
+
         int min = heap.findMin();
         System.out.println("\nMin: " + min);
-        
+
         int del = heap.extractMin();
         System.out.println("\nDeleted: " + del);
         System.out.println("\nNew min: " + heap.findMin());
-        System.out.println("\nAfter deletion:");        
+        System.out.println("\nAfter deletion:");
         heap.inOrder();
-        
+
         boolean is4 = heap.isKey(4);
-        System.out.println("\nIs 4: " + is4);     
-        
+        System.out.println("\nIs 4: " + is4);
+
         System.out.println("\nEmpty (before call doEmpty()): " + heap.isEmpty());
         System.out.println("\nSize (before call doEmpty()): " + heap.size());
         heap.doEmpty();
         System.out.println("\nEmpty (after call doEmpty()): " + heap.isEmpty());
         System.out.println("\nSize (after call doEmpty()): " + heap.size());
-        
+
     }
 }

@@ -4,11 +4,14 @@ import modern.circuit.ElectricComponent;
 
 public final class ParallelCircuit extends ElectricCircuit {
 
-    public ParallelCircuit(ElectricComponent... comp) {}
+    public ParallelCircuit(ElectricComponent... comp) {
+    }
 
     @Override
-    public void off() {}
+    public void off() {
+    }
 
     @Override
-    public void on() {}        
+    public void on() {
+    }
 }

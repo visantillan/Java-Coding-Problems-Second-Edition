@@ -3,6 +3,7 @@ package modern.challenge;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+
 import jdk.incubator.vector.IntVector;
 import jdk.incubator.vector.VectorMask;
 import jdk.incubator.vector.VectorSpecies;
@@ -37,6 +38,10 @@ public class Main {
     int[] z;
     int[] w;
     int[] k;
+
+    public static void main(String[] args) throws IOException {
+        org.openjdk.jmh.Main.main(args);
+    }
 
     @Setup
     public void init() {
@@ -163,9 +168,5 @@ public class Main {
         }
 
         blackhole.consume(k);
-    }
-
-    public static void main(String[] args) throws IOException {
-        org.openjdk.jmh.Main.main(args);
     }
 }

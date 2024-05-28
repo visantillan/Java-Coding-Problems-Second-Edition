@@ -1,11 +1,6 @@
 package modern.challenge;
 
-import java.time.Instant;
-import java.time.LocalTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
@@ -22,22 +17,22 @@ public final class DateConverters {
         Objects.requireNonNull(zoneId, "The provided zone id cannot be null");
 
         LocalTime lt = date.toInstant().atZone(zoneId).toLocalTime();
-       
+
         LocalTime night = LocalTime.of(21, 0, 0);
         LocalTime morning = LocalTime.of(6, 0, 0);
         LocalTime afternoon = LocalTime.of(12, 0, 0);
         LocalTime evening = LocalTime.of(18, 0, 0);
         LocalTime almostMidnight = LocalTime.of(23, 59, 59);
         LocalTime midnight = LocalTime.of(0, 0, 0);
-        
-        if((lt.isAfter(night) && lt.isBefore(almostMidnight)) 
+
+        if ((lt.isAfter(night) && lt.isBefore(almostMidnight))
                 || lt.isAfter(midnight) && (lt.isBefore(morning))) {
             return "night";
-        } else if(lt.isAfter(morning) && lt.isBefore(afternoon)) {
+        } else if (lt.isAfter(morning) && lt.isBefore(afternoon)) {
             return "morning";
-        } else if(lt.isAfter(afternoon) && lt.isBefore(evening)) {
+        } else if (lt.isAfter(afternoon) && lt.isBefore(evening)) {
             return "afternoon";
-        } else if(lt.isAfter(evening) && lt.isBefore(night)) {
+        } else if (lt.isAfter(evening) && lt.isBefore(night)) {
             return "evening";
         }
 
@@ -60,17 +55,16 @@ public final class DateConverters {
 
         return zdt.withZoneSameInstant(zoneId).format(formatter2);
     }
-    
+
     public static void printToDayPeriod() {
-        
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh B");
-        
-        for (int h = 0; h < 24; h++)
-        {
+
+        for (int h = 0; h < 24; h++) {
             final OffsetDateTime odt
                     = Instant.now().atOffset(ZoneOffset.UTC).withHour(h);
-            
-            System.out.println("Hour " + h 
+
+            System.out.println("Hour " + h
                     + ": \"" + formatter.format(odt) + "\"");
         }
     }

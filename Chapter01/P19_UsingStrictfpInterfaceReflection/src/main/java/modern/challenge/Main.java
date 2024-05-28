@@ -16,6 +16,15 @@ public class Main implements Rectangle {
         displayModifiers(Rectangle.Trigonometry.class, "bigAngleOfDiagonals");
     }
 
+    public static void displayModifiers(Class clazz, String member) {
+        try {
+            int modifiers = clazz.getDeclaredMethod(member, double.class, double.class).getModifiers();
+            System.out.println(member + " has the following modifiers: " + Modifier.toString(modifiers));
+        } catch (NoSuchMethodException | SecurityException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
     @Override
     public double diagonal(double length, double width) { // needs explicit strictfp
 
@@ -25,14 +34,5 @@ public class Main implements Rectangle {
     public double perimeter(double length, double width) { // needs explicit strictfp
 
         return 2.0d * length + 2.0d * width;
-    }
-
-    public static void displayModifiers(Class clazz, String member) {
-        try {
-            int modifiers = clazz.getDeclaredMethod(member, double.class, double.class).getModifiers();
-            System.out.println(member + " has the following modifiers: " + Modifier.toString(modifiers));
-        } catch (NoSuchMethodException | SecurityException e) {
-            e.printStackTrace(System.out);
-        }
     }
 }

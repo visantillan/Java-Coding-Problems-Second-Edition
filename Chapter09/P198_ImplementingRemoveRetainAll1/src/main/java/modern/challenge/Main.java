@@ -15,35 +15,35 @@ public class Main {
                 new Car("Mercedes", "electric", 200), new Car("Chevrolet", "gasoline", 350),
                 new Car("Lexus", "diesel", 300), new Car("Ford", "electric", 200)
         );
-        
+
         Car car1 = new Car("Lexus", "diesel", 300);
         Car car2 = new Car("Ford", "electric", 80);
         Car car3 = new Car("Chevrolet", "electric", 150);
-        
+
         List<Car> cars123 = List.of(car1, car2, car3);
-         
-        Streams.from(cars.stream()).forEach(System.out::println);              
-        
+
+        Streams.from(cars.stream()).forEach(System.out::println);
+
         System.out.println();
         Streams.from(cars.stream())
-                .remove(car1)                              
+                .remove(car1)
                 .forEach(System.out::println);
-        
-        System.out.println();           
+
+        System.out.println();
         Streams.from(cars.stream())
-                .distinct()                
+                .distinct()
                 .retainAll(car1, car2, car3)
-                .filter(car -> car.getFuel().equals("electric"))                
-                .removeAll(car2)                
+                .filter(car -> car.getFuel().equals("electric"))
+                .removeAll(car2)
                 .forEach(System.out::println);
-        
+
         System.out.println();
         Streams.from(cars.stream())
                 .retainAll(cars123)
-                .forEach(System.out::println);        
-                
+                .forEach(System.out::println);
+
         System.out.println();
         Streams.from(cars.stream()).retainAll(cars123)
-                .removeAll(car1, car3).forEach(System.out::println);        
+                .removeAll(car1, car3).forEach(System.out::println);
     }
 }

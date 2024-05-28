@@ -131,6 +131,6 @@ public class Main {
                     System.out.printf("\nx = %.2f", nahandle.get(segment, 0, i, j));
                 }
             }
-        }        
+        }
     }
 }

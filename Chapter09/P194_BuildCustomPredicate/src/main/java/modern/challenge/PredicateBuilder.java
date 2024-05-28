@@ -20,10 +20,6 @@ enum PredicateBuilder {
         this.predicate = predicate;
     }
 
-    public <T> Predicate<T> toPredicate(Function<T, Integer> getter, int u) {
-        return obj -> this.predicate.test(getter.apply(obj), u);
-    }
-
     public static <T> Function<T, Integer> getFieldByName(Class<T> cls, String field) {
         return object -> {
             try {
@@ -32,9 +28,13 @@ enum PredicateBuilder {
 
                 return (Integer) f.get(object);
             } catch (IllegalAccessException | IllegalArgumentException
-                    | NoSuchFieldException | SecurityException e) {                
+                     | NoSuchFieldException | SecurityException e) {
                 throw new RuntimeException(e);
             }
         };
+    }
+
+    public <T> Predicate<T> toPredicate(Function<T, Integer> getter, int u) {
+        return obj -> this.predicate.test(getter.apply(obj), u);
     }
 }

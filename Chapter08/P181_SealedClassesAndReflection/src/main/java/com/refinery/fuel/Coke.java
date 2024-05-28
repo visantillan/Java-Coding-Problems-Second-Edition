@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public final class Coke implements SolidFuel {}
+public final class Coke implements SolidFuel {
+}

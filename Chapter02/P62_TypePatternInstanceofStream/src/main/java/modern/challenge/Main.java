@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-interface Engine {}
+interface Engine {
+}
 
-class HypersonicEngine implements Engine {} // not implemented
-class HighSpeedEngine implements Engine {}  // not implemented
+class HypersonicEngine implements Engine {
+} // not implemented
+
+class HighSpeedEngine implements Engine {
+}  // not implemented
 
 class RegularEngine implements Engine {
 
@@ -30,14 +34,14 @@ class RegularEngine implements Engine {
     @Override
     public String toString() {
         return "RegularEngine{" + "maxSpeed=" + maxSpeed + ", electric=" + electric + '}';
-    }           
+    }
 }
 
 public class Main {
 
     private static List<Engine> filterRegularEngines(List<Engine> engines, int testSpeed) {
 
-        for (Iterator<Engine> i = engines.iterator(); i.hasNext();) {
+        for (Iterator<Engine> i = engines.iterator(); i.hasNext(); ) {
             final Engine e = i.next();
             if (e instanceof RegularEngine) {
                 final RegularEngine popularEngine = (RegularEngine) e;
@@ -54,10 +58,10 @@ public class Main {
 
     private static List<Engine> filterRegularEnginesStream(List<Engine> engines, int testSpeed) {
 
-        engines.removeIf(e -> e instanceof RegularEngine engine 
+        engines.removeIf(e -> e instanceof RegularEngine engine
                 && engine.isElectric()
                 && !hasEnoughAutonomy(engine, testSpeed));
-        
+
         return engines;
     }
 

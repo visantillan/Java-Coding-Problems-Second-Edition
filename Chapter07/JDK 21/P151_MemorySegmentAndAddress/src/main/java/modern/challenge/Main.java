@@ -22,7 +22,7 @@ public class Main {
 
             MemorySegment addr1 = addrs.getAtIndex(ValueLayout.ADDRESS, 0);
             MemorySegment addr2 = addrs.getAtIndex(ValueLayout.ADDRESS, 1);
-            MemorySegment addr3 = addrs.getAtIndex(ValueLayout.ADDRESS, 2);            
+            MemorySegment addr3 = addrs.getAtIndex(ValueLayout.ADDRESS, 2);
 
             // addr1.get(ValueLayout.JAVA_INT, 0); // DON'T DO THIS!                        
             System.out.println("Value at address1: " + MemorySegment.ofAddress(
@@ -68,6 +68,6 @@ public class Main {
             System.out.println("i1: " + i1.get(ValueLayout.JAVA_INT, 0));
             System.out.println("i2: " + i2.get(ValueLayout.JAVA_INT, 0));
             System.out.println("i3: " + i3.get(ValueLayout.JAVA_INT, 0));
-        }               
+        }
     }
 }

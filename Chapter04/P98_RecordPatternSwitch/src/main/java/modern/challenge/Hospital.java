@@ -3,11 +3,11 @@ package modern.challenge;
 import java.time.LocalDate;
 
 public final class Hospital {
-    
+
     private Hospital() {
         throw new AssertionError("Cannot be instantiated");
-    }        
-    
+    }
+
     public static String cabinet(Staff staff) {
         
         /*
@@ -27,24 +27,27 @@ public final class Hospital {
             default -> "Cabinet closed";
         };
         */
-        
-        return switch(staff) { // record pattern matching
+
+        return switch (staff) { // record pattern matching
             case Doctor(var name, var specialty) -> "Cabinet of " + specialty + ". Doctor: " + name;
-            case Resident(var rsname, Doctor(var drname, var specialty)) -> "Cabinet of " + specialty + ". Doctor: " 
+            case Resident(var rsname, Doctor(var drname, var specialty)) -> "Cabinet of " + specialty + ". Doctor: "
                     + drname + ", Resident: " + rsname;
             default -> "Cabinet closed";
-        };                                                
+        };
     }
-    
+
     public static String reception(Object o) {
-                
-        return switch(o) {
-            
-            case Patient(String ptname, int npi, 
-                        Appointment(LocalDate date, 
-                        Doctor (String drname, String specialty))) ->
-                  "Patient " + ptname + " (NPI: " + npi + ") has an appointment at " 
-                       + date + " to the doctor " + drname + " (" + specialty + ").";
+
+        return switch (o) {
+
+            case Patient(
+                    String ptname, int npi,
+                    Appointment(
+                            LocalDate date,
+                            Doctor(String drname, String specialty)
+                    )
+            ) -> "Patient " + ptname + " (NPI: " + npi + ") has an appointment at "
+                    + date + " to the doctor " + drname + " (" + specialty + ").";
             default -> "";
         };        
         
@@ -78,6 +81,6 @@ public final class Hospital {
                        + date + " to the doctor " + drname + " (" + specialty + ").";
             default -> "";
         };
-        */                
-    }    
+        */
+    }
 }

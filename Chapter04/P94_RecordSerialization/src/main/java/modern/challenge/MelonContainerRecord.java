@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public record MelonContainerRecord(LocalDate expiration, String batch, Melon melon) implements Serializable {
 
-    public MelonContainerRecord   {
+    public MelonContainerRecord {
 
         Objects.requireNonNull(expiration, "The expiration date cannot be null");
         Objects.requireNonNull(batch, "The batch cannot be null");

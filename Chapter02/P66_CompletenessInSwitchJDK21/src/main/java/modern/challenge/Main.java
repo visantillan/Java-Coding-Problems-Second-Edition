@@ -2,13 +2,32 @@ package modern.challenge;
 
 import java.util.Arrays;
 
-public class Main {     
-       
-    final static class PlayerClub implements Sport {};        
-    private enum PlayerTypes implements Sport { TENNIS, FOOTBALL, SNOOKER }
-    
-    sealed interface Sport permits PlayerTypes, PlayerClub {};
-    
+public class Main {
+
+    // JDK 21
+    private static String createPlayerOrClub(Sport s) {
+
+        return switch (s) {
+            case PlayerTypes.TENNIS -> "Creating a tennis player ...";
+            case PlayerTypes.FOOTBALL -> "Creating a football player ...";
+            case PlayerTypes.SNOOKER -> "Creating a snooker player ...";
+            case PlayerClub p -> "Creating a sport club ...";
+        };
+    }
+
+    ;
+
+    public static void main(String[] args) {
+
+        Arrays.asList(PlayerTypes.FOOTBALL, PlayerTypes.SNOOKER, PlayerTypes.TENNIS, new PlayerClub()).stream()
+                .map(Main::createPlayerOrClub)
+                .forEach(System.out::println);
+    }
+
+    private enum PlayerTypes implements Sport {TENNIS, FOOTBALL, SNOOKER}
+
+    ;
+
     // JDK 20
     /*
     private static String createPlayerOrClub(Sport s) {       
@@ -21,22 +40,10 @@ public class Main {
         };
     }
     */
-    
-    // JDK 21    
-    private static String createPlayerOrClub(Sport s) {       
 
-        return switch (s) {
-            case PlayerTypes.TENNIS -> "Creating a tennis player ...";
-            case PlayerTypes.FOOTBALL -> "Creating a football player ...";
-            case PlayerTypes.SNOOKER -> "Creating a snooker player ...";   
-            case PlayerClub p -> "Creating a sport club ...";
-        };
-    }             
+    sealed interface Sport permits PlayerTypes, PlayerClub {
+    }
 
-    public static void main(String[] args) {
-        
-        Arrays.asList(PlayerTypes.FOOTBALL, PlayerTypes.SNOOKER, PlayerTypes.TENNIS, new PlayerClub()).stream()
-                .map(Main::createPlayerOrClub)
-                .forEach(System.out::println);
+    final static class PlayerClub implements Sport {
     }
 }

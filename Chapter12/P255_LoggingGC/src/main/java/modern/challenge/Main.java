@@ -22,7 +22,7 @@ public class Main {
             String newString = string + i;
             strings.add(newString);
         }
-        
+
         logger.info(() -> "List size: " + strings.size());
 
         // Force GC execution
@@ -31,7 +31,7 @@ public class Main {
         // Remove 10_000 out of 5 millions
         for (int i = 0; i < 10_000; i++) {
             String newString = string + i;
-            strings.remove(newString);            
+            strings.remove(newString);
         }
 
         logger.info(() -> "List size: " + strings.size());

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,11 +32,11 @@ public class AuthorExtractor {
                 Long authorId = (rs.getLong("id"));
                 AuthorDto author = authorsMap.get(authorId);
                 if (author == null) {
-                    author = new AuthorDto(rs.getLong("id"), rs.getString("name"), 
-                            rs.getInt("age"), new ArrayList());                    
+                    author = new AuthorDto(rs.getLong("id"), rs.getString("name"),
+                            rs.getInt("age"), new ArrayList());
                 }
 
-                BookDto book = new BookDto(rs.getLong("id"), rs.getString("title"));                
+                BookDto book = new BookDto(rs.getLong("id"), rs.getString("title"));
 
                 author.addBook(book);
                 authorsMap.putIfAbsent(author.id(), author);

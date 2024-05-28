@@ -1,3 +1,4 @@
 package modern.circuit.capacitor;
 
-public class ElectrolyticCapacitor extends Capacitor {}
+public class ElectrolyticCapacitor extends Capacitor {
+}

@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public class House {
-    
+
     private String location;
     private float price;
 
@@ -19,5 +19,5 @@ public class House {
 
     public void setPrice(float price) {
         this.price = price;
-    }        
+    }
 }

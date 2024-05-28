@@ -1,3 +1,3 @@
-module P110_SummingArraysUnrolled {       
+module P110_SummingArraysUnrolled {
     requires jdk.incubator.vector;
 }

@@ -1,3 +1,4 @@
 package modern.circuit;
 
-public interface ElectricComponent {}
+public interface ElectricComponent {
+}

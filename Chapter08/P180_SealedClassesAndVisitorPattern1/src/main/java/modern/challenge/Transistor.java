@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public class Transistor implements ElectricComponent {
-    
+
     private final float length;
     private final float width;
     private final float threshholdVoltage;
@@ -23,10 +23,10 @@ public class Transistor implements ElectricComponent {
     public float getThreshholdVoltage() {
         return threshholdVoltage;
     }
-        
+
     @Override
     public String accept(ElectricComponentVisitor visitor) {
         return visitor.visit(this);
     }
-    
+
 }

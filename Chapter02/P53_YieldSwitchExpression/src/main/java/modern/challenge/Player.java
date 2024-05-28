@@ -1,4 +1,4 @@
 package modern.challenge;
 
-public class Player {    
+public class Player {
 }

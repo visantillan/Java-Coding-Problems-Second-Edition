@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public record Hydrogen() implements NaturalGas {}
+public record Hydrogen() implements NaturalGas {
+}

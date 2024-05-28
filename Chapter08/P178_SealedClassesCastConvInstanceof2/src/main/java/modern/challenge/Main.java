@@ -1,9 +1,9 @@
 package modern.challenge;
 
-public class Main {  
-     
-    public static void drawTriangle (Triangle t) {
-        
+public class Main {
+
+    public static void drawTriangle(Triangle t) {
+
         // if(t instanceof Quadrilateral) { // the compiler knows that Triangle cannot be extended and cannot be an instance of Quadrilateral
         //    System.out.println("This is not a triangle");
         // } else {
@@ -11,5 +11,6 @@ public class Main {
         // }
     }
 
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+    }
 }

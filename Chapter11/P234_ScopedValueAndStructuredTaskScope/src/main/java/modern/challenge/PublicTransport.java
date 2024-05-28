@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import static modern.challenge.Main.DEST;
 import static modern.challenge.Main.LOC;
 import static modern.challenge.Main.PUBLIC_TRANSPORT_TICKET;

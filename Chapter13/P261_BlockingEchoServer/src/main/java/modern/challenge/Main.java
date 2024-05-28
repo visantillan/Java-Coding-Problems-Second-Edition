@@ -24,11 +24,11 @@ public class Main {
 
                 // configure the blocking mode
                 serverSC.configureBlocking(true);
-                
+
                 // optionally, configure the server side options
                 serverSC.setOption(StandardSocketOptions.SO_RCVBUF, 4 * 1024);
                 serverSC.setOption(StandardSocketOptions.SO_REUSEADDR, true);
-                
+
                 // bind the server socket channel to local address
                 serverSC.bind(new InetSocketAddress(SERVER_IP, SERVER_PORT));
 
@@ -43,7 +43,7 @@ public class Main {
                         // sending data
                         while (acceptSC.read(tBuffer) != -1) {
 
-                            tBuffer.flip();                            
+                            tBuffer.flip();
 
                             acceptSC.write(tBuffer);
 

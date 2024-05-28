@@ -44,17 +44,17 @@ public final class Numbers {
 
         return (float) Math.round(v * factor) / factor;
     }
-    
+
     public static float roundToDecimalsV4(float v, int decimals) {
 
         if (decimals < 0) {
             throw new IllegalArgumentException("Number of decimals must be a positive integer");
         }
- 
+
         StringBuilder sb = new StringBuilder();
         sb.append("1")
-          .repeat("0", decimals);          
-        
+                .repeat("0", decimals);
+
         int factor = Integer.parseInt(sb.toString());
 
         return (float) Math.round(v * factor) / factor;

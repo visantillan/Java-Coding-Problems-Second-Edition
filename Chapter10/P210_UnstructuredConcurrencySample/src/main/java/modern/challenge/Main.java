@@ -41,9 +41,9 @@ public class Main {
             logger.info(tester1);
             logger.info(tester2);
             logger.info(tester3);
-            
+
             return new TestingTeam(tester1, tester2, tester3);
-            
+
         } catch (ExecutionException ex) {
             // STOP 3
             throw new RuntimeException(ex);

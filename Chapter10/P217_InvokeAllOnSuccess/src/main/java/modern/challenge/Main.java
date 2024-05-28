@@ -21,34 +21,34 @@ public class Main {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-        
+
         buildTestingTeam();
     }
-    
+
     public static TestingTeam buildTestingTeam() throws InterruptedException {
-        
+
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
             List<Future<String>> futures = executor.invokeAll(
                     List.of(() -> fetchTester(1), () -> fetchTester(2), () -> fetchTester(3))
             );
-            
-            futures.forEach(f -> logger.info(() -> "State: " + f.state()));   
-            
-            return new TestingTeam(futures.get(0).resultNow(), 
+
+            futures.forEach(f -> logger.info(() -> "State: " + f.state()));
+
+            return new TestingTeam(futures.get(0).resultNow(),
                     futures.get(1).resultNow(), futures.get(2).resultNow());
-        }        
+        }
     }
 
     public static String fetchTester(int id) throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
-        
+
         // intentionally added a delay of 1-5 seconds
         Thread.sleep(Duration.ofMillis(ThreadLocalRandom.current().nextLong(5000)));
-        
+
         HttpRequest requestGet = HttpRequest.newBuilder()
-                .GET()                 
+                .GET()
                 .uri(URI.create("https://reqres.in/api/users/" + id))
                 .build();
 

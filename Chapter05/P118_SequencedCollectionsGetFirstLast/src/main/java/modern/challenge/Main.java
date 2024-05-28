@@ -18,10 +18,10 @@ import java.util.TreeSet;
 @SuppressWarnings("unchecked")
 public class Main {
 
-    public static void main(String[] args) {              
-        
+    public static void main(String[] args) {
+
         // ArrayList
-        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));        
+        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));
 
         // before JDK 21
         String firstl = list.get(0);              // one
@@ -41,10 +41,10 @@ public class Main {
         // JDK 21
         String firstll21 = linkedlist.getFirst();        // one
         String lastll21 = linkedlist.getLast();          // five
-        
+
         // LinkedHashSet
         SequencedSet<String> linkedhashset = new LinkedHashSet<>(Arrays.asList("one", "two", "three", "four", "five"));
-        
+
         // before JDK 21
         linkedhashset.iterator().next();
         linkedhashset.stream().findFirst().get();
@@ -54,7 +54,7 @@ public class Main {
         // JDK 21
         linkedhashset.getFirst();
         linkedhashset.getLast();
-        
+
         // SortedSet
         SortedSet<String> sortedset = new TreeSet<>(Arrays.asList("one", "two", "three", "four", "five"));
 
@@ -65,7 +65,7 @@ public class Main {
         // JDK 21
         sortedset.getFirst();
         sortedset.getLast();
-        
+
         // LinkedHashMap
         SequencedMap<Integer, String> linkedhashmap = new LinkedHashMap<>();
         linkedhashmap.put(1, "one");
@@ -93,7 +93,7 @@ public class Main {
         // JDK 21
         Entry<Integer, String> fe = linkedhashmap.firstEntry();
         Entry<Integer, String> le = linkedhashmap.lastEntry();
-        
+
         SequencedSet<Integer> keysLinkedHashMap = linkedhashmap.sequencedKeySet();
         keysLinkedHashMap.getFirst();
         keysLinkedHashMap.getLast();
@@ -105,7 +105,7 @@ public class Main {
         SequencedSet<Entry<Integer, String>> entriesLinkedHashMap = linkedhashmap.sequencedEntrySet();
         entriesLinkedHashMap.getFirst();
         entriesLinkedHashMap.getLast();
-                       
+
         // SortedMap
         SortedMap<Integer, String> sortedmap = new TreeMap<>();
         sortedmap.put(1, "one");
@@ -113,21 +113,21 @@ public class Main {
         sortedmap.put(3, "three");
         sortedmap.put(4, "four");
         sortedmap.put(5, "five");
-        
+
         // before JDK 21
-        Integer fkey = sortedmap.firstKey();                
+        Integer fkey = sortedmap.firstKey();
         String fval = sortedmap.get(fkey);
-        Integer lkey = sortedmap.lastKey();        
+        Integer lkey = sortedmap.lastKey();
         String lval = sortedmap.get(lkey);
-                
+
         // JDK 21
         sortedmap.firstEntry();
         sortedmap.firstEntry().getKey();
-        sortedmap.firstEntry().getValue();                
+        sortedmap.firstEntry().getValue();
         sortedmap.lastEntry();
         sortedmap.lastEntry().getKey();
         sortedmap.lastEntry().getValue();
-        
+
         SequencedSet<Integer> keysSortedMap = sortedmap.sequencedKeySet();
         keysSortedMap.getFirst();
         keysSortedMap.getLast();

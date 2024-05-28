@@ -1,16 +1,9 @@
 package modern.challenge;
 
+import org.openjdk.jmh.annotations.*;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
@@ -21,6 +14,10 @@ public class Main {
 
     private int v;
     private Integer vo;
+
+    public static void main(String[] args) throws IOException {
+        org.openjdk.jmh.Main.main(args);
+    }
 
     @Setup
     public void setup() {
@@ -38,12 +35,12 @@ public class Main {
     public String intToStringV2() {
         return "" + v;
     }
-    
+
     @Benchmark
     public String intToStringV3() {
         return String.valueOf(v);
     }
-    
+
     @Benchmark
     public String intToStringV4() {
         return String.format("%d", v);
@@ -58,18 +55,14 @@ public class Main {
     public String integerToStringV2() {
         return "" + vo;
     }
-    
+
     @Benchmark
     public String integerToStringV3() {
         return String.valueOf(vo);
     }
-    
+
     @Benchmark
     public String integerToStringV4() {
         return String.format("%d", vo);
-    }
-
-    public static void main(String[] args) throws IOException {
-        org.openjdk.jmh.Main.main(args);
     }
 }

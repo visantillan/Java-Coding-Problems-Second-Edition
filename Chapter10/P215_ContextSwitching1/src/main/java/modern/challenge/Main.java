@@ -11,15 +11,6 @@ public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final int MAX_THREADS = 10;
 
-    static class SimpleThreadFactory implements ThreadFactory {
-
-        @Override
-        public Thread newThread(Runnable r) {
-            // return new Thread(r);                     // classic thread
-            return Thread.ofVirtual().unstarted(r);      // virtual thread
-        }
-    }
-
     public static void main(String[] args) {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
@@ -37,7 +28,19 @@ public class Main {
     public static void doSomething(int index) {
 
         logger.info(() -> index + " " + Thread.currentThread().toString());
-        try { Thread.sleep(Duration.ofSeconds(3)); } catch (InterruptedException ex) {}
+        try {
+            Thread.sleep(Duration.ofSeconds(3));
+        } catch (InterruptedException ex) {
+        }
         logger.info(() -> index + " " + Thread.currentThread().toString());
+    }
+
+    static class SimpleThreadFactory implements ThreadFactory {
+
+        @Override
+        public Thread newThread(Runnable r) {
+            // return new Thread(r);                     // classic thread
+            return Thread.ofVirtual().unstarted(r);      // virtual thread
+        }
     }
 }

@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public final class ESSEngine extends EngineType {}
+public final class ESSEngine extends EngineType {
+}

@@ -11,10 +11,10 @@ public class Main {
 
         System.out.println(Charsets.containsEmojiV1(STR_NO_EMOJI));
         System.out.println(Charsets.containsEmojiV1(STR_WITH_EMOJI));
-        
+
         System.out.println(Charsets.containsEmojiV2(STR_NO_EMOJI));
         System.out.println(Charsets.containsEmojiV2(STR_WITH_EMOJI));
-        
+
         List<String> allEmoji = Charsets.getAllEmoji();
         System.out.println("There are " + allEmoji.size() + " emoji \n");
         System.out.println(allEmoji);

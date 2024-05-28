@@ -39,15 +39,15 @@ public class Main {
         List<MelonRecord> melons8 = mm.stream()
                 .flatMap(m -> m.melons().stream())
                 .collect(Collectors.toList());
-        
+
         // JDK 10
         List<MelonRecord> melons10 = mm.stream()
                 .flatMap(m -> m.melons().stream())
                 .collect(Collectors.toUnmodifiableList());
-        
+
         // JDK 16        
         List<MelonRecord> melons16 = mm.stream()
                 .flatMap(m -> m.melons().stream())
-                .toList();                
+                .toList();
     }
 }

@@ -1,3 +1,3 @@
-module P156_VectorTerminology {       
-    requires jdk.incubator.vector;    
+module P156_VectorTerminology {
+    requires jdk.incubator.vector;
 }

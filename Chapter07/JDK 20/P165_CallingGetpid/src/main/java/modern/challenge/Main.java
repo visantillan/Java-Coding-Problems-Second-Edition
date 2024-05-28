@@ -14,10 +14,10 @@ public class Main {
         // get the Linker of the underlying native platform 
         // (operating system + processor that runs the JVM)
         Linker linker = Linker.nativeLinker();
-        
+
         // "_getpid" is part of the Universal C Runtime (UCRT) Library
         SymbolLookup libLookup = linker.defaultLookup();
-        
+
         // find the "_getpid" foreign function
         MemorySegment segmentGetpid = libLookup.find("_getpid").get();
 
@@ -26,7 +26,7 @@ public class Main {
                 FunctionDescriptor.of(ValueLayout.JAVA_INT));
 
         // invoke the foreign function, "_getpid" and get the result
-        int result = (int) func.invokeExact();       
+        int result = (int) func.invokeExact();
         System.out.println(result);
     }
 }

@@ -5,6 +5,10 @@ public class OldConnection { // singleton
     private OldConnection() {
     }
 
+    public static OldConnection get() {
+        return LazyConnection.INSTANCE;
+    }
+
     private static class LazyConnection { // holder
 
         static final OldConnection INSTANCE = new OldConnection();
@@ -12,9 +16,5 @@ public class OldConnection { // singleton
         static {
             System.out.println("Initializing old connection ..." + INSTANCE);
         }
-    }
-
-    public static OldConnection get() {
-        return LazyConnection.INSTANCE;
     }
 }

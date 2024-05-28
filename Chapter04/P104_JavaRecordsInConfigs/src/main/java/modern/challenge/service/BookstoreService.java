@@ -1,8 +1,7 @@
 package modern.challenge.service;
 
-import org.springframework.stereotype.Service;
-
 import modern.challenge.record.BestSellerConfig;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BookstoreService {

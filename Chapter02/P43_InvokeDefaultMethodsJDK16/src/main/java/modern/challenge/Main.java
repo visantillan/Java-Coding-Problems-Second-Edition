@@ -42,7 +42,7 @@ public class Main {
                 Draft.class.getClassLoader(),
                 new Class<?>[]{Draft.class}, (o, m, p) -> {
 
-                    if (m.isDefault()) {                        
+                    if (m.isDefault()) {
                         return InvocationHandler.invokeDefault(o, m, p);
                     }
 

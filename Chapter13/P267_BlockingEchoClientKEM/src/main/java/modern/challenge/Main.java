@@ -43,8 +43,8 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) 
-            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, 
+    public static void main(String[] args)
+            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
             IllegalBlockSizeException, BadPaddingException, DecapsulateException {
 
         ByteBuffer buffer = ByteBuffer.allocate(32);
@@ -74,11 +74,11 @@ public class Main {
                             System.out.println("Secret Key Receiver: " + secretKeyReceiver);
 
                             buffer.clear();
-                            
+
                             Cipher cipher = Cipher.getInstance("AES/ECB/NoPadding");
                             cipher.init(Cipher.ENCRYPT_MODE, secretKeyReceiver);
                             socketChannel.write(ByteBuffer.wrap(
-                                    cipher.doFinal("My token is: 763".getBytes())));                                                        
+                                    cipher.doFinal("My token is: 763".getBytes())));
                         } else {
                             int position = buffer.position();
                             byte[] message = new byte[position];

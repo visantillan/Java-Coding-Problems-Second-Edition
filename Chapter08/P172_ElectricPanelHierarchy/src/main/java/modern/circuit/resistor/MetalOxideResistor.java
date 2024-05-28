@@ -1,3 +1,4 @@
 package modern.circuit.resistor;
 
-public class MetalOxideResistor extends MetalResistor {}
+public class MetalOxideResistor extends MetalResistor {
+}

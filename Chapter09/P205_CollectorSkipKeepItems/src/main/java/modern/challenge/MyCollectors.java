@@ -48,7 +48,7 @@ public final class MyCollectors {
         class Sublist {
 
             int index;
-            List<T> list = new ArrayList<>();            
+            List<T> list = new ArrayList<>();
         }
 
         return Collector.of(Sublist::new,

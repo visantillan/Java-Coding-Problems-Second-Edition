@@ -36,7 +36,7 @@ public class Main {
                 10, ValueLayout.JAVA_DOUBLE);
 
         // VarHandle[varType=double, coord=[interface java.lang.foreign.MemorySegment, long]]
-        VarHandle sphandle = seq.varHandle(PathElement.sequenceElement());        
+        VarHandle sphandle = seq.varHandle(PathElement.sequenceElement());
 
         try (Arena arena = Arena.ofConfined()) {
 
@@ -131,6 +131,6 @@ public class Main {
                     System.out.printf("\nx = %.2f", nahandle.get(segment, 0, i, j));
                 }
             }
-        }        
+        }
     }
 }

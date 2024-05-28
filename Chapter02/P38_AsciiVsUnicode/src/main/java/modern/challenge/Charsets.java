@@ -21,7 +21,7 @@ public class Charsets {
 
         return binary;
     }
-    
+
     public static String codePointToBinary(String str) {
 
         if (str == null) {

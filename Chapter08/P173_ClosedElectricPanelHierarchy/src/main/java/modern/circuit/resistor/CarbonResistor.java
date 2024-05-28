@@ -1,3 +1,4 @@
 package modern.circuit.resistor;
 
-public final class CarbonResistor extends Resistor {}
+public final class CarbonResistor extends Resistor {
+}

@@ -37,7 +37,7 @@ public class Main {
                 result = subtask.get();
             }
             */
-            
+
             String result = subtask.get(); // non-blocking operation
 
             logger.info(result);

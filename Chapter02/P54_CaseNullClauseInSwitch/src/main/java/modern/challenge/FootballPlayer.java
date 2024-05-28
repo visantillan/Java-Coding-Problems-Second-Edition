@@ -1,4 +1,4 @@
 package modern.challenge;
 
-public class FootballPlayer extends Player {    
+public class FootballPlayer extends Player {
 }

@@ -25,9 +25,9 @@ public class Main {
 
         buildTestingTeam();
     }
-    
+
     public static TestingTeam buildTestingTeam() throws InterruptedException, ExecutionException {
-        
+
         try (ShutdownOnSuccess scope = new StructuredTaskScope.ShutdownOnSuccess<String>()) {
 
             Stream.of(1, 2, 3)
@@ -39,7 +39,7 @@ public class Main {
             String result = (String) scope.result();
 
             logger.info(result);
-            
+
             return new TestingTeam(result);
         }
     }

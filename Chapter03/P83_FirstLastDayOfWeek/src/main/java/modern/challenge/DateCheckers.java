@@ -5,8 +5,10 @@ import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import static java.time.temporal.TemporalAdjusters.nextOrSame;
 import static java.time.temporal.TemporalAdjusters.previousOrSame;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -27,9 +29,9 @@ public final class DateCheckers {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        
+
         int nrOfDayToAdd = 0;
-        DateFormat df = new SimpleDateFormat("EEE dd/MM/yyyy");        
+        DateFormat df = new SimpleDateFormat("EEE dd/MM/yyyy");
         for (int i = 0; i < nrOfWeeks; i++) {
             calendar.add(Calendar.DATE, nrOfDayToAdd);
             boundaries.add(df.format(calendar.getTime()));

@@ -20,7 +20,7 @@ public final class Primes {
 
         List<Integer> factorsList = new ArrayList<>();
         int s = 2;
-        
+
         while (v > 1) {
             // each perfect division give us a prime factor
             if (v % s == 0) {
@@ -30,7 +30,7 @@ public final class Primes {
                 s++;
             }
         }
-        
+
         return factorsList;
     }
 

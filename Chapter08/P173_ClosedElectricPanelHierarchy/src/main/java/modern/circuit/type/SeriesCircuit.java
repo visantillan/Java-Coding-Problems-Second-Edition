@@ -3,12 +3,15 @@ package modern.circuit.type;
 import modern.circuit.ElectricComponent;
 
 public final class SeriesCircuit extends ElectricCircuit {
-    
-    public SeriesCircuit(ElectricComponent... comp) {}
-    
-    @Override
-    public void off() {}
+
+    public SeriesCircuit(ElectricComponent... comp) {
+    }
 
     @Override
-    public void on() {}   
+    public void off() {
+    }
+
+    @Override
+    public void on() {
+    }
 }

@@ -13,21 +13,21 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) throws Throwable {
-        
+
         SequenceLayout xy = MemoryLayout.sequenceLayout(2, MemoryLayout.structLayout(
-                    ValueLayout.JAVA_INT.withName("x"),
-                    ValueLayout.JAVA_INT.withName("y")
-            ));
+                ValueLayout.JAVA_INT.withName("x"),
+                ValueLayout.JAVA_INT.withName("y")
+        ));
 
         VarHandle xHandle = xy.varHandle(
                 PathElement.sequenceElement(), PathElement.groupElement("x"));
         VarHandle yHandle = xy.varHandle(
-                PathElement.sequenceElement(), PathElement.groupElement("y"));       
+                PathElement.sequenceElement(), PathElement.groupElement("y"));
 
         try (Arena arena = Arena.ofShared()) {
 
             MemorySegment segment = arena.allocate(xy);
-            
+
             xHandle.set(segment, 0, 5);
             yHandle.set(segment, 0, 9);
             xHandle.set(segment, 1, 6);
@@ -44,25 +44,25 @@ public class Main {
                     .sum();
 
             System.out.println("Sum everything: " + sum1 + "   " + sum2);
-            
+
             // sum only the frist pair of x, y
             MethodHandle xyHandle = xy.sliceHandle(PathElement.sequenceElement());
-            
+
             MemorySegment subsegment = (MemorySegment) xyHandle.invoke(segment, 0);
-             
+
             int sum3 = subsegment.elements(ValueLayout.JAVA_INT).parallel()
                     .mapToInt(s -> s.get(ValueLayout.JAVA_INT, 0))
                     .sum();
-            
+
             System.out.println("Sum the first pair of (x, y): " + sum3);
-            
+
             // sum y from the first pair with the second pair (x, y)
             var sum4 = segment.elements(xy).parallel()
                     .map(t -> t.asSlice(4).toArray(ValueLayout.JAVA_INT)) // by offset 4 we skip the first x
                     .flatMapToInt(t -> Arrays.stream(t))
                     .sum();
-            
+
             System.out.println("Sum y from the first pair with the second pair (x, y): " + sum4);
-        }      
+        }
     }
 }

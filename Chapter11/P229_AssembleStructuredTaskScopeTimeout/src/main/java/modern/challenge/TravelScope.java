@@ -21,31 +21,24 @@ public class TravelScope extends StructuredTaskScope<Travel> {
         switch (subtask.state()) {
             case SUCCESS -> {
                 switch (subtask.get()) {
-                    case RidesharingOffer ro ->
-                        this.ridesharingOffer = ro;
-                    case PublicTransportOffer pto ->
-                        this.publicTransportOffer = pto;
+                    case RidesharingOffer ro -> this.ridesharingOffer = ro;
+                    case PublicTransportOffer pto -> this.publicTransportOffer = pto;
                 }
             }
             case FAILED -> {
                 switch (subtask.exception()) {
-                    case RidesharingException re ->
-                        this.ridesharingException = re;
-                    case PublicTransportException pte ->
-                        this.publicTransportException = pte;
-                    case TimeoutException te -> 
-                        this.timeoutException = te;
-                    case Throwable t ->
-                        throw new RuntimeException(t);
+                    case RidesharingException re -> this.ridesharingException = re;
+                    case PublicTransportException pte -> this.publicTransportException = pte;
+                    case TimeoutException te -> this.timeoutException = te;
+                    case Throwable t -> throw new RuntimeException(t);
                 }
             }
-            case UNAVAILABLE ->
-                throw new IllegalStateException("Subtask may still running ...");
+            case UNAVAILABLE -> throw new IllegalStateException("Subtask may still running ...");
         }
     }
 
     public TravelOffer recommendedTravelOffer() {
-        
+
         super.ensureOwnerAndJoined();
 
         if (timeoutException != null) {

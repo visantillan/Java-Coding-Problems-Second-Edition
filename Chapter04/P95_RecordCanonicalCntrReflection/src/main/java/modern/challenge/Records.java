@@ -16,8 +16,8 @@ public class Records {
             throws NoSuchMethodException {
         Class<?>[] paramTypes
                 = Arrays.stream(cls.getRecordComponents())
-                        .map(RecordComponent::getType)
-                        .toArray(Class<?>[]::new);
+                .map(RecordComponent::getType)
+                .toArray(Class<?>[]::new);
 
         return cls.getDeclaredConstructor(paramTypes);
     }

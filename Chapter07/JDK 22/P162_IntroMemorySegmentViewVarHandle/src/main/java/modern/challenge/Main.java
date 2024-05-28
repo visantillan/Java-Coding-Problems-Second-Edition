@@ -9,23 +9,23 @@ import java.lang.invoke.VarHandle;
 public class Main {
 
     public static void main(String[] args) {
-      
+
         try (Arena arena = Arena.ofConfined()) {
-            
+
             MemorySegment segment = arena.allocate(ValueLayout.JAVA_INT);
-            
+
             System.out.println("Segment size: " + segment.byteSize());
-            
+
             // VarHandle[varType=int, coord=[interface java.lang.foreign.MemorySegment]]
             VarHandle pathhandle = ValueLayout.JAVA_INT.varHandle();
-            pathhandle.set(segment, 0L, 25);       
-            System.out.println("Value: " + pathhandle.get(segment, 0L)); 
-            
+            pathhandle.set(segment, 0L, 25);
+            System.out.println("Value: " + pathhandle.get(segment, 0L));
+
             // VarHandle[varType=int, coord=[interface java.lang.foreign.MemorySegment, long]]
             VarHandle arrhandle = ValueLayout.JAVA_INT.arrayElementVarHandle();
-            arrhandle.set(segment,0L, 0, 50);       
-            System.out.println("Value: " + arrhandle.get(segment, 0L, 0L)); 
-            
+            arrhandle.set(segment, 0L, 0, 50);
+            System.out.println("Value: " + arrhandle.get(segment, 0L, 0L));
+
             // NO LOGER AVAILABLE IN JDK 22
             // VarHandle[varType=int, coord=[interface java.lang.foreign.MemorySegment, long]]
             /* VarHandle viewhandle = MethodHandles.memorySegmentViewVarHandle(ValueLayout.JAVA_INT);
@@ -36,6 +36,6 @@ public class Main {
             viewhandle.set(segment, 75);          
             System.out.println("Value: " + viewhandle.get(segment));            
             */
-        }        
+        }
     }
 } 

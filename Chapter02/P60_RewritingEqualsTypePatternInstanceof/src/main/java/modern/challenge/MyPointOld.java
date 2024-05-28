@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public final class MyPointOld {
-    
+
     private final int x;
     private final int y;
     private final int z;
@@ -23,17 +23,17 @@ public final class MyPointOld {
 
     @Override
     public boolean equals(Object obj) {
-        
+
         if (this == obj) {
             return true;
         }
-        
+
         if (!(obj instanceof MyPointOld)) {
-		return false;
+            return false;
         }
-        
+
         final MyPointOld other = (MyPointOld) obj;
-        
-        return (this.x == other.x && this.y == other.y && this.z == other.z);            
-    }       
+
+        return (this.x == other.x && this.y == other.y && this.z == other.z);
+    }
 }

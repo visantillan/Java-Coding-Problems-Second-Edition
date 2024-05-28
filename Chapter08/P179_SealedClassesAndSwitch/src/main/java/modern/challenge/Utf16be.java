@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public final class Utf16be extends Utf16 {}
+public final class Utf16be extends Utf16 {
+}

@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public interface Math {}
+public interface Math {
+}

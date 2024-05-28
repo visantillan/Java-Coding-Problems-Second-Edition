@@ -16,7 +16,9 @@ import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.Predicate;
+
 import static java.util.function.Predicate.isEqual;
+
 import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
@@ -42,6 +44,11 @@ public interface Streams<T> extends Stream<T> {
         }
 
         return new StreamsWrapper<>(stream);
+    }
+
+    static <T> Set<T> toSet(Stream<? extends T> stream) {
+
+        return stream.collect(Collectors.toSet());
     }
 
     default boolean contains(T item) {
@@ -85,11 +92,6 @@ public interface Streams<T> extends Stream<T> {
         }
 
         return anyMatch(set::contains);
-    }
-
-    static <T> Set<T> toSet(Stream<? extends T> stream) {
-
-        return stream.collect(Collectors.toSet());
     }
 
     @Override

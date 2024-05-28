@@ -17,7 +17,7 @@ public final class Numbers {
         }
 
         double x = v / 2;
-        
+
         double y = 1;
 
         double e = 0.000000000001; // precision
@@ -31,7 +31,7 @@ public final class Numbers {
     }
 
     public static long perfectSquareRootBabylonian(double v) {
-        
+
         if (v == 0) {
             return 0;
         }

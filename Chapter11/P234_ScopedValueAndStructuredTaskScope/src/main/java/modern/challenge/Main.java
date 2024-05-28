@@ -8,19 +8,18 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    private static final Logger logger = Logger.getLogger(Main.class.getName());
-
     public static final ScopedValue<String> USER = ScopedValue.newInstance();
     public static final ScopedValue<String> LOC = ScopedValue.newInstance();
     public static final ScopedValue<String> DEST = ScopedValue.newInstance();
     public static final ScopedValue<Double> CAR_ONE_DISCOUNT = ScopedValue.newInstance();
     public static final ScopedValue<Boolean> PUBLIC_TRANSPORT_TICKET = ScopedValue.newInstance();
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws InterruptedException, Exception {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-        
+
         String user = "marcelo1978";                // login user
         String loc = "124 NW Bobcat L, St. Robert"; // collected from user
         String dest = "129 West 81st Street";       // collected from user
@@ -31,7 +30,7 @@ public class Main {
                     .call(() -> fetchTravelOffers(loc, dest));
         } else {
             offer = fetchTravelOffers(loc, dest);
-        }        
+        }
     }
 
     public static TravelOffer fetchTravelOffers(String loc, String dest) throws Exception {
@@ -90,7 +89,7 @@ public class Main {
                                 }).forEach(exceptionWrapper::addSuppressed);
                         throw exceptionWrapper;
                     });
-         
+
             return offer;
         }
     }

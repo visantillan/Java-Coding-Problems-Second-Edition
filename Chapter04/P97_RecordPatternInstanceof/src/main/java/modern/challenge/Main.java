@@ -13,7 +13,7 @@ public class Main {
                         new Doctor("Rares Masdd", "Rheumatology")));
 
         System.out.println(Hospital.cabinet(dr));
-        System.out.println(Hospital.cabinet(rs));        
-        System.out.println(Hospital.reception(pt));        
+        System.out.println(Hospital.cabinet(rs));
+        System.out.println(Hospital.reception(pt));
     }
 }

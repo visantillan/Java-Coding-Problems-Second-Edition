@@ -6,21 +6,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.logging.Logger;
- 
+
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     private static final int NUMBER_OF_TASKS = 15;
-
-    static class SimpleThreadFactory implements ThreadFactory {
-
-        @Override
-        public Thread newThread(Runnable r) {
-            return new Thread(r);                     // classic thread
-            //return Thread.ofVirtual().unstarted(r); // virtual thread
-        }
-    }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 
@@ -42,7 +33,7 @@ public class Main {
 
                 executor.submit(taskr);
                 // Future<?> future = executor.submit(taskr);
-                
+
             }
         }
 
@@ -77,6 +68,15 @@ public class Main {
                 executor.submit(taskc);
                 // Future<Boolean> future = executor.submit(taskc);
             }
+        }
+    }
+
+    static class SimpleThreadFactory implements ThreadFactory {
+
+        @Override
+        public Thread newThread(Runnable r) {
+            return new Thread(r);                     // classic thread
+            //return Thread.ofVirtual().unstarted(r); // virtual thread
         }
     }
 }

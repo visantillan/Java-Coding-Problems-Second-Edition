@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public final class Charcoal implements SolidFuel {}
+public final class Charcoal implements SolidFuel {
+}

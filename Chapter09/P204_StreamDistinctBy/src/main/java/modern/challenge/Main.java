@@ -42,9 +42,9 @@ public class Main {
                 .collect(Streams.distinctByKeyV1(Car::getBrand))
                 .values()
                 .forEach(System.out::println);
-        
+
         System.out.println();
-        
+
         cars.stream()
                 .collect(Streams.distinctByKeyV1(Car::getFuel))
                 .values()

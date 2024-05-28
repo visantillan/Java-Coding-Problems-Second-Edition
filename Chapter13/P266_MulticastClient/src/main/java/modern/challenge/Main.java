@@ -31,10 +31,10 @@ public class Main {
         try (DatagramChannel dchannel = DatagramChannel.open(StandardProtocolFamily.INET)) {
 
             InetAddress multigroup = InetAddress.getByName(MULTICAST_GROUP);
-            
+
             // if the group address is multicast
             if (multigroup.isMulticastAddress()) {
-                
+
                 // if the channel was successfully open
                 if (dchannel.isOpen()) {
 
@@ -43,10 +43,10 @@ public class Main {
 
                     // optionally, configure the client side options
                     dchannel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
-                    
+
                     // bind the channel to remote address                    
                     dchannel.bind(new InetSocketAddress(SERVER_PORT));
-                    
+
                     // join the multicast group and receive datagrams
                     MembershipKey memkey = dchannel.join(multigroup, mni);
 
@@ -73,6 +73,6 @@ public class Main {
         } catch (IOException ex) {
             System.err.println(ex);
             // handle exception
-        }    
+        }
     }
 }

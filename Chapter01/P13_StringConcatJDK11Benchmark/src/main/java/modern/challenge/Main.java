@@ -1,18 +1,11 @@
 package modern.challenge;
 
+import org.openjdk.jmh.annotations.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
@@ -27,17 +20,6 @@ public class Main {
     private static String str4;
 
     private static List<String> strs;
-
-    @Setup
-    public void setup() {
-        
-        str1 = "hello";
-        str2 = "my";
-        str3 = "dear";
-        str4 = "friend";
-        
-        strs = Arrays.asList("hello", "my", "dear", "friend");
-    }
 
     @Benchmark
     public static String concatViaPlus() {
@@ -83,5 +65,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         org.openjdk.jmh.Main.main(args);
+    }
+
+    @Setup
+    public void setup() {
+
+        str1 = "hello";
+        str2 = "my";
+        str3 = "dear";
+        str4 = "friend";
+
+        strs = Arrays.asList("hello", "my", "dear", "friend");
     }
 }

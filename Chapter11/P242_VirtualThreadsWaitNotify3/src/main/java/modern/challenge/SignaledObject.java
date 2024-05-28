@@ -9,13 +9,13 @@ public class SignaledObject {
     private int counter;
 
     public void callWait() throws InterruptedException {
-        
+
         synchronized (this) {
 
             counter = counter - 1;
 
             if (counter >= 0) {
-                logger.info(() -> Thread.currentThread() 
+                logger.info(() -> Thread.currentThread()
                         + " | Missed signals: " + counter + " | 'wait() will not be called'");
                 return;
             }
@@ -29,11 +29,11 @@ public class SignaledObject {
     }
 
     public void callNotify() {
-        
+
         synchronized (this) {
-            
+
             counter = counter + 1;
-            
+
             logger.info(() -> "Signal counter: " + counter);
 
             notify();

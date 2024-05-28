@@ -29,19 +29,19 @@ public final class DateCheckers {
         calendar.set(Calendar.YEAR, year);
         return calendar.getActualMaximum(Calendar.DAY_OF_YEAR) > 365;
     }
-    
+
     public static boolean isLeapYearV3(int year) {
-        
+
         return new GregorianCalendar(year, 1, 1).isLeapYear(year);
     }
-    
+
     public static boolean isLeapYearV4(int year) {
-        
+
         return ((year & 3) == 0 && ((year % 25) != 0 || (year & 15) == 0));
     }
-    
+
     public static boolean isLeapYearV5(int year) {
-        
-        return Year.of(year).isLeap();        
-    }        
+
+        return Year.of(year).isLeap();
+    }
 }

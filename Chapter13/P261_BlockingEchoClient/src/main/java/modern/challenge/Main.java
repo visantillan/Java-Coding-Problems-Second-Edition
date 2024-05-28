@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
 
         ByteBuffer tBuffer = ByteBuffer.allocateDirect(1024);
-        
+
         ByteBuffer hBuffer = ByteBuffer.wrap("Hey !".getBytes());
         ByteBuffer rBuffer;
         CharBuffer cBuffer;
@@ -33,13 +33,13 @@ public class Main {
 
                 // configure the blocking mode
                 clientSC.configureBlocking(true);
-                
+
                 // optionally, configure the client side options
                 clientSC.setOption(StandardSocketOptions.SO_RCVBUF, 128 * 1024);
                 clientSC.setOption(StandardSocketOptions.SO_SNDBUF, 128 * 1024);
                 clientSC.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
                 clientSC.setOption(StandardSocketOptions.SO_LINGER, 5);
-                
+
                 // connect this channel's socket to the proper address
                 clientSC.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT));
 

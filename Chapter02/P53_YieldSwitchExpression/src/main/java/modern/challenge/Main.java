@@ -2,13 +2,6 @@ package modern.challenge;
 
 public class Main {
 
-    public enum PlayerTypes {
-        TENNIS,
-        FOOTBALL,
-        SNOOKER,
-        UNKNOWN
-    }
-
     public static void main(String[] args) {
         // switch statement
         Player playerSwitchStatementUgly = createPlayerSwitchStatementUgly(PlayerTypes.TENNIS);
@@ -16,7 +9,7 @@ public class Main {
 
         // switch expression
         Player playerSwitchExpression = createPlayerSwitchExpression(PlayerTypes.TENNIS);
-        Player playerSwitchExpressionYield = createPlayerSwitchExpressionBreak(PlayerTypes.TENNIS);       
+        Player playerSwitchExpressionYield = createPlayerSwitchExpressionBreak(PlayerTypes.TENNIS);
     }
 
     private static Player createPlayerSwitchStatementUgly(PlayerTypes playerType) {
@@ -59,17 +52,12 @@ public class Main {
 
     private static Player createPlayerSwitchExpression(PlayerTypes playerType) {
         return switch (playerType) {
-            case TENNIS->
-                new TennisPlayer();
-            case FOOTBALL->
-                new FootballPlayer();
-            case SNOOKER->
-                new SnookerPlayer();
-            case UNKNOWN->
-                throw new UnknownPlayerException("Player type is unknown");
+            case TENNIS -> new TennisPlayer();
+            case FOOTBALL -> new FootballPlayer();
+            case SNOOKER -> new SnookerPlayer();
+            case UNKNOWN -> throw new UnknownPlayerException("Player type is unknown");
             // default is not mandatory
-            default->
-                throw new IllegalArgumentException("Invalid player type: " + playerType);
+            default -> throw new IllegalArgumentException("Invalid player type: " + playerType);
         };
     }
 
@@ -83,9 +71,16 @@ public class Main {
                 yield new SnookerPlayer();
             case UNKNOWN:
                 throw new UnknownPlayerException("Player type is unknown");
-            // default is not mandatory
+                // default is not mandatory
             default:
                 throw new IllegalArgumentException("Invalid player type: " + playerType);
         };
+    }
+
+    public enum PlayerTypes {
+        TENNIS,
+        FOOTBALL,
+        SNOOKER,
+        UNKNOWN
     }
 }

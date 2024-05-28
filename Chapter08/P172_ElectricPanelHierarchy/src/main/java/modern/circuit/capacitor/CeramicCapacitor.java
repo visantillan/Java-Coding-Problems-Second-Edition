@@ -1,3 +1,4 @@
 package modern.circuit.capacitor;
 
-public class CeramicCapacitor extends Capacitor {}
+public class CeramicCapacitor extends Capacitor {
+}

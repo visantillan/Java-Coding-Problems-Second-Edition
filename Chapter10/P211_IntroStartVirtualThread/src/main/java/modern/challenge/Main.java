@@ -16,14 +16,14 @@ public class Main {
         logger.info("Before running the task ...");
 
         // Thread.ofVirtual().start(task);
-        
+
         // Thread.ofVirtual().name("my_vThread").start(task);        
-        
-         // Thread.Builder builder = Thread.ofVirtual().name("my_vThread");
-         // Thread vThread = builder.start(task);
-        
+
+        // Thread.Builder builder = Thread.ofVirtual().name("my_vThread");
+        // Thread vThread = builder.start(task);
+
         Thread vThread = Thread.startVirtualThread(task);
-                
+
 
         logger.info("While running the task ...");
 

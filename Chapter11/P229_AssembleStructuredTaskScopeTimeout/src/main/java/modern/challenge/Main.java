@@ -20,9 +20,9 @@ public class Main {
 
         String loc = "124 NW Bobcat L, St. Robert"; // collected from user
         String dest = "129 West 81st Street";       // collected from user
-        
+
         TravelOffer toffer = fetchTravelOffers(loc, dest);
-        
+
         logger.info(toffer.toString());
     }
 
@@ -40,7 +40,7 @@ public class Main {
         }
     }
 
-    public static RidesharingOffer fetchRidesharingOffers(String loc, String dest) 
+    public static RidesharingOffer fetchRidesharingOffers(String loc, String dest)
             throws InterruptedException, TimeoutException {
 
         try (StructuredTaskScope scope = new StructuredTaskScope<RidesharingOffer>()) {
@@ -61,7 +61,7 @@ public class Main {
                     })
                     .min(Comparator.comparingDouble(RidesharingOffer::price))
                     .orElseThrow(() -> {
-                        RidesharingException exceptionWrapper 
+                        RidesharingException exceptionWrapper
                                 = new RidesharingException("Ridesharing exception");
                         Stream.of(carOneOffer, starCarOffer, topCarOffer)
                                 .filter(s -> s.state() == Subtask.State.FAILED)
@@ -69,13 +69,13 @@ public class Main {
                                     c.accept(s.exception());
                                 }).forEach(exceptionWrapper::addSuppressed);
                         throw exceptionWrapper;
-                    });            
+                    });
 
             return offer;
         }
     }
 
-    public static PublicTransportOffer fetchPublicTransportOffers(String loc, String dest) 
+    public static PublicTransportOffer fetchPublicTransportOffers(String loc, String dest)
             throws InterruptedException {
 
         try (PublicTransportScope scope = new PublicTransportScope()) {

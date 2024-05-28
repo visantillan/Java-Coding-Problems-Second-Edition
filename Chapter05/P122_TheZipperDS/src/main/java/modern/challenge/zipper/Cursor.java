@@ -32,7 +32,7 @@ public final class Cursor<T extends Zippable> {
 
         final Iterator<? extends Zippable> iterator = zipNode.getChildren().iterator();
         return new Iterator<T>() {
-            
+
             @Override
             public T next() {
                 Zippable zipNode = iterator.next();
@@ -44,14 +44,14 @@ public final class Cursor<T extends Zippable> {
                 throw new UnsupportedOperationException(
                         "This operation is not supported");
             }
-            
+
             @Override
             public boolean hasNext() {
                 return iterator.hasNext();
             }
         };
     }
-    
+
     public boolean hasChildren() {
         return zipNode.hasChildren();
     }
@@ -83,7 +83,7 @@ public final class Cursor<T extends Zippable> {
 
     public boolean isLeaf() {
         return zipNode.isLeaf();
-    }    
+    }
 
     /* API for navigating the zip-tree */
     public Cursor<T> up() {
@@ -103,7 +103,7 @@ public final class Cursor<T extends Zippable> {
         if (!hasChildren() || index > zipNode.children().length || index < 0) {
             throw new UnsupportedOperationException(
                     "This operation is not supported if the zip node doesn't "
-                    + "have children or the index is larger than the number of children or less than 0");
+                            + "have children or the index is larger than the number of children or less than 0");
         }
 
         return new Cursor<>(toZipNode(zipNode.children()[index]), shallowCopyDown(index));
@@ -166,7 +166,7 @@ public final class Cursor<T extends Zippable> {
         }
 
         return currentZipNode;
-    }    
+    }
 
     /* API for manipulating the zip-tree */
     public Cursor<T> add(final T... zipNodes) {
@@ -174,8 +174,8 @@ public final class Cursor<T extends Zippable> {
         if (isLeaf()) {
             throw new UnsupportedOperationException("This operation is not supported for leaf nodes");
         }
-        
-        if(zipNodes == null || zipNodes.length == 0) {
+
+        if (zipNodes == null || zipNodes.length == 0) {
             throw new IllegalArgumentException("The given zip nodes cannot be null or empty");
         }
 
@@ -184,7 +184,7 @@ public final class Cursor<T extends Zippable> {
 
     public Cursor<T> addAll(final Collection<T> zipNodes) {
         return add((T[]) zipNodes.toArray());
-    }   
+    }
 
     public Cursor<T> clear() {
 
@@ -197,8 +197,8 @@ public final class Cursor<T extends Zippable> {
     }
 
     public Cursor<T> insertLeft(T... zipNodes) {
-        
-        if(zipNodes == null || zipNodes.length == 0) {
+
+        if (zipNodes == null || zipNodes.length == 0) {
             throw new IllegalArgumentException("The given zip nodes cannot be null or empty");
         }
 
@@ -206,8 +206,8 @@ public final class Cursor<T extends Zippable> {
     }
 
     public Cursor<T> insertRight(T... zipNodes) {
-        
-        if(zipNodes == null || zipNodes.length == 0) {
+
+        if (zipNodes == null || zipNodes.length == 0) {
             throw new IllegalArgumentException("The given zip nodes cannot be null or empty");
         }
 
@@ -246,17 +246,17 @@ public final class Cursor<T extends Zippable> {
     }
 
     public Cursor<T> replace(Zippable node) {
-        
-        if(node == null) {
+
+        if (node == null) {
             throw new IllegalArgumentException("The given zip node cannot be null");
         }
-        
+
         return new Cursor<>(toZipNode(node), shallowCopyReplace(range));
     }
 
     public Cursor<T> replaceOriginal(T node) {
-        
-        if(node == null) {
+
+        if (node == null) {
             throw new IllegalArgumentException("The given zip node cannot be null");
         }
 
@@ -269,7 +269,7 @@ public final class Cursor<T extends Zippable> {
 
     // helper method to get a new zip node
     private ZipNode<T> toZipNode(final Zippable node) {
-        
+
         if (node instanceof ZipNode<?>) {
             return (ZipNode<T>) node;
         } else {
@@ -334,7 +334,7 @@ public final class Cursor<T extends Zippable> {
         System.arraycopy(zipNodes, 0, zippable, zipNode.children().length, zipNodes.length);
 
         return zippable;
-    }   
+    }
 
     // helper method for insertLeft() operation
     private ZipperRange shallowCopyInsertLeft(T... zipNodes) {

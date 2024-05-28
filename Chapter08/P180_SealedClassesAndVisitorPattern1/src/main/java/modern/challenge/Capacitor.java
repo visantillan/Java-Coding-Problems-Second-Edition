@@ -23,9 +23,9 @@ public class Capacitor implements ElectricComponent {
     public int getCoreTemperature() {
         return coreTemperature;
     }
-            
+
     @Override
     public String accept(ElectricComponentVisitor visitor) {
         return visitor.visit(this);
-    }       
+    }
 }

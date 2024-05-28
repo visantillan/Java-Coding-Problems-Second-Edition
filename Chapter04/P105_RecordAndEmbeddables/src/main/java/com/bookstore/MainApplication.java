@@ -1,7 +1,9 @@
 package com.bookstore;
 
 import com.bookstore.dto.AuthorDto;
+
 import java.util.List;
+
 import com.bookstore.service.BookstoreService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,7 +29,7 @@ public class MainApplication {
 
             List<AuthorDto> authors = bookstoreService.fetchByGenre();
 
-            System.out.println(authors);           
+            System.out.println(authors);
         };
     }
 }

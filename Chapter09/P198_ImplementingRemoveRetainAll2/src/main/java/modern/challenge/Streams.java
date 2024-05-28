@@ -9,11 +9,16 @@ import java.util.stream.Stream;
 @SuppressWarnings("unchecked")
 public interface Streams<T> {
 
-    Stream<T> stream();
-
     static <T> Streams<T> from(Stream<T> stream) {
         return () -> stream;
     }
+
+    static <T> Set<T> toSet(Stream<? extends T> stream) {
+
+        return stream.collect(Collectors.toSet());
+    }
+
+    Stream<T> stream();
 
     // not used here, but it may be useful
     default <U> Streams<U> stream(Function<Stream<T>, Stream<U>> stream) {
@@ -60,10 +65,5 @@ public interface Streams<T> {
         }
 
         return from(stream().filter(item -> set.contains(item)));
-    }       
-
-    static <T> Set<T> toSet(Stream<? extends T> stream) {
-
-        return stream.collect(Collectors.toSet());
     }
 }

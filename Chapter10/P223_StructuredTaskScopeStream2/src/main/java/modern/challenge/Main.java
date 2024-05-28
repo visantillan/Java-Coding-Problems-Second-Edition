@@ -11,8 +11,10 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
+
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
+
 import java.util.stream.Stream;
 import java.util.concurrent.StructuredTaskScope;
 import java.util.concurrent.StructuredTaskScope.ShutdownOnSuccess;
@@ -50,12 +52,14 @@ public class Main {
 
             TestingTeam result = subtasks.stream()
                     .filter(f -> f.state() == Subtask.State.SUCCESS)
-                    .map(Subtask::get)                                       
+                    .map(Subtask::get)
                     .collect(collectingAndThen(toList(),
-                            list -> { return new TestingTeam(list.toArray(String[]::new)); }));
+                            list -> {
+                                return new TestingTeam(list.toArray(String[]::new));
+                            }));
 
             logger.info(result.toString());
-            
+
             return result;
         }
     }

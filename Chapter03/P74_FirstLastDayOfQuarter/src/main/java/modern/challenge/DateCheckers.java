@@ -4,10 +4,11 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.temporal.IsoFields;
-import static java.time.temporal.IsoFields.QUARTER_OF_YEAR;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
+
+import static java.time.temporal.IsoFields.QUARTER_OF_YEAR;
 
 public final class DateCheckers {
 

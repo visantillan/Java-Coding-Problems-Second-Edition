@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public class Triangle {}
+public class Triangle {
+}

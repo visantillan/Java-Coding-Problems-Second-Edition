@@ -1,7 +1,11 @@
 package modern.challenge;
 
-class Heater {}
-class Stove extends Heater {}
+class Heater {
+}
+
+class Stove extends Heater {
+}
+
 class Chimney extends Heater {
 
     private final boolean electric;
@@ -21,9 +25,9 @@ public class House {
 
         return switch (heater) {
             case Stove stove -> "Make a fire in the stove";
-            case Chimney chimney && chimney.isElectric() -> "Plug in the chimney";
-            case Chimney chimney -> "Make a fire in the chimney";
-            default -> "No heater available!";
+            case Chimney chimney &&chimney.isElectric() ->"Plug in the chimney";
+                case Chimney chimney -> "Make a fire in the chimney";
+                default -> "No heater available!";
         };
     }
 

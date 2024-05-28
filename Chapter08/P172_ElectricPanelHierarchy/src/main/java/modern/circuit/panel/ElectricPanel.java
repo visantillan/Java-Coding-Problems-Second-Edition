@@ -18,11 +18,11 @@ public class ElectricPanel implements ElectricBreaker {
     private final ElectricCircuit centralCircuit;
     private final ElectricCircuit peripheralCircuit;
     private final ElectricCircuit auxiliaryCircuit;
-        
+
     public ElectricPanel() {
 
         peripheralCircuit = new SeriesCircuit(
-                new ElectrolyticCapacitor(), new ElectrolyticCapacitor(), 
+                new ElectrolyticCapacitor(), new ElectrolyticCapacitor(),
                 new MetalFilmResistor(), new CarbonResistor()
         );
 
@@ -32,23 +32,23 @@ public class ElectricPanel implements ElectricBreaker {
         );
 
         centralCircuit = new ParallelCircuit(peripheralCircuit, auxiliaryCircuit,
-                new CeramicCapacitor(), new BipolarTransistor(), new MetalOxideResistor()              
-        );            
+                new CeramicCapacitor(), new BipolarTransistor(), new MetalOxideResistor()
+        );
     }
-       
+
     @Override
     public void switchOn() {
- 
+
         auxiliaryCircuit.off();
         peripheralCircuit.on();
-        centralCircuit.on();        
+        centralCircuit.on();
     }
 
     @Override
     public void switchOff() {
-        
+
         auxiliaryCircuit.on();
         peripheralCircuit.off();
-        centralCircuit.off();        
+        centralCircuit.off();
     }
 }

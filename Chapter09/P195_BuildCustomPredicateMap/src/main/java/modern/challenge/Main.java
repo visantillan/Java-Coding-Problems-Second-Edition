@@ -23,10 +23,10 @@ public class Main {
         );
 
         Predicate<Car> filterPredicate = t -> true;
-        for(String key : filtersMap.keySet()){
+        for (String key : filtersMap.keySet()) {
             filterPredicate = filterPredicate.and(PredicateBuilder.EQUALS
-                .toPredicate(PredicateBuilder.getFieldByName(Car.class, key), filtersMap.get(key)));             
-        }        
+                    .toPredicate(PredicateBuilder.getFieldByName(Car.class, key), filtersMap.get(key)));
+        }
 
         cars.stream()
                 .filter(filterPredicate)

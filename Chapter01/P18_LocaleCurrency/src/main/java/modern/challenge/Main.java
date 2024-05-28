@@ -22,10 +22,10 @@ public class Main {
         // prepare the date for display
         String date = LocalDateTime.now()
                 .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
-        
+
         // prepare the royalty for display
         NumberFormat format = NumberFormat.getCurrencyInstance(myLocales.get(rnd));
-        format.setMaximumFractionDigits(format.getCurrency().getDefaultFractionDigits());                
+        format.setMaximumFractionDigits(format.getCurrency().getDefaultFractionDigits());
         String royalty = format.format(122005.9565);
 
         System.out.println("Locale: " + myLocales.get(rnd));

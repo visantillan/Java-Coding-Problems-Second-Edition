@@ -1,29 +1,30 @@
 package modern.challenge;
 
+import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
+
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.infra.Blackhole;
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
 @Fork(value = 1, warmups = 0)
 public class Main {
 
+    public static void main(String[] args) throws Exception {
+        org.openjdk.jmh.Main.main(args);
+    }
+
     @Benchmark
     public void messageFormat(Blackhole blackhole) {
 
         String txt = MessageFormat.format(
                 """
-                Sweet {0} of {1} and of {2},
-                delightful {3} of {4} wantonness,
-                {5} in {6} and in beauty {7}
-                and in {8} virtue {9} hold {10} dear ...
-                """, "rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most"
+                        Sweet {0} of {1} and of {2},
+                        delightful {3} of {4} wantonness,
+                        {5} in {6} and in beauty {7}
+                        and in {8} virtue {9} hold {10} dear ...
+                        """, "rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most"
         );
 
         blackhole.consume(txt);
@@ -34,11 +35,11 @@ public class Main {
 
         String txt = String.format(
                 """
-                Sweet %s of %s and of %s,
-                delightful %s of %s wantonness,
-                %s in %s and in beauty %s
-                and in %s virtue %s hold %s dear ...
-                """, "rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most"
+                        Sweet %s of %s and of %s,
+                        delightful %s of %s wantonness,
+                        %s in %s and in beauty %s
+                        and in %s virtue %s hold %s dear ...
+                        """, "rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most"
         );
 
         blackhole.consume(txt);
@@ -48,11 +49,11 @@ public class Main {
     public void stringFormatted(Blackhole blackhole) {
 
         String txt = """
-                     Sweet %s of %s and of %s,
-                     delightful %s of %s wantonness,
-                     %s in %s and in beauty %s
-                     and in %s virtue %s hold %s dear ...
-                     """.formatted("rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most");
+                Sweet %s of %s and of %s,
+                delightful %s of %s wantonness,
+                %s in %s and in beauty %s
+                and in %s virtue %s hold %s dear ...
+                """.formatted("rose", "virtue", "gentleness", "lily", "youthful", "richest", "bounty", "clear", "every", "men", "most");
 
         blackhole.consume(txt);
     }
@@ -61,29 +62,29 @@ public class Main {
     public void concatenation(Blackhole blackhole) {
 
         String txt = """
-                     Sweet""" + " rose "
+                Sweet""" + " rose "
                 + """
-                     of""" + " virtue "
+                of""" + " virtue "
                 + """
-                     and of""" + " gentleness "
+                and of""" + " gentleness "
                 + """                     
-                     delightful""" + " lily "
+                delightful""" + " lily "
                 + """                     
-                     of""" + " youthful "
+                of""" + " youthful "
                 + """
-                     wantonness,""" + " richest "
+                wantonness,""" + " richest "
                 + """
-                     in""" + " bounty "
+                in""" + " bounty "
                 + """
-                     and in beauty""" + " clear "
+                and in beauty""" + " clear "
                 + """
-                     and in""" + " every "
+                and in""" + " every "
                 + """
-                     virtue""" + " men "
+                virtue""" + " men "
                 + """
-                     hold""" + " most "
+                hold""" + " most "
                 + """
-                     dear ...""";
+                dear ...""";
 
         blackhole.consume(txt);
     }
@@ -94,7 +95,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         String txt = sb.append("""
-                  Sweet""")
+                        Sweet""")
                 .append(" rose ")
                 .append("""
                         of""")
@@ -131,9 +132,5 @@ public class Main {
 
         blackhole.consume(txt);
         blackhole.consume(sb);
-    }
-
-    public static void main(String[] args) throws Exception {
-        org.openjdk.jmh.Main.main(args);
     }
 }

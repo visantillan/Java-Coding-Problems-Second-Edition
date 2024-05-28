@@ -17,26 +17,29 @@ public class Main {
 
         Runnable task = () -> {
             logger.info(() -> Thread.currentThread().toString() + " sleeps for 5 seconds");
-            try { Thread.sleep(Duration.ofSeconds(5)); } catch (InterruptedException ex) {}
+            try {
+                Thread.sleep(Duration.ofSeconds(5));
+            } catch (InterruptedException ex) {
+            }
             logger.info(() -> Thread.currentThread().toString() + " inserts in the queue");
-            
+
             queue.offer(Integer.MAX_VALUE);
         };
 
         logger.info("Before running the task ...");
 
         // Thread.startVirtualThread(task);
-        Thread vThread = Thread.ofVirtual().start(task);     
+        Thread vThread = Thread.ofVirtual().start(task);
 
         logger.info(vThread.toString());
 
         logger.info(() -> Thread.currentThread().toString()
                 + " can't take from the queue yet");
-        
-        int maxint = queue.take();                        
-                
-        logger.info(() -> Thread.currentThread().toString() + "took from queue: " + maxint);                
-        
+
+        int maxint = queue.take();
+
+        logger.info(() -> Thread.currentThread().toString() + "took from queue: " + maxint);
+
         logger.info(vThread.toString());
 
         logger.info("After running the task ...");

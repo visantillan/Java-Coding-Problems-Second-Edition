@@ -32,9 +32,9 @@ public class Main {
 
         System.out.println();
         System.out.println("Convert hexadecimal string to byte array:");
-        System.out.println("hexStringToByteArrV1: " 
+        System.out.println("hexStringToByteArrV1: "
                 + Arrays.toString(Converters.hexStringToByteArrV1(s)));
-        System.out.println("hexStringToByteArrV1: " 
+        System.out.println("hexStringToByteArrV1: "
                 + Arrays.toString(Converters.hexStringToByteArrV2(s)));
     }
 }

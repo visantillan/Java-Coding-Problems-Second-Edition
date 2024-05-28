@@ -7,7 +7,7 @@ public class FunPuzzle extends Puzzle<String> {
     }
 
     @Override
-    public void setPiece(String piece) {        
+    public void setPiece(String piece) {
         super.setPiece(piece);
     }
 }

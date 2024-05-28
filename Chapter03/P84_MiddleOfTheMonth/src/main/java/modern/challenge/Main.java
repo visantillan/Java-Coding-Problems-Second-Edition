@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-      System.out.println(DateCheckers.middleOfTheMonthV1(new Date()));
-      System.out.println(DateCheckers.middleOfTheMonthV2(LocalDate.now()));
+        System.out.println(DateCheckers.middleOfTheMonthV1(new Date()));
+        System.out.println(DateCheckers.middleOfTheMonthV2(LocalDate.now()));
     }
 }

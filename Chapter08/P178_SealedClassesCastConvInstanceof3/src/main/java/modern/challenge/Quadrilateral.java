@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public sealed interface Quadrilateral permits Rectangle {}
+public sealed interface Quadrilateral permits Rectangle {
+}

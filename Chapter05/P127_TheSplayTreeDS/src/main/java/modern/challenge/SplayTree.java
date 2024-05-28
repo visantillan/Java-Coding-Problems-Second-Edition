@@ -8,32 +8,9 @@ class SplayTree {
     private Node root;
     private int count;
 
-    private final class Node {
-
-        private Node left;
-        private Node right;
-        private Node parent;
-        private int data;
-
-        public Node() {
-            this(0, null, null, null);
-        }
-
-        public Node(int data) {
-            this(data, null, null, null);
-        }
-
-        public Node(int data, Node left, Node right, Node parent) {
-            this.left = left;
-            this.right = right;
-            this.parent = parent;
-            this.data = data;
-        }
-    }
-
     public SplayTree() {
         root = null;
-    }   
+    }
 
     public void insert(int data) {
 
@@ -65,11 +42,11 @@ class SplayTree {
 
         count++;
     }
-    
+
     public void insertAll(SplayTree other) {
-        insertAll(other.root);        
+        insertAll(other.root);
     }
-    
+
     private void insertAll(Node node) {
         if (node != null) {
             insertAll(node.left);
@@ -77,7 +54,7 @@ class SplayTree {
             insertAll(node.right);
         }
     }
-    
+
     private void splay(Node node) {
 
         while (node.parent != null) {
@@ -114,13 +91,13 @@ class SplayTree {
 
         root = node;
     }
-    
+
     private void leftChildToParent(Node xNode, Node yNode) {
 
         if (xNode == null || yNode == null || yNode.left != xNode || xNode.parent != yNode) {
             throw new IllegalStateException("Something is not working properly while transforming the left child into parent");
         }
-                
+
         if (yNode.parent != null) {
             if (yNode == yNode.parent.left) {
                 yNode.parent.left = xNode;
@@ -143,7 +120,7 @@ class SplayTree {
         if ((xNode == null) || (yNode == null) || (yNode.right != xNode) || (xNode.parent != yNode)) {
             throw new IllegalStateException("Something is not working properly while transforming the right child into parent");
         }
-                
+
         if (yNode.parent != null) {
             if (yNode == yNode.parent.left) {
                 yNode.parent.left = xNode;
@@ -161,7 +138,7 @@ class SplayTree {
         yNode.right = xNode.left;
         xNode.left = yNode;
     }
-    
+
     public boolean search(int data) {
 
         return searchNode(data) != null;
@@ -232,12 +209,12 @@ class SplayTree {
         node = null;
 
         count--;
-    }        
-    
+    }
+
     public boolean isEmpty() {
         return root == null;
     }
-    
+
     public int count() {
         return count;
     }
@@ -245,13 +222,6 @@ class SplayTree {
     public void clear() {
         root = null;
         count = 0;
-    }
-
-    public enum TraversalOrder {
-        PRE,
-        IN,
-        POST,
-        LEVEL
     }
 
     public void print(TraversalOrder to) {
@@ -263,15 +233,11 @@ class SplayTree {
 
         switch (to) {
             // DFS
-            case IN -> 
-                printInOrder(root);        
-            case PRE ->
-                printPreOrder(root);
-            case POST ->
-                printPostOrder(root);
+            case IN -> printInOrder(root);
+            case PRE -> printPreOrder(root);
+            case POST -> printPostOrder(root);
             // BFS
-            case LEVEL ->
-                printLevelOrder(root);              
+            case LEVEL -> printLevelOrder(root);
         }
     }
 
@@ -314,10 +280,40 @@ class SplayTree {
             if (current.left != null) {
                 queue.add(current.left);
             }
-            
+
             if (current.right != null) {
                 queue.add(current.right);
             }
+        }
+    }
+
+    public enum TraversalOrder {
+        PRE,
+        IN,
+        POST,
+        LEVEL
+    }
+
+    private final class Node {
+
+        private Node left;
+        private Node right;
+        private Node parent;
+        private int data;
+
+        public Node() {
+            this(0, null, null, null);
+        }
+
+        public Node(int data) {
+            this(data, null, null, null);
+        }
+
+        public Node(int data, Node left, Node right, Node parent) {
+            this.left = left;
+            this.right = right;
+            this.parent = parent;
+            this.data = data;
         }
     }
 }

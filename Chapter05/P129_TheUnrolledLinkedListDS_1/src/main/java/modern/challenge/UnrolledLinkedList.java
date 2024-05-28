@@ -7,22 +7,6 @@ public class UnrolledLinkedList {
     private Node head;
     private int size;
 
-    private final class Node {
-
-        private Node next;
-        private int[] arr;
-
-        private Node(Node next, int[] arr) {
-            this.next = next;
-            this.arr = arr;
-        }
-
-        @Override
-        public String toString() {
-            return Arrays.toString(arr);
-        }
-    }
-
     public void insert(int[] arr) {
 
         if (arr == null || arr.length == 0) {
@@ -82,7 +66,8 @@ public class UnrolledLinkedList {
                 temp.next = temp.next.next;
             } else {
                 int[] arr = temp.next.arr;
-                temp.next.arr = buildNewArr(arr, index);;
+                temp.next.arr = buildNewArr(arr, index);
+                ;
             }
         }
 
@@ -124,5 +109,21 @@ public class UnrolledLinkedList {
         }
 
         return sb.append(tmp.toString()).append("}").toString();
+    }
+
+    private final class Node {
+
+        private Node next;
+        private int[] arr;
+
+        private Node(Node next, int[] arr) {
+            this.next = next;
+            this.arr = arr;
+        }
+
+        @Override
+        public String toString() {
+            return Arrays.toString(arr);
+        }
     }
 }

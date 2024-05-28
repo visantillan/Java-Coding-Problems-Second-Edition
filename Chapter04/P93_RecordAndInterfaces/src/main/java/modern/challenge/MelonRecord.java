@@ -4,7 +4,7 @@ public record MelonRecord(String type, float weight) implements PestInspector {
 
     @Override
     public void exterminatePest() {
-        
+
         if (detectPest()) {
             System.out.println("All pests have been exterminated");
         } else {

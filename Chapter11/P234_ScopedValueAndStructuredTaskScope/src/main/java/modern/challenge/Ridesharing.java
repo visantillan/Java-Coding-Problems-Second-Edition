@@ -3,6 +3,7 @@ package modern.challenge;
 import java.time.Duration;
 import java.util.Random;
 import java.util.logging.Logger;
+
 import static modern.challenge.Main.CAR_ONE_DISCOUNT;
 import static modern.challenge.Main.DEST;
 import static modern.challenge.Main.LOC;

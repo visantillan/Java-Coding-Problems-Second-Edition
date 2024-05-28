@@ -17,15 +17,15 @@ public class Main {
 
         String loc = "124 NW Bobcat L, St. Robert"; // collected from user
         String dest = "129 West 81st Street";       // collected from user
-        
+
         RidesharingOffer roffer = fetchRidesharingOffers(loc, dest);
         PublicTransportOffer ptoffer = fetchPublicTransportOffers(loc, dest);
-        
+
         logger.info(roffer.toString());
         logger.info(ptoffer.toString());
     }
 
-    public static RidesharingOffer fetchRidesharingOffers(String loc, String dest) 
+    public static RidesharingOffer fetchRidesharingOffers(String loc, String dest)
             throws InterruptedException {
 
         try (StructuredTaskScope scope = new StructuredTaskScope<RidesharingOffer>()) {
@@ -54,13 +54,13 @@ public class Main {
                                     c.accept(s.exception());
                                 }).forEach(exceptionWrapper::addSuppressed);
                         throw exceptionWrapper;
-                    });            
+                    });
 
             return offer;
         }
     }
 
-    public static PublicTransportOffer fetchPublicTransportOffers(String loc, String dest) 
+    public static PublicTransportOffer fetchPublicTransportOffers(String loc, String dest)
             throws InterruptedException {
 
         try (PublicTransportScope scope = new PublicTransportScope()) {
@@ -72,7 +72,7 @@ public class Main {
 
             scope.join();
 
-            PublicTransportOffer offer = scope.recommendedPublicTransport();           
+            PublicTransportOffer offer = scope.recommendedPublicTransport();
 
             return offer;
         }

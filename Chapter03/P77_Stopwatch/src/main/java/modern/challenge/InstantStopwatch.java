@@ -22,23 +22,23 @@ public final class InstantStopwatch {
 
     //elaspsed time in nanoseconds
     public long getElapsedTime() {
-                
+
         if (running) {
-            return ChronoUnit.NANOS.between(startTime, Instant.now());            
+            return ChronoUnit.NANOS.between(startTime, Instant.now());
         } else {
-            return ChronoUnit.NANOS.between(startTime, stopTime);            
-        }        
+            return ChronoUnit.NANOS.between(startTime, stopTime);
+        }
     }
-    
+
     //elaspsed time in millisecods
-    public long elapsedTimeToMillis(long nanotime) {                
-        
+    public long elapsedTimeToMillis(long nanotime) {
+
         return TimeUnit.MILLISECONDS.convert(nanotime, TimeUnit.NANOSECONDS);
     }
-    
+
     //elaspsed time in seconds
-    public long elapsedTimeToSeconds(long nanotime) {                
-        
+    public long elapsedTimeToSeconds(long nanotime) {
+
         return TimeUnit.SECONDS.convert(nanotime, TimeUnit.NANOSECONDS);
     }
 }

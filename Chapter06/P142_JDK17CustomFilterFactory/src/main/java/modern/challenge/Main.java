@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         // Set a filter factory
-       MelonFilterFactory filterFactory = new MelonFilterFactory();
-       ObjectInputFilter.Config.setSerialFilterFactory(filterFactory);        
-     
-       ObjectInputFilter.Config.setSerialFilter(Filters.allowMelonFilter());       
-      
+        MelonFilterFactory filterFactory = new MelonFilterFactory();
+        ObjectInputFilter.Config.setSerialFilterFactory(filterFactory);
+
+        ObjectInputFilter.Config.setSerialFilter(Filters.allowMelonFilter());
+
         Pumpkin pumpkin = new Pumpkin("Pumpkin", 2000);
         Melon melon = new Melon("Melon", 2400);
         Muskmelon muskmelon = new Muskmelon("Muskmelon", 1500);
@@ -36,22 +36,22 @@ public class Main {
         System.out.println("Serialization (persian): " + Arrays.toString(persianSer));
 
         System.out.println();
-        
+
         // Pumpkin pumpkinDeser = (Pumpkin) Converters.bytesToObject(pumpkinSer, Filters.rejectMuskmelonFilter());
         // System.out.println("Deserialization (pumpkin): " + pumpkinDeser);
-        
+
         Melon melonDeser = (Melon) Converters.bytesToObject(melonSer, Filters.rejectMuskmelonFilter());
-        System.out.println("Deserialization (melon): " + melonDeser);     
-        
+        System.out.println("Deserialization (melon): " + melonDeser);
+
         // Muskmelon muskmelonDeser = (Muskmelon) Converters.bytesToObject(muskmelonSer, Filters.rejectMuskmelonFilter());        
         // System.out.println("Deserialization (muskmelon): " + muskmelonDeser);
-                
+
         Cantaloupe cantaloupeDeser = (Cantaloupe) Converters.bytesToObject(cantaloupeSer, Filters.rejectMuskmelonFilter());
         System.out.println("Deserialization (cantaloupe): " + cantaloupeDeser);
 
         // HoneyDew honeyDewDeser = (HoneyDew) Converters.bytesToObject(honeyDewSer, Filters.rejectMuskmelonFilter());
         // System.out.println("Deserialization (honeyDew): " + honeyDewDeser);
-        
+
         // Persian persianDeser = (Persian) Converters.bytesToObject(persianSer, Filters.rejectMuskmelonFilter());
         // System.out.println("Deserialization (honeyDew): " + persianDeser);
     }

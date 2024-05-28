@@ -1,4 +1,4 @@
-module P114_NegativeEffectVectorApi {       
+module P114_NegativeEffectVectorApi {
     requires jdk.incubator.vector;
     requires java.desktop;
 }

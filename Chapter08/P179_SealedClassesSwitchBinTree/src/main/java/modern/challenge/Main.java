@@ -5,16 +5,10 @@ import modern.challenge.Main.BinaryTree.Node;
 
 public class Main {
 
-    sealed interface BinaryTree {
-
-        record Leaf() implements BinaryTree {}
-        record Node(int value, BinaryTree left, BinaryTree right) implements BinaryTree {}       
-    }
-    
     static int sumNode(BinaryTree t) {
 
         return switch (t) {
-            
+
             case Leaf nl -> 0;
             case Node nv -> nv.value() + sumNode(nv.left()) + sumNode(nv.right());
         };
@@ -30,5 +24,14 @@ public class Main {
         int sum = sumNode(s);
 
         System.out.println("Sum: " + sum);
+    }
+
+    sealed interface BinaryTree {
+
+        record Leaf() implements BinaryTree {
+        }
+
+        record Node(int value, BinaryTree left, BinaryTree right) implements BinaryTree {
+        }
     }
 }

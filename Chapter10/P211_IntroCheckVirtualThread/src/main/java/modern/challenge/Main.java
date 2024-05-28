@@ -15,7 +15,8 @@ public class Main {
 
         Thread vThread = Thread.ofVirtual().name("my_vThread").unstarted(task);
         Thread pThread1 = Thread.ofPlatform().name("my_pThread").unstarted(task);
-        Thread pThread2 = new Thread(() -> {});
+        Thread pThread2 = new Thread(() -> {
+        });
 
         logger.info(() -> "Is vThread virtual ? " + vThread.isVirtual());
         logger.info(() -> "Is pThread1 virtual ? " + pThread1.isVirtual());
@@ -27,7 +28,7 @@ public class Main {
         logger.info(() -> "Priority ? " + vThread.getPriority()); // NORM_PRIORITY = 5
         vThread.setPriority(4);
         logger.info(() -> "Priority (after setting it 4) ? " + vThread.getPriority()); // NORM_PRIORITY = 5
-        
+
         logger.info(() -> "Thread group ? " + vThread.getThreadGroup().getName());
     }
 }

@@ -10,25 +10,25 @@ public final class Filters {
 
     public static ObjectInputFilter allowMelonFilter() {
 
-        ObjectInputFilter filter = ObjectInputFilter.allowFilter(                        
+        ObjectInputFilter filter = ObjectInputFilter.allowFilter(
                 clazz -> Melon.class.isAssignableFrom(clazz),
                 ObjectInputFilter.Status.REJECTED);
 
         return filter;
     }
-    
+
     public static ObjectInputFilter rejectMuskmelonFilter() {
 
-        ObjectInputFilter filter = ObjectInputFilter.rejectFilter(                        
+        ObjectInputFilter filter = ObjectInputFilter.rejectFilter(
                 clazz -> Muskmelon.class.isAssignableFrom(clazz),
                 ObjectInputFilter.Status.UNDECIDED);
 
         return filter;
     }
-    
+
     public static ObjectInputFilter packageFilter() {
-        
+
         return ObjectInputFilter.Config.createFilter(
-                  "modern.challenge.*;!*");
+                "modern.challenge.*;!*");
     }
 }

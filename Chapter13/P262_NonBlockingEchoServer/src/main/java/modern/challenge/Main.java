@@ -17,15 +17,21 @@ import java.util.Map;
 public class Main {
 
     private static final int SERVER_PORT = 4444;
-    
+
     private final Map<SocketChannel, List<byte[]>> registerTrack = new HashMap<>();
     private final ByteBuffer tBuffer = ByteBuffer.allocate(2 * 1024);
 
-    private void startEchoServer() {        
+    public static void main(String[] args) {
+
+        Main main = new Main();
+        main.startEchoServer();
+    }
+
+    private void startEchoServer() {
 
         // call the open() method for Selector/ServerSocketChannel
-        try (Selector selector = Selector.open(); 
-                ServerSocketChannel serverSC = ServerSocketChannel.open()) {
+        try (Selector selector = Selector.open();
+             ServerSocketChannel serverSC = ServerSocketChannel.open()) {
 
             // ServerSocketChannel and Selector successfully opened
             if ((serverSC.isOpen()) && (selector.isOpen())) {
@@ -100,7 +106,7 @@ public class Main {
 
     // isReadable = true
     private void readOperation(SelectionKey selkey) {
-        
+
         try {
             SocketChannel socketC = (SocketChannel) selkey.channel();
 
@@ -116,12 +122,12 @@ public class Main {
 
             if (byteRead == -1) {
                 this.registerTrack.remove(socketC);
-                
+
                 System.out.println("Connection was closed by: " + socketC.getRemoteAddress());
-                
+
                 socketC.close();
                 selkey.cancel();
-                
+
                 return;
             }
 
@@ -155,17 +161,11 @@ public class Main {
     }
 
     private void doEchoTask(SelectionKey selkey, byte[] dataByte) {
-        
+
         SocketChannel socketC = (SocketChannel) selkey.channel();
         List<byte[]> channelByteData = registerTrack.get(socketC);
         channelByteData.add(dataByte);
 
         selkey.interestOps(SelectionKey.OP_WRITE);
-    }
-
-    public static void main(String[] args) {
-        
-        Main main = new Main();
-        main.startEchoServer();
     }
 }

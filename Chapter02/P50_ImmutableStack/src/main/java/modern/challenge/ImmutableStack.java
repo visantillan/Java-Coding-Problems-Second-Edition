@@ -24,13 +24,13 @@ public class ImmutableStack<E> implements Stack<E> {
     @Override
     public Stack<E> pop() {
         return this.tail;
-    }    
+    }
 
     @Override
     public E peek() {
         return this.head;
     }
-    
+
     @Override
     public boolean isEmpty() {
         return false;
@@ -78,13 +78,13 @@ public class ImmutableStack<E> implements Stack<E> {
         @Override
         public Stack<U> pop() {
             throw new UnsupportedOperationException("Unsupported operation on an empty stack");
-        }       
+        }
 
         @Override
         public U peek() {
-            throw new UnsupportedOperationException ("Unsupported operation on an empty stack");
+            throw new UnsupportedOperationException("Unsupported operation on an empty stack");
         }
-        
+
         @Override
         public boolean isEmpty() {
             return true;

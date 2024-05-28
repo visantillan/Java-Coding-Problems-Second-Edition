@@ -32,7 +32,7 @@ public final class DateCheckers {
                 .map(Month::name)
                 .collect(Collectors.toList());
         */
-        
+
         return qmonths;
     }
 
@@ -56,7 +56,7 @@ public final class DateCheckers {
                 .map(Month::name)
                 .collect(Collectors.toList());
         */
-        
+
         return qmonths;
     }
 
@@ -88,7 +88,7 @@ public final class DateCheckers {
                 .map(Month::name)
                 .collect(Collectors.toList());
         */
-        
+
         return qmonths;
     }
 }

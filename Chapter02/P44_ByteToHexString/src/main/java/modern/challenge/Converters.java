@@ -18,8 +18,8 @@ public final class Converters {
 
         String result = String.valueOf(
                 new char[]{
-                    Character.forDigit(higher, 16),
-                    Character.forDigit(lower, 16)}
+                        Character.forDigit(higher, 16),
+                        Character.forDigit(lower, 16)}
         );
 
         return result;
@@ -32,8 +32,8 @@ public final class Converters {
 
         String result = String.valueOf(
                 new char[]{
-                    hexArray[hex >>> 4],
-                    hexArray[hex & 0x0F]}
+                        hexArray[hex >>> 4],
+                        hexArray[hex & 0x0F]}
         );
 
         return result;
@@ -70,7 +70,8 @@ public final class Converters {
 
         for (int i = 0; i < l; i++) {
 
-            int hex = varr[i] & 0xFF;;
+            int hex = varr[i] & 0xFF;
+            ;
             int higher = hex >>> 4;
             int lower = hex & 0x0F;
 

@@ -5,8 +5,8 @@ import java.util.concurrent.locks.LockSupport;
 
 public class Main {
 
-    public static void main(String[] args) {       
-       
+    public static void main(String[] args) {
+
         // CREATING PLATFORM THREADS
         // ATTENTION, THIS CODE MAY SIMPLY HANG ON OR GENERATE AN ERROR: OutOfMemoryError 
         /*
@@ -30,15 +30,15 @@ public class Main {
             }).start();
         }
         */
-             
+
         // CREATING VIRTUAL  THREADS
         // ATTENTION, THIS CODE MAY RUN FOR A LONG TIME (MORE THAN 10 MILLIONS VIRTUAL THREADS) 
         AtomicLong counterOSThreads = new AtomicLong();
         while (true) {
             Thread.startVirtualThread(() -> {
                 long currentOSThreadNr = counterOSThreads.incrementAndGet();
-                System.out.println("Virtual thread: " + currentOSThreadNr);                
-                LockSupport.park();                
+                System.out.println("Virtual thread: " + currentOSThreadNr);
+                LockSupport.park();
             });
         }
     }

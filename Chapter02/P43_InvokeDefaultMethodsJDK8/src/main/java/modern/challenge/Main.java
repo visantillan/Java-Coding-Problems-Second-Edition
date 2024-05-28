@@ -90,7 +90,7 @@ public class Main {
                         Constructor<Lookup> cntr = Lookup.class
                                 .getDeclaredConstructor(Class.class);
 
-                        cntr.setAccessible(true);                      
+                        cntr.setAccessible(true);
 
                         cntr.newInstance(Draft.class)
                                 .in(Draft.class)
@@ -98,7 +98,7 @@ public class Main {
                                         MethodType.methodType(void.class, String.class), Draft.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
-                        
+
                         return cntr.newInstance(Writable.class)
                                 .in(Writable.class)
                                 .findSpecial(Writable.class, "write",

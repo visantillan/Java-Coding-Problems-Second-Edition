@@ -3,18 +3,25 @@ package modern.challenge;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
+
 import static java.util.function.Predicate.isEqual;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("unchecked")
 public interface Streams<T> {
 
-    Stream<T> stream();
-
     static <T> Streams<T> from(Stream<T> stream) {
         return () -> stream;
     }
+
+    static <T> Set<T> toSet(Stream<? extends T> stream) {
+
+        return stream.collect(Collectors.toSet());
+    }
+
+    Stream<T> stream();
 
     // not used here, but it may be useful
     default <U> Streams<U> stream(Function<Stream<T>, Stream<U>> stream) {
@@ -62,10 +69,5 @@ public interface Streams<T> {
         }
 
         return stream().anyMatch(set::contains);
-    }
-
-    static <T> Set<T> toSet(Stream<? extends T> stream) {
-
-        return stream.collect(Collectors.toSet());
     }
 }

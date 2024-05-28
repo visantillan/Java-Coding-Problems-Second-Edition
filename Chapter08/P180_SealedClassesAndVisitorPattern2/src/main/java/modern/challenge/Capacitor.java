@@ -22,5 +22,5 @@ public final class Capacitor implements ElectricComponent {
 
     public int getCoreTemperature() {
         return coreTemperature;
-    }         
+    }
 }

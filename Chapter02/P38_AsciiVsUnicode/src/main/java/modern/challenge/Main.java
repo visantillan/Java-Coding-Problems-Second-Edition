@@ -8,13 +8,14 @@ public class Main {
     public static final String CHINESE = "暗";
     public static final String EMOJI = "😍";
     public static final String STR = "😍 I love 💕 you Ӝ so much 💕 😍 🎼🎼🎼!";
+
     public static void main(String[] args) throws IOException {
 
         System.out.println("""
-            ////////////////////////////////////////////////////////////////////////
-            // For Unicode characters having code point less than 65,535 (0xFFFF) //
-            ////////////////////////////////////////////////////////////////////////
-            """);
+                ////////////////////////////////////////////////////////////////////////
+                // For Unicode characters having code point less than 65,535 (0xFFFF) //
+                ////////////////////////////////////////////////////////////////////////
+                """);
 
         int cp1 = LETTER.charAt(0);
         String hcp1 = Integer.toHexString(cp1);
@@ -56,14 +57,14 @@ public class Main {
         // this return a wrong result because the code point of 😍 is 128525 > 65535
         String result4 = Charsets.strToBinary(EMOJI);
         System.out.println("EMOJI, Binary:" + result4);
-        
+
         System.out.println();
         System.out.println("""
-            /////////////////////////////////
-            // For all Unicode characters  //
-            /////////////////////////////////
-            """);
-        
+                /////////////////////////////////
+                // For all Unicode characters  //
+                /////////////////////////////////
+                """);
+
         int ucp1 = LETTER.codePointAt(0);
         String uhcp1 = Integer.toHexString(ucp1);
         String ubcp1 = Integer.toBinaryString(ucp1);

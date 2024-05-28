@@ -11,10 +11,12 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 import static java.util.concurrent.Future.State.CANCELLED;
 import static java.util.concurrent.Future.State.FAILED;
 import static java.util.concurrent.Future.State.RUNNING;
 import static java.util.concurrent.Future.State.SUCCESS;
+
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
@@ -33,7 +35,7 @@ public class Main {
     public static TestingTeam buildTestingTeam() throws InterruptedException {
 
         List<String> testers = new ArrayList<>();
-        
+
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
             List<Future<String>> futures = executor.invokeAll(
@@ -43,23 +45,20 @@ public class Main {
 
             futures.forEach(f -> {
 
-                logger.info(() -> "Analyzing " + f + " state ...");              
-                
+                logger.info(() -> "Analyzing " + f + " state ...");
+
                 switch (f.state()) {
-                    case RUNNING ->
-                        throw new IllegalStateException("Future is still in the running state ...");
+                    case RUNNING -> throw new IllegalStateException("Future is still in the running state ...");
                     case SUCCESS -> {
                         logger.info(() -> "Result: " + f.resultNow());
                         testers.add(f.resultNow());
                     }
-                    case FAILED ->
-                        logger.severe(() -> "Exception: " + f.exceptionNow().getMessage());
-                    case CANCELLED ->
-                        logger.info("Cancelled ?!?");
+                    case FAILED -> logger.severe(() -> "Exception: " + f.exceptionNow().getMessage());
+                    case CANCELLED -> logger.info("Cancelled ?!?");
                 }
-            });                        
+            });
         }
-        
+
         return new TestingTeam(testers.toArray(String[]::new));
     }
 

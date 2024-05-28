@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+
 import modern.challenge.zipper.Zippable;
 
 public class Node implements Zippable {
@@ -16,7 +17,7 @@ public class Node implements Zippable {
         if (name == null) {
             throw new IllegalArgumentException("The given name cannot be null");
         }
-                
+
         this.name = name;
         this.children = new LinkedList<>(Arrays.asList(children));
     }
@@ -33,5 +34,5 @@ public class Node implements Zippable {
     @Override
     public String toString() {
         return "Node{" + "name=" + name + ", children=" + children + '}';
-    }        
+    }
 }

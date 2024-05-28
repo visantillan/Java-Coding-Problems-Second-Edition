@@ -2,6 +2,7 @@ package modern.challenge;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.concurrent.Callable;
@@ -47,7 +48,9 @@ public class WebServerHandler implements HttpHandler {
         if (withLock) {
             try {
                 semaphore.acquire();
-            } catch (InterruptedException e) { throw new RuntimeException(e); }            
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             try {
                 response = task.call();
             } catch (Exception e) {
@@ -58,11 +61,13 @@ public class WebServerHandler implements HttpHandler {
         } else {
             try {
                 response = task.call();
-            } catch (Exception e) { throw new RuntimeException(e); }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
         logger.log(Level.INFO, "{0} | {1}", new Object[]{response,
-             Thread.currentThread()
+                Thread.currentThread()
         });
 
         exchange.sendResponseHeaders(

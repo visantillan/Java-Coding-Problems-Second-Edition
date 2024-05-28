@@ -17,20 +17,24 @@ public class Main {
 
         Runnable taskp = () -> {
             logger.info(() -> Thread.currentThread().toString() + " sleeps for 5 seconds");
-            try { Thread.sleep(Duration.ofSeconds(5)); } catch (InterruptedException ex) {}
+            try {
+                Thread.sleep(Duration.ofSeconds(5));
+            } catch (InterruptedException ex) {
+            }
             logger.info(() -> Thread.currentThread().toString() + " inserts in the queue");
-            
+
             queue.add(Integer.MAX_VALUE);
         };
-        
+
         Runnable taskv = () -> {
             logger.info(() -> Thread.currentThread().toString()
-                + " can't take from the queue yet");
-                
+                    + " can't take from the queue yet");
+
             try {
                 int maxint = queue.take();
                 logger.info(() -> Thread.currentThread().toString() + " took from queue: " + maxint);
-            } catch (InterruptedException ex) {} 
+            } catch (InterruptedException ex) {
+            }
         };
 
         logger.info("Before running the task ...");
@@ -38,10 +42,10 @@ public class Main {
         Thread pThread = Thread.ofPlatform().start(taskp);
 
         logger.info(pThread.toString());
-        
+
         Thread vThread = Thread.ofVirtual().start(taskv);
         vThread.join();
-        
+
         logger.info("After running the task ...");
     }
 }

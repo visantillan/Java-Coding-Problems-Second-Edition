@@ -47,14 +47,14 @@ public class Main {
 
             System.out.println();
             System.out.println();
-            
+
             // no spreader
             // MemorySegment ms = (MemorySegment) mHandle.invokeExact(segment, 7L, 3L);
 
             // with spreader
             MemorySegment ms = (MemorySegment) mHandle
                     .asSpreader(Long[].class, 2).invokeExact(segment, 0L, new Long[]{7L, 3L});
-                  
+
             System.out.println(ms.get(ValueLayout.JAVA_DOUBLE, 0));
         }
     }

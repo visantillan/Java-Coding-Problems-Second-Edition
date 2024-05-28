@@ -15,21 +15,21 @@ public final class Converters {
         throw new AssertionError("Cannot be instantiated");
     }
 
-    public static byte[] objectToBytes(Serializable obj) throws IOException {       
+    public static byte[] objectToBytes(Serializable obj) throws IOException {
 
-        try ( ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                ObjectOutputStream ois = new ObjectOutputStream(baos)) {
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+             ObjectOutputStream ois = new ObjectOutputStream(baos)) {
             ois.writeObject(obj);
-            
+
             return baos.toByteArray();
-        }        
+        }
     }
 
     public static Object bytesToObject(byte[] bytes, ObjectInputFilter filter)
             throws IOException, ClassNotFoundException {
 
-        try ( InputStream is = new ByteArrayInputStream(bytes);  
-                ObjectInputStream ois = new ObjectInputStream(is)) {
+        try (InputStream is = new ByteArrayInputStream(bytes);
+             ObjectInputStream ois = new ObjectInputStream(is)) {
 
             // set the filter
             ois.setObjectInputFilter(filter);

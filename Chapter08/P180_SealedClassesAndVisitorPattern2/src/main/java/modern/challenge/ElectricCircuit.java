@@ -19,9 +19,9 @@ public final class ElectricCircuit implements ElectricComponent {
 
     public List<ElectricComponent> getComps() {
         return comps;
-    }        
+    }
 
     public void add(ElectricComponent... comp) {
         comps.addAll(Arrays.asList(comp));
-    }        
+    }
 }

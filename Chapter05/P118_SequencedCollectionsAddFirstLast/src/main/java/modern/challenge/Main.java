@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         // ArrayList
-        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));        
+        List<String> list = new ArrayList<>(Arrays.asList("one", "two", "three", "four", "five"));
 
         // before JDK 21
         list.add(0, "zero"); // add on the first position
@@ -27,8 +27,8 @@ public class Main {
 
         // JDK 21
         list.addFirst("zero");
-        list.addLast("six");        
-      
+        list.addLast("six");
+
         // LinkedList
         List<String> linkedlist = new LinkedList<>(Arrays.asList("one", "two", "three", "four", "five"));
 
@@ -38,30 +38,30 @@ public class Main {
 
         // JDK 21
         linkedlist.addFirst("zero");
-        linkedlist.addLast("six");        
-        
+        linkedlist.addLast("six");
+
         // LinkedHashSet
         SequencedSet<String> linkedhashset = new LinkedHashSet<>(Arrays.asList("one", "two", "three", "four", "five"));
-        
+
         // before JDK 21     
         // cannot add on first position        
-        linkedhashset.add("six");                
+        linkedhashset.add("six");
 
         // JDK 21
         linkedhashset.addFirst("zero");
         linkedhashset.addLast("six");
-       
+
         // SortedSet
-        SortedSet<String> sortedset = new TreeSet<>(Arrays.asList("one", "two", "three", "four", "five"));        
+        SortedSet<String> sortedset = new TreeSet<>(Arrays.asList("one", "two", "three", "four", "five"));
 
         // before JDK 21
         sortedset.add("zero"); // this will not be the first element
         sortedset.add("six"); // this will not be the last element
-        
+
         // JDK 21
         // sortedset.addFirst("zero"); // throws UnsupportedOperationException.
         // sortedset.addLast("six");   // throws UnsupportedOperationException.                             
-                
+
         // LinkedHashMap
         SequencedMap<Integer, String> linkedhashmap = new LinkedHashMap<>();
         linkedhashmap.put(1, "one");
@@ -73,7 +73,7 @@ public class Main {
         // before JDK 21
         // linkedhashmap.entrySet().add(new SimpleEntry<>(0, "zero")); // throws UnsupportedOperationException
         // linkedhashmap.entrySet().add(new SimpleEntry<>(6, "six"));  // throws UnsupportedOperationException
-        
+
         SequencedMap<Integer, String> slinkedhashmap = new LinkedHashMap<>();
         slinkedhashmap.put(0, "zero"); // add the first entry
         slinkedhashmap.putAll(linkedhashmap);
@@ -81,8 +81,8 @@ public class Main {
 
         // JDK 21
         linkedhashmap.putFirst(0, "zero");
-        linkedhashmap.putLast(6, "six");        
-                
+        linkedhashmap.putLast(6, "six");
+
         // SortedMap
         SortedMap<Integer, String> sortedmap = new TreeMap<>();
         sortedmap.put(1, "one");
@@ -90,10 +90,10 @@ public class Main {
         sortedmap.put(3, "three");
         sortedmap.put(4, "four");
         sortedmap.put(5, "five");
-        
+
         // before JDK 21
         // nothing to do
-        
+
         // JDK 21                
         // sortedmap.putFirst(0, "zero"); // throws UnsupportedOperationException
         // sortedmap.putLast(6, "six");   // throws UnsupportedOperationException

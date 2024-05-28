@@ -8,7 +8,7 @@ public class Puzzle<E> {
         this.piece = piece;
     }
 
-    public void setPiece(E piece) {        
+    public void setPiece(E piece) {
         this.piece = piece;
     }
 }

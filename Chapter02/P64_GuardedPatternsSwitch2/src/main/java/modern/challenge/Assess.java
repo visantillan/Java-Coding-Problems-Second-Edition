@@ -1,13 +1,11 @@
 package modern.challenge;
 
-import static modern.challenge.FuelType.GASOLINE;
-import static modern.challenge.FuelType.HYDROGEN;
-import static modern.challenge.FuelType.KEROSENE;
+import static modern.challenge.FuelType.*;
 
-enum FuelType { GASOLINE, HYDROGEN, KEROSENE }
+enum FuelType {GASOLINE, HYDROGEN, KEROSENE}
 
 class Vehicle {
-    
+
     private final int gallon;
     private final FuelType fuel;
 
@@ -22,7 +20,7 @@ class Vehicle {
 
     public FuelType getFuel() {
         return fuel;
-    }            
+    }
 }
 
 public class Assess {
@@ -31,19 +29,17 @@ public class Assess {
 
         return switch (vehicle) {
             case Vehicle v when (v.getFuel().equals(GASOLINE)
-                    && v.getGallon() < 120) -> "probably a car/van"; 
+                    && v.getGallon() < 120) -> "probably a car/van";
             case Vehicle v when (v.getFuel().equals(GASOLINE)
-                    && v.getGallon() > 120) -> "probably a big rig"; 
-            case Vehicle v when (v.getFuel().equals(HYDROGEN) 
+                    && v.getGallon() > 120) -> "probably a big rig";
+            case Vehicle v when (v.getFuel().equals(HYDROGEN)
                     && v.getGallon() < 300_000) -> "probably an aircraft";
-            case Vehicle v when (v.getFuel().equals(HYDROGEN) 
+            case Vehicle v when (v.getFuel().equals(HYDROGEN)
                     && v.getGallon() > 300_000) -> "probably a rocket";
-            case Vehicle v when (v.getFuel().equals(KEROSENE) 
-                    && v.getGallon() > 2_000 && v.getGallon() < 6_000) 
-                    -> "probably a narrow-body aircraft";
-            case Vehicle v when (v.getFuel().equals(KEROSENE) 
-                    && v.getGallon() > 6_000 && v.getGallon() < 55_000)
-                    -> "probably a large (B747-400) aircraft";
+            case Vehicle v when (v.getFuel().equals(KEROSENE)
+                    && v.getGallon() > 2_000 && v.getGallon() < 6_000) -> "probably a narrow-body aircraft";
+            case Vehicle v when (v.getFuel().equals(KEROSENE)
+                    && v.getGallon() > 6_000 && v.getGallon() < 55_000) -> "probably a large (B747-400) aircraft";
             default -> "no clue";
         };
     }

@@ -1,23 +1,23 @@
 package modern.challenge;
 
 /**
- * 
  * Main class
- * 
- * {@snippet file = MainSnippet.txt region=sample}
+ * <p>
+ * {@snippet file = MainSnippet.txt region = sample}
  */
-public class Main { 
-    
+public class Main {
+
     /**
      * Default constructor
      */
-    public Main() {}
+    public Main() {
+    }
 
     /**
      * The main() method
-     * 
-     * @param args command line arguments     
+     *
+     * @param args command line arguments
      */
-    public static void main(String[] args) {                   
+    public static void main(String[] args) {
     }
 }

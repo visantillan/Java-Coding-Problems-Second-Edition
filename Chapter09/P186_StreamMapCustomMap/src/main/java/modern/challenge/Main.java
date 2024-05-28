@@ -3,6 +3,7 @@ package modern.challenge;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import static java.util.Map.entry;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.mapping;
@@ -22,7 +23,7 @@ public class Main {
 
         Map<String, List<Integer>> result = posts.stream()
                 .flatMap(post -> Post.allTags(post).stream()
-                .map(t -> entry(t, post.getId())))
+                        .map(t -> entry(t, post.getId())))
                 .collect(groupingBy(Entry::getKey,
                         mapping(Entry::getValue, toList())));
 

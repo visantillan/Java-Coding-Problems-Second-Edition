@@ -5,15 +5,6 @@ import java.util.Map;
 
 public class Main {
 
-    enum Status {
-        DRAFT, READY
-    }
-    
-    static class Book { 
-        public void review() { System.out.println("reviewing ..."); };                 
-        public void print() { System.out.println("printing ..."); }; 
-    }
-
     public static <K, V> void processOld(Map<K, ? extends V> map) {
         if (map instanceof EnumMap<?, ? extends V>) {
             EnumMap<?, ? extends V> books = (EnumMap<?, ? extends V>) map;
@@ -40,5 +31,23 @@ public class Main {
 
         processOld(books);
         processNew(books);
+    }
+
+    enum Status {
+        DRAFT, READY
+    }
+
+    static class Book {
+        public void review() {
+            System.out.println("reviewing ...");
+        }
+
+        ;
+
+        public void print() {
+            System.out.println("printing ...");
+        }
+
+        ;
     }
 }

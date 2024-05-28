@@ -10,7 +10,7 @@ public class Main {
         System.out.println(DateCheckers.fetchLastDayOfYearV1(2020, true));
 
         System.out.println();
-        
+
         System.out.println(DateCheckers.fetchFirstDayOfYearV2(2020, false));
         System.out.println(DateCheckers.fetchFirstDayOfYearV2(2020, true));
         System.out.println(DateCheckers.fetchLastDayOfYearV2(2020, false));

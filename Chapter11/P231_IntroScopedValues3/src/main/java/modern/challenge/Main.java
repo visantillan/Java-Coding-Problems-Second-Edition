@@ -18,7 +18,7 @@ public class Main {
             logger.info(Thread.currentThread().toString());
             logger.info(() -> SCOPED_VALUE.isBound() ? SCOPED_VALUE.get() : "Not bound");
         };
-        
+
         Callable<Boolean> taskc = () -> {
             logger.info(Thread.currentThread().toString());
             logger.info(() -> SCOPED_VALUE.isBound() ? SCOPED_VALUE.get() : "Not bound");
@@ -59,7 +59,7 @@ public class Main {
         tvr.start();
         tvc.start();
         tvr.join();
-        tvc.join();                
+        tvc.join();
 
         Thread tpcx = new Thread(()
                 -> ScopedValue.where(SCOPED_VALUE, "Kaboooom-tpcx!").run(taskr));

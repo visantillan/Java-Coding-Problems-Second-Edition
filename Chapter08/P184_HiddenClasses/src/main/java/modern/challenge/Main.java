@@ -14,7 +14,7 @@ public class Main {
             InstantiationException, IllegalArgumentException, InvocationTargetException {
 
         /* creating a hidden class */
-        
+
         MethodHandles.Lookup lookup = MethodHandles.lookup();
 
         Class<?> clazz = InternalMath.class;
@@ -26,7 +26,7 @@ public class Main {
                 true, ClassOption.NESTMATE).lookupClass();
 
         /* using a hidden class */
-        
+
         // Object obj = hiddenClass.getConstructor().newInstance();   // without the Math interface
         Math obj = (Math) hiddenClass.getConstructor().newInstance(); // with the Math interface
 

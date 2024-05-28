@@ -7,12 +7,12 @@ public class MelonFilterFactory implements BinaryOperator<ObjectInputFilter> {
 
     @Override
     public ObjectInputFilter apply(ObjectInputFilter current, ObjectInputFilter next) {
-        
+
         System.out.println();
         System.out.println("Current filter: " + current);
         System.out.println("Requested filter: " + next);
 
-        if (current == null && next != null) {                    
+        if (current == null && next != null) {
             return ObjectInputFilter.merge(next, Filters.packageFilter());
         }
 

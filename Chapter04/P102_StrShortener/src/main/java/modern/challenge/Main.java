@@ -17,18 +17,18 @@ public class Main {
         
         return str;
     }*/
-    
+
     public static Str shortener(Str str) {
-        
-        return switch (str) {            
-            case Concat(Variable(var name), Literal(var text)) when text.isBlank() -> new Variable(name);            
+
+        return switch (str) {
+            case Concat(Variable(var name), Literal(var text)) when text.isBlank() -> new Variable(name);
             case Concat(Literal(var text), Variable(var name)) when text.isBlank() -> new Variable(name);
             default -> str;
-        };        
+        };
     }
-    
-    public static void main(String[] args) {     
-    
-        System.out.println(shortener(new Concat(new Variable("t"), new Literal("   "))));     
+
+    public static void main(String[] args) {
+
+        System.out.println(shortener(new Concat(new Variable("t"), new Literal("   "))));
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public final class ChainSaw {
 
     private static final String UNKNOWN_POWER = "UNKNOWN";
-            
+
     private static final List<String> MODELS
             = List.of("T300", "T450", "T700", "T800", "T900");
 

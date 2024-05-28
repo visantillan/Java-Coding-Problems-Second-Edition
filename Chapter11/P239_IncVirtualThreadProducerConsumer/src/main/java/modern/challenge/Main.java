@@ -9,6 +9,6 @@ public class Main {
 
         AssemblyLine.startAssemblyLine();
         Thread.sleep(10 * 60 * 1000); // 10 minutes
-        AssemblyLine.stopAssemblyLine();        
+        AssemblyLine.stopAssemblyLine();
     }
 }

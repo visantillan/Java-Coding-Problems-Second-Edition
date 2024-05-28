@@ -30,7 +30,7 @@ public class Main {
             scope.fork(() -> fetchTester(3));
 
             scope.join();
-        
+
             return new TestingTeam((String) scope.result());
         }
     }

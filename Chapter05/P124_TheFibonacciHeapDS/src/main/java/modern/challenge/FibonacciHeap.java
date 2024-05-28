@@ -6,104 +6,35 @@ public class FibonacciHeap {
 
     private Node min;
     private int nrOfItems;
+    private Node toFind = null;
 
-    private final class Node {
+    public static FibonacciHeap merge(FibonacciHeap heap1, FibonacciHeap heap2) {
 
-        private Node parent;
-        private Node right;
-        private Node left;
-        private Node child;
+        FibonacciHeap heap = new FibonacciHeap();
 
-        private int degree;
-        private int key;
+        if (heap1 != null && heap2 != null) {
+            heap.min = heap1.min;
 
-        private boolean mark;
+            if (heap.min != null) {
+                if (heap2.min != null) {
 
-        private Node(int key) {
+                    heap.min.right.left = heap2.min.left;
+                    heap2.min.left.right = heap.min.right;
+                    heap.min.right = heap2.min;
+                    heap2.min.left = heap.min;
 
-            this.key = key;
-
-            this.right = this;
-            this.left = this;
-        }
-
-        private void cut(Node node, Node min) {
-
-            node.left.right = node.right;
-            node.right.left = node.left;
-
-            degree--;
-
-            if (degree == 0) {
-                child = null;
-            } else if (child == node) {
-                child = node.right;
-            }
-
-            node.right = min;
-            node.left = min.left;
-            min.left = node;
-            node.left.right = node;
-
-            node.parent = null;
-
-            node.mark = false;
-        }
-
-        private void cascadingCut(Node min) {
-
-            Node parentNode = parent;
-
-            if (parentNode != null) {
-                if (mark) {
-                    parentNode.cut(this, min);
-                    parentNode.cascadingCut(min);
-                } else {
-                    mark = true;
+                    if (heap2.min.key < heap1.min.key) {
+                        heap.min = heap2.min;
+                    }
                 }
-            }
-        }
-
-        private void link(Node parent) {
-
-            left.right = right;
-            right.left = left;
-
-            this.parent = parent;
-            if (parent.child == null) {
-                parent.child = this;
-                right = this;
-                left = this;
             } else {
-                left = parent.child;
-                right = parent.child.right;
-                parent.child.right = this;
-                right.left = this;
+                heap.min = heap2.min;
             }
 
-            parent.degree++;
-
-            mark = false;
+            heap.nrOfItems = heap1.nrOfItems + heap2.nrOfItems;
         }
 
-        private void addToString(StringBuilder sb) {
-
-            Node currentNode = this;
-
-            do {
-                sb.append(" ");
-                sb.append(currentNode.key);
-                sb.append(" ");
-
-                if (currentNode.child != null) {
-                    sb.append("[");
-                    currentNode.child.addToString(sb);
-                    sb.append(" ]");
-                }
-
-                currentNode = currentNode.right;
-            } while (currentNode != this);
-        }
+        return heap;
     }
 
     public void insert(int key) {
@@ -260,7 +191,6 @@ public class FibonacciHeap {
         extractMin();
     }
 
-    private Node toFind = null;
     public boolean isKey(int key) {
 
         toFind = null;
@@ -292,7 +222,7 @@ public class FibonacciHeap {
 
         return toFind;
     }
-    
+
     public boolean isEmpty() {
         return min == null;
     }
@@ -310,35 +240,6 @@ public class FibonacciHeap {
         nrOfItems = 0;
     }
 
-    public static FibonacciHeap merge(FibonacciHeap heap1, FibonacciHeap heap2) {
-
-        FibonacciHeap heap = new FibonacciHeap();
-
-        if (heap1 != null && heap2 != null) {
-            heap.min = heap1.min;
-
-            if (heap.min != null) {
-                if (heap2.min != null) {
-
-                    heap.min.right.left = heap2.min.left;
-                    heap2.min.left.right = heap.min.right;
-                    heap.min.right = heap2.min;
-                    heap2.min.left = heap.min;
-
-                    if (heap2.min.key < heap1.min.key) {
-                        heap.min = heap2.min;
-                    }
-                }
-            } else {
-                heap.min = heap2.min;
-            }
-
-            heap.nrOfItems = heap1.nrOfItems + heap2.nrOfItems;
-        }
-
-        return heap;
-    }
-
     public String heapString() {
 
         StringBuilder sb = new StringBuilder();
@@ -350,5 +251,104 @@ public class FibonacciHeap {
         }
 
         return sb.toString();
+    }
+
+    private final class Node {
+
+        private Node parent;
+        private Node right;
+        private Node left;
+        private Node child;
+
+        private int degree;
+        private int key;
+
+        private boolean mark;
+
+        private Node(int key) {
+
+            this.key = key;
+
+            this.right = this;
+            this.left = this;
+        }
+
+        private void cut(Node node, Node min) {
+
+            node.left.right = node.right;
+            node.right.left = node.left;
+
+            degree--;
+
+            if (degree == 0) {
+                child = null;
+            } else if (child == node) {
+                child = node.right;
+            }
+
+            node.right = min;
+            node.left = min.left;
+            min.left = node;
+            node.left.right = node;
+
+            node.parent = null;
+
+            node.mark = false;
+        }
+
+        private void cascadingCut(Node min) {
+
+            Node parentNode = parent;
+
+            if (parentNode != null) {
+                if (mark) {
+                    parentNode.cut(this, min);
+                    parentNode.cascadingCut(min);
+                } else {
+                    mark = true;
+                }
+            }
+        }
+
+        private void link(Node parent) {
+
+            left.right = right;
+            right.left = left;
+
+            this.parent = parent;
+            if (parent.child == null) {
+                parent.child = this;
+                right = this;
+                left = this;
+            } else {
+                left = parent.child;
+                right = parent.child.right;
+                parent.child.right = this;
+                right.left = this;
+            }
+
+            parent.degree++;
+
+            mark = false;
+        }
+
+        private void addToString(StringBuilder sb) {
+
+            Node currentNode = this;
+
+            do {
+                sb.append(" ");
+                sb.append(currentNode.key);
+                sb.append(" ");
+
+                if (currentNode.child != null) {
+                    sb.append("[");
+                    currentNode.child.addToString(sb);
+                    sb.append(" ]");
+                }
+
+                currentNode = currentNode.right;
+            } while (currentNode != this);
+        }
     }
 }

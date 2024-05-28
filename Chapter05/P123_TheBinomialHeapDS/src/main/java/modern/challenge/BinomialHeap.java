@@ -7,45 +7,6 @@ public class BinomialHeap {
 
     private Node head;
 
-    private final class Node {
-
-        private int key;
-        private int degree;
-        private Node parent;
-        private Node child;
-        private Node sibling;
-
-        public Node() {
-            key = Integer.MIN_VALUE;
-        }
-
-        public Node(int key) {
-            this.key = key;
-        }
-
-        private void print(StringBuilder sb) {
-
-            Node currentNode = this;
-
-            while (currentNode != null) {
-
-                if (currentNode.key != Integer.MIN_VALUE) {
-                    sb.append(" ");
-                    sb.append(currentNode.key);
-                    sb.append(" ");
-                }
-
-                if (currentNode.child != null) {
-                    sb.append("[ ");
-                    currentNode.child.print(sb);
-                    sb.append(" ]");
-                }
-
-                currentNode = currentNode.sibling;
-            }
-        }
-    }
-
     public BinomialHeap() {
         head = null;
     }
@@ -222,7 +183,7 @@ public class BinomialHeap {
 
     private Node unionHeap(BinomialHeap heap) {
 
-        Node mergeHeap = merge(this, heap);       
+        Node mergeHeap = merge(this, heap);
 
         head = null;
         heap.head = null;
@@ -321,5 +282,44 @@ public class BinomialHeap {
         }
 
         System.out.println(sb.toString());
+    }
+
+    private final class Node {
+
+        private int key;
+        private int degree;
+        private Node parent;
+        private Node child;
+        private Node sibling;
+
+        public Node() {
+            key = Integer.MIN_VALUE;
+        }
+
+        public Node(int key) {
+            this.key = key;
+        }
+
+        private void print(StringBuilder sb) {
+
+            Node currentNode = this;
+
+            while (currentNode != null) {
+
+                if (currentNode.key != Integer.MIN_VALUE) {
+                    sb.append(" ");
+                    sb.append(currentNode.key);
+                    sb.append(" ");
+                }
+
+                if (currentNode.child != null) {
+                    sb.append("[ ");
+                    currentNode.child.print(sb);
+                    sb.append(" ]");
+                }
+
+                currentNode = currentNode.sibling;
+            }
+        }
     }
 }

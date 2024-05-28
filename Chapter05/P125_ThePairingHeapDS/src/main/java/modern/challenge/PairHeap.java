@@ -6,19 +6,7 @@ public class PairHeap {
     private Node[] tree = new Node[5];
 
     private int size;
-
-    private final class Node {
-
-        private int key;
-
-        private Node leftChild;
-        private Node nextSibling;
-        private Node prev;
-
-        public Node(int key) {
-            this.key = key;
-        }
-    }
+    private Node toFind = null;
 
     public void insert(int key) {
 
@@ -99,8 +87,6 @@ public class PairHeap {
             root = compareAndLink(root, found);
         }
     }
-
-    private Node toFind = null;
 
     public boolean isKey(int key) {
 
@@ -206,7 +192,11 @@ public class PairHeap {
     public int findMin() {
         return root != null ? root.key : Integer.MIN_VALUE;
     }
-    
+
+    public boolean isEmpty() {
+        return root == null || size <= 0;
+    }
+
     /* Challenge yourself to implement the merge operation based on this pseudo-code */
     /*
     function merge(h1, h2)
@@ -219,10 +209,6 @@ public class PairHeap {
      else
       return new Heap(h2.root, h1 :: h2.tree)
      */
-
-    public boolean isEmpty() {
-        return root == null || size <= 0;
-    }
 
     public int size() {
         return size;
@@ -244,6 +230,19 @@ public class PairHeap {
             inOrder(node.leftChild);
             System.out.print(node.key + " ");
             inOrder(node.nextSibling);
+        }
+    }
+
+    private final class Node {
+
+        private int key;
+
+        private Node leftChild;
+        private Node nextSibling;
+        private Node prev;
+
+        public Node(int key) {
+            this.key = key;
         }
     }
 }

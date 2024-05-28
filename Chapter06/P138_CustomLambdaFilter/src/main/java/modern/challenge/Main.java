@@ -25,12 +25,12 @@ public class Main {
 
         System.out.println();
 
-        Melon melonDeser = (Melon) Converters.bytesToObject(melonSer, 
+        Melon melonDeser = (Melon) Converters.bytesToObject(melonSer,
                 f -> ((f.serialClass() != null)
-                    // or, filter.serialClass().getName().equals("modern.challenge.Melon")
-                    && f.serialClass().getPackage().getName().equals("modern.challenge")
-                    && f.serialClass().getSimpleName().equals("Melon"))
-                    ? Status.REJECTED : Status.UNDECIDED);
+                        // or, filter.serialClass().getName().equals("modern.challenge.Melon")
+                        && f.serialClass().getPackage().getName().equals("modern.challenge")
+                        && f.serialClass().getSimpleName().equals("Melon"))
+                        ? Status.REJECTED : Status.UNDECIDED);
         System.out.println("Deserialization: " + melonDeser);
     }
 }

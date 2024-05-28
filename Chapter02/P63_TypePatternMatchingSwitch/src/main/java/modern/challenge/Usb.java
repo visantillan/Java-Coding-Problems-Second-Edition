@@ -1,4 +1,3 @@
-
 package modern.challenge;
 
 import java.io.File;
@@ -11,13 +10,13 @@ public class Usb {
 
     public static String save(Object o) throws IOException {
 
-        return switch(o) {
+        return switch (o) {
             case File file -> "Saving a file of size: " + String.format("%,d bytes", file.length());
             case Path path -> "Saving a file of size: " + String.format("%,d bytes", Files.size(path));
             case String str -> "Saving a string of size: " + String.format("%,d bytes", str.length());
             case null -> "Why are you doing this?";
             default -> "I cannot save the given object";
-        };                       
+        };
     }
 
     public static void main(String[] args) throws IOException {

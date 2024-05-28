@@ -16,7 +16,7 @@ public class Main {
         logger.info("Before running the task ...");
 
         Thread vThread = Thread.ofVirtual().unstarted(task);
-        
+
         // Thread.Builder builder = Thread.ofVirtual();
         // Thread vThread = builder.unstarted(task);
 
@@ -33,6 +33,6 @@ public class Main {
         // this is an unstarted platform thread
         Thread pThread = Thread.ofPlatform().unstarted(task);
         logger.info("");
-        logger.info(() -> "Platform thread is created but not started ... " + pThread.isAlive());                
+        logger.info(() -> "Platform thread is created but not started ... " + pThread.isAlive());
     }
 }

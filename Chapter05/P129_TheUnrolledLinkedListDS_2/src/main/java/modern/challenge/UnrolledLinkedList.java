@@ -8,18 +8,6 @@ class UnrolledLinkedList {
     private Node end;
     private int size;
 
-    private final class Node {
-
-        private final int arr[];
-
-        private Node next;
-        private int items;
-
-        public Node(int ns) {
-            arr = new int[ns];
-        }
-    }
-
     public UnrolledLinkedList(int capacity) {
         ns = capacity + 1;
     }
@@ -55,11 +43,11 @@ class UnrolledLinkedList {
         }
     }
 
-    /* challenge yourself to implement here deletion based on the description from the book */
-    
     public int getSize() {
         return size;
     }
+
+    /* challenge yourself to implement here deletion based on the description from the book */
 
     @Override
     public String toString() {
@@ -79,5 +67,17 @@ class UnrolledLinkedList {
         sb.replace(sb.length() - 2, sb.length() - 1, "}");
 
         return sb.toString();
+    }
+
+    private final class Node {
+
+        private final int arr[];
+
+        private Node next;
+        private int items;
+
+        public Node(int ns) {
+            arr = new int[ns];
+        }
     }
 }

@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public record Author(int authorId, String name) {}
+public record Author(int authorId, String name) {
+}

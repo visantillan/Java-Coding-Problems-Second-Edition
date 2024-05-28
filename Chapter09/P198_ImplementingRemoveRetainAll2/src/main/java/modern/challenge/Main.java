@@ -23,18 +23,18 @@ public class Main {
         List<Car> cars123 = List.of(car1, car2, car3);
 
         cars.stream().forEach(System.out::println);
-        
+
         System.out.println();
         Streams.from(cars.stream())
                 .remove(car1)
-                .stream()                
+                .stream()
                 .forEach(System.out::println);
 
         System.out.println();
         Streams.from(Streams.from(cars.stream().distinct())
-                .retainAll(car1, car2, car3)
-                .stream()
-                .filter(car -> car.getFuel().equals("electric")))
+                        .retainAll(car1, car2, car3)
+                        .stream()
+                        .filter(car -> car.getFuel().equals("electric")))
                 .removeAll(car2)
                 .stream()
                 .forEach(System.out::println);

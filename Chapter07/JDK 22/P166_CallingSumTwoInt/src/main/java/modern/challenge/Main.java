@@ -15,11 +15,11 @@ public class Main {
     public static void main(String[] args) throws Throwable {
 
         Linker linker = Linker.nativeLinker();
-        Path path = Paths.get("lib/cpp/math.dll");            
-       
-        try (Arena arena = Arena.ofConfined()) {                        
-            
-            SymbolLookup libLookup = SymbolLookup.libraryLookup(path, arena);            
+        Path path = Paths.get("lib/cpp/math.dll");
+
+        try (Arena arena = Arena.ofConfined()) {
+
+            SymbolLookup libLookup = SymbolLookup.libraryLookup(path, arena);
             MemorySegment segmentSumTwoInt = libLookup.find("_Z9sumTwoIntii").get();
 
             MethodHandle func = linker.downcallHandle(segmentSumTwoInt,

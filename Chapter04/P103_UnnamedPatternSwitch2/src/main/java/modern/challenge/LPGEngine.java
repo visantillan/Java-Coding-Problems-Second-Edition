@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public final class LPGEngine extends EngineType {}
+public final class LPGEngine extends EngineType {
+}

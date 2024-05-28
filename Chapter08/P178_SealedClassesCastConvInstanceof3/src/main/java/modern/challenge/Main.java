@@ -7,9 +7,10 @@ public class Main {
         // if (t instanceof Quadrilateral) { // the compiler is aware that 't' cannot be a Quadrilateral
         //    System.out.println("This is not a triangle");
         //} else {
-            System.out.println("Drawing a triangle");
+        System.out.println("Drawing a triangle");
         //}
     }
 
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+    }
 }

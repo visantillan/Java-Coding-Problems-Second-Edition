@@ -12,13 +12,13 @@ public class PhoneProcessor implements Processor<String, IllegalArgumentExceptio
 
     @Override
     public String process(StringTemplate stringTemplate) throws IllegalArgumentException {
-         
+
         List<Object> newValues = new ArrayList<>();
         List<Object> values = stringTemplate.values();
         List<String> fragments = stringTemplate.fragments();
         for (int i = 0; i < values.size(); i++) {
 
-            if (fragments.get(i).contains("<phone>") 
+            if (fragments.get(i).contains("<phone>")
                     && !PHONE_PATTERN.matcher((CharSequence) values.get(i)).matches()) {
                 newValues.add("098-788-0000");
             } else {

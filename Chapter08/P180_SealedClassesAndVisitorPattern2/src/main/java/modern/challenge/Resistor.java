@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public final class Resistor implements ElectricComponent {
-    
+
     private final int resistance;
     private final float clazz;
     private final int voltage;
@@ -34,5 +34,5 @@ public final class Resistor implements ElectricComponent {
 
     public float getPower() {
         return power;
-    }        
+    }
 }

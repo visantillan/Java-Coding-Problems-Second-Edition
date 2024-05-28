@@ -38,12 +38,12 @@ public class Main {
                     System.out.printf("\nx = %.2f", handle.get(segment, i, j));
                 }
             }
-            
+
             // flatten and dispay
             System.out.println("\n\nFlatten and dispay:");
-            SequenceLayout flatten = outerSeq.flatten();            
+            SequenceLayout flatten = outerSeq.flatten();
             VarHandle fhandle = flatten.varHandle(PathElement.sequenceElement());
-            
+
             for (int i = 0; i < flatten.elementCount(); i++) {
                 System.out.printf("\nx = %.2f", fhandle.get(segment, i));
             }
@@ -54,16 +54,16 @@ public class Main {
         SequenceLayout flatten = outerSeq.flatten();
 
         VarHandle fhandle = flatten.varHandle(PathElement.sequenceElement());
-              
+
         try (Arena arena = Arena.openConfined()) {
 
             MemorySegment segment = arena.allocate(flatten);
 
             System.out.println("Element count: " + flatten.elementCount());
-            
+
             for (int i = 0; i < flatten.elementCount(); i++) {
                 fhandle.set(segment, i, Math.random());
-            }            
+            }
 
             for (int i = 0; i < flatten.elementCount(); i++) {
                 System.out.printf("\nx = %.2f", fhandle.get(segment, i));

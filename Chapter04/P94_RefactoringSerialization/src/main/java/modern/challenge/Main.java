@@ -15,25 +15,25 @@ public class Main {
                 LocalDate.now().plusDays(15), "ML9000SQA0", new Melon("Gac", 5000)
         );
 
-        try ( ObjectOutputStream oos = new ObjectOutputStream(
+        try (ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream("object.data"))) {
             oos.writeObject(gacContainer);
         }
 
         MelonContainer desGacContainer;
-        try ( ObjectInputStream ios = new ObjectInputStream(
+        try (ObjectInputStream ios = new ObjectInputStream(
                 new FileInputStream("object.data"))) {
             desGacContainer = (MelonContainer) ios.readObject();
         }
 
         System.out.println(desGacContainer);
-        
+
         MelonContainer maliciousDesGacContainer;
-        try ( ObjectInputStream ios = new ObjectInputStream(
+        try (ObjectInputStream ios = new ObjectInputStream(
                 new FileInputStream("object_malicious.data"))) {
             maliciousDesGacContainer = (MelonContainer) ios.readObject();
         }
 
-        System.out.println(maliciousDesGacContainer);       
+        System.out.println(maliciousDesGacContainer);
     }
 }

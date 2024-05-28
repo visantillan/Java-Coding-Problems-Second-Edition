@@ -52,15 +52,15 @@ public final class ChainSaw {
             System.out.println("Stopped ...");
             started = false;
         }
-    }         
+    }
 
     public String getPower() {
         return power;
     }
-        
+
     @Override
     public String toString() {
-        return "ChainSaw{" + "model=" + model 
+        return "ChainSaw{" + "model=" + model
                 + ", speed=" + speed + ", started=" + started + '}';
-    }        
+    }
 }

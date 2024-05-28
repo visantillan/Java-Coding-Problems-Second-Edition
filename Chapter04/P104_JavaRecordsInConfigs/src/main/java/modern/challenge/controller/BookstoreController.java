@@ -1,7 +1,6 @@
 package modern.challenge.controller;
 
 import modern.challenge.service.BookstoreService;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

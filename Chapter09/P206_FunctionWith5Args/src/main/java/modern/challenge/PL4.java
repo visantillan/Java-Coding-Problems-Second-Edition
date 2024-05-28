@@ -1,14 +1,14 @@
 package modern.challenge;
 
 public class PL4 {
-    
+
     private final double a;
     private final double b;
     private final double c;
     private final double d;
     private final double x;
 
-    public PL4(double a, double b, double c, double d, double x) {        
+    public PL4(double a, double b, double c, double d, double x) {
         this.a = a;
         this.b = b;
         this.c = c;
@@ -34,8 +34,8 @@ public class PL4 {
 
     public double getX() {
         return x;
-    }            
-    
+    }
+
     public double compute() {
         return d + ((a - d) / (1 + (Math.pow(x / c, b))));
     }
@@ -81,5 +81,5 @@ public class PL4 {
     @Override
     public String toString() {
         return "PL4{" + "a=" + a + ", b=" + b + ", c=" + c + ", d=" + d + ", x=" + x + '}';
-    }        
+    }
 }

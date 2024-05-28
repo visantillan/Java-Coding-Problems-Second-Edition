@@ -2,6 +2,7 @@ package modern.challenge;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -15,37 +16,37 @@ public class Main {
         StringTemplate.Processor<JsonNode, IllegalArgumentException> pp
                 = (StringTemplate st) -> {
 
-                    var values = st.values().stream()
-                            .map(value -> {
-                                if (!PHONE_PATTERN.matcher((CharSequence) value).matches()) {
-                                    return "Invalid phone number";
-                                }
+            var values = st.values().stream()
+                    .map(value -> {
+                        if (!PHONE_PATTERN.matcher((CharSequence) value).matches()) {
+                            return "Invalid phone number";
+                        }
 
-                                return value;
-                            }).toList();
+                        return value;
+                    }).toList();
 
-                    ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper();
 
-                    try {
-                        return mapper.readTree(StringTemplate.interpolate(
-                                st.fragments(), values));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                };
+            try {
+                return mapper.readTree(StringTemplate.interpolate(
+                        st.fragments(), values));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        };
 
         String workPhone = "072-825-90095"; // not valid
         String homePhone = "(040)234-9670";
 
         JsonNode jsonMessage = pp.
-        """
+                """
            { "contact": {
                "work": "\{workPhone}",
                "home": "\{homePhone}"
                }
            }  
            """;
-           
+
         System.out.println(jsonMessage);
     }
 }

@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public record Charcoal() implements SolidFuel {}
+public record Charcoal() implements SolidFuel {
+}

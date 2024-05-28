@@ -35,7 +35,7 @@ public class Main {
         String rangeString = "es-ES;q=1.0,es-MX;q=0.5,pt-BR;q=0.0";
         List<Locale.LanguageRange> priorityList = Locale.LanguageRange.parse(rangeString);
         System.out.println("Priority list: " + priorityList);
-        
+
         // JDK 19+, creating a Locale via of()        
         Locale ro = Locale.of("ro", "RO");
         Locale de = Locale.of("de", "DE"); // or, Locale de = Locale.GERMANY;

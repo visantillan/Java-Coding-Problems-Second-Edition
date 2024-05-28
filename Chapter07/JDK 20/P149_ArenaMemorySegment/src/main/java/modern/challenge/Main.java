@@ -35,7 +35,7 @@ public class Main {
             // already has arena's scope
             MemorySegment segment1i1 = arena.allocate(4);
             MemorySegment segment1i2 = arena.allocate(ValueLayout.JAVA_INT.byteSize());
-            MemorySegment segment1i3 = arena.allocate(ValueLayout.JAVA_INT, Integer.MAX_VALUE);            
+            MemorySegment segment1i3 = arena.allocate(ValueLayout.JAVA_INT, Integer.MAX_VALUE);
             MemorySegment segment1d = arena.allocate(ValueLayout.JAVA_DOUBLE.byteSize(),
                     ValueLayout.JAVA_DOUBLE.byteAlignment());
             MemorySegment segment1a1 = arena.allocate(ValueLayout.JAVA_CHAR);
@@ -48,17 +48,17 @@ public class Main {
             segment1a1.setAtIndex(ValueLayout.JAVA_CHAR, 0, 'a');
 
             MemorySegment segment2i1 = MemorySegment.allocateNative(4, arena.scope());
-            MemorySegment segment2i2 = MemorySegment.allocateNative(ValueLayout.JAVA_INT, arena.scope());            
+            MemorySegment segment2i2 = MemorySegment.allocateNative(ValueLayout.JAVA_INT, arena.scope());
             MemorySegment segment2d = MemorySegment.allocateNative(
                     ValueLayout.JAVA_DOUBLE.byteSize(),
-                    ValueLayout.JAVA_DOUBLE.byteAlignment(), arena.scope());                        
+                    ValueLayout.JAVA_DOUBLE.byteAlignment(), arena.scope());
             MemorySegment segment2a1 = MemorySegment.allocateNative(2, arena.scope());
             MemorySegment segment2a2 = MemorySegment.allocateNative(
                     ValueLayout.JAVA_CHAR.byteSize(), arena.scope());
             MemorySegment segment2s = MemorySegment.allocateNative(5, arena.scope()); // "abcd".length() + 1 = 5
 
             segment2i1.set(ValueLayout.JAVA_INT, 0, Integer.MAX_VALUE);
-            segment2i2.setAtIndex(ValueLayout.JAVA_INT, 0, Integer.MAX_VALUE);            
+            segment2i2.setAtIndex(ValueLayout.JAVA_INT, 0, Integer.MAX_VALUE);
             segment2d.set(ValueLayout.JAVA_DOUBLE, 0, Double.MAX_VALUE);
             segment2a1.set(ValueLayout.JAVA_CHAR, 0, 'a');
             segment2a2.set(ValueLayout.JAVA_CHAR, 0, 'a');
@@ -66,17 +66,17 @@ public class Main {
 
             System.out.println("Segment 1i1: " + segment1i1);
             System.out.println("Segment 1i1 content: " + segment1i1.get(ValueLayout.JAVA_INT, 0));
-            
+
             System.out.println("Segment 1i2: " + segment1i2);
             System.out.println("Segment 1i2 content: " + segment1i2.get(ValueLayout.JAVA_INT, 0));
-            
+
             System.out.println("Segment 1i3: " + segment1i3);
             System.out.println("Segment 1i3 content: " + segment1i3.get(ValueLayout.JAVA_INT, 0));
 
             System.out.println("Segment 2i1: " + segment2i1);
             System.out.println("Segment 2i1 content: " + segment2i1.get(ValueLayout.JAVA_INT, 0));
-            
-            System.out.println("Segment 2i2: " + segment2i2);            
+
+            System.out.println("Segment 2i2: " + segment2i2);
             System.out.println("Segment 2i2 content: " + segment2i2.get(ValueLayout.JAVA_INT, 0));
 
             System.out.println("Segment 1s: " + segment1s);
@@ -93,13 +93,13 @@ public class Main {
 
             System.out.println("Segment 1a1: " + segment1a1);
             System.out.println("Segment 1a1 content: " + segment1a1.get(ValueLayout.JAVA_CHAR, 0));
-            
+
             System.out.println("Segment 1a2: " + segment1a2);
             System.out.println("Segment 1a2 content: " + segment1a2.get(ValueLayout.JAVA_CHAR, 0));
 
             System.out.println("Segment 2a1: " + segment2a1);
             System.out.println("Segment 2a1 content: " + segment2a1.getAtIndex(ValueLayout.JAVA_CHAR, 0));
-            
+
             System.out.println("Segment 2a2: " + segment2a2);
             System.out.println("Segment 2a2 content: " + segment2a2.getAtIndex(ValueLayout.JAVA_CHAR, 0));
         }

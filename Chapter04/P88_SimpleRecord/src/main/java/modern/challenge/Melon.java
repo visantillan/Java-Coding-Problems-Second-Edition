@@ -26,7 +26,7 @@ public class Melon {
         hash = 97 * hash + Objects.hashCode(this.type);
         hash = 97 * hash + Float.floatToIntBits(this.weight);
         return hash;
-    }   
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -52,5 +52,5 @@ public class Melon {
     @Override
     public String toString() {
         return "Melon{" + "type=" + type + ", weight=" + weight + '}';
-    }   
+    }
 }

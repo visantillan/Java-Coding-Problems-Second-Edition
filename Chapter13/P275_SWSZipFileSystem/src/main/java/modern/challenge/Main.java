@@ -3,6 +3,7 @@ package modern.challenge;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.SimpleFileServer;
 import com.sun.net.httpserver.SimpleFileServer.OutputLevel;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.file.FileSystem;
@@ -29,7 +30,7 @@ public class Main {
 
         Map<String, String> env = new HashMap<>();
         env.put("create", "true");
-     
+
         Path root = Path.of("./zips").toAbsolutePath();
         Path zipPath = root.resolve("docs.zip").toAbsolutePath().normalize();
 

@@ -20,23 +20,23 @@ public final class NanoStopwatch {
 
     //elaspsed time in nanoseconds
     public long getElapsedTime() {
-                
+
         if (running) {
             return System.nanoTime() - startTime;
         } else {
-            return stopTime - startTime;            
-        }        
+            return stopTime - startTime;
+        }
     }
-    
+
     //elaspsed time in millisecods
-    public long elapsedTimeToMillis(long nanotime) {                
-        
+    public long elapsedTimeToMillis(long nanotime) {
+
         return TimeUnit.MILLISECONDS.convert(nanotime, TimeUnit.NANOSECONDS);
     }
-    
+
     //elaspsed time in seconds
-    public long elapsedTimeToSeconds(long nanotime) {                
-        
+    public long elapsedTimeToSeconds(long nanotime) {
+
         return TimeUnit.SECONDS.convert(nanotime, TimeUnit.NANOSECONDS);
     }
 }

@@ -1,2 +1,4 @@
-# Introducing the canonical and compact constructors for records: 
-Explain the role of the built-in record’s canonical and compact constructors. Provide examples when it makes sense to provide explicit such constructors.
+# Introducing the canonical and compact constructors for records:
+
+Explain the role of the built-in record’s canonical and compact constructors. Provide examples when it makes sense to
+provide explicit such constructors.

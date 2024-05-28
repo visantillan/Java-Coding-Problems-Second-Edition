@@ -1,3 +1,3 @@
-module P113_MultiplyingMatricesVectorApi {       
+module P113_MultiplyingMatricesVectorApi {
     requires jdk.incubator.vector;
 }

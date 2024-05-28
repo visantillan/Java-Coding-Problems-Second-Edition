@@ -18,8 +18,8 @@ public class Main {
     private static final int SERVER_PORT = 4444;
     private static final String SERVER_IP = "127.0.0.1";
     private static final int TIMEOUT_SELECTOR = 1_000;
-        
-    public static void main(String[] args) throws InterruptedException {        
+
+    public static void main(String[] args) throws InterruptedException {
 
         ByteBuffer tBuffer = ByteBuffer.allocateDirect(2 * 1024);
         ByteBuffer rBuffer;
@@ -29,8 +29,8 @@ public class Main {
         CharsetDecoder chdecoder = charset.newDecoder();
 
         // call the open() for ServerSocketChannel and Selector
-        try (Selector selector = Selector.open(); 
-                SocketChannel clientSC = SocketChannel.open()) {
+        try (Selector selector = Selector.open();
+             SocketChannel clientSC = SocketChannel.open()) {
 
             // ServerSocketChannel and Selector successfully opened
             if ((clientSC.isOpen()) && (selector.isOpen())) {
@@ -81,7 +81,7 @@ public class Main {
 
                                 // this delay is not necessary - it was added just for easy following the output
                                 Thread.sleep(new Random().nextInt(5000));
-                                
+
                                 // read/write from/to server                                
                                 while (keySC.read(tBuffer) != -1) {
 
@@ -103,7 +103,7 @@ public class Main {
                                     } else {
                                         // this delay is not necessary - it was added just for easy following the output
                                         Thread.sleep(new Random().nextInt(3000));
-                                
+
                                         rBuffer = ByteBuffer.wrap(
                                                 "Random number:".concat(String.valueOf(r).concat(" ")).getBytes("UTF-8"));
                                         keySC.write(rBuffer);

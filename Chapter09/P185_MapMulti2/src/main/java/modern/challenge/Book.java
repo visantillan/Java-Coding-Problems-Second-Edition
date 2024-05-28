@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book {
-    
+
     private final String title;
     private final LocalDate published;
 
@@ -50,5 +50,5 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" + "title=" + title + ", published=" + published + '}';
-    }        
+    }
 }

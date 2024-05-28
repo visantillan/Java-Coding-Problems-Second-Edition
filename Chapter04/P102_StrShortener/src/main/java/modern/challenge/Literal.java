@@ -1,3 +1,4 @@
 package modern.challenge;
 
-record Literal(String text) implements Str {}
+record Literal(String text) implements Str {
+}

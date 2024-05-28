@@ -1,12 +1,13 @@
 package modern.challenge;
 
 import org.joou.ULong;
+
 import static org.joou.Unsigned.ulong;
 
 public class Main {
 
-    public static void main(String[] args) {                
-        
+    public static void main(String[] args) {
+
         long x = 234253490223L;
         long y = -565951223449L;
 

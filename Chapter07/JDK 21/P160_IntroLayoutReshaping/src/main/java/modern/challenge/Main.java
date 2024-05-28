@@ -52,14 +52,14 @@ public class Main {
             MemorySegment segment = arena.allocate(reshaped);
 
             System.out.println("\n\nReshaped outerSeq: " + reshaped.elementCount());
-            System.out.println("Reshaped innerSeq: " 
+            System.out.println("Reshaped innerSeq: "
                     + ((SequenceLayout) reshaped.select(
-                            PathElement.sequenceElement())).elementCount());
+                    PathElement.sequenceElement())).elementCount());
 
             long outerSeqCount = reshaped.elementCount();
             long innerSeqCount = ((SequenceLayout) reshaped.select(
-                            PathElement.sequenceElement())).elementCount();            
-            
+                    PathElement.sequenceElement())).elementCount();
+
             for (int i = 0; i < outerSeqCount; i++) {
                 for (int j = 0; j < innerSeqCount; j++) {
                     rhandle.set(segment, i, j, Math.random());

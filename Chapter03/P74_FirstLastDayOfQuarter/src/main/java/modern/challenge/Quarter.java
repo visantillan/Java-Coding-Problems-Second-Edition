@@ -23,5 +23,5 @@ public final class Quarter {
     @Override
     public String toString() {
         return "Quarter{" + "firstDay=" + firstDay + ", lastDay=" + lastDay + '}';
-    }        
+    }
 }

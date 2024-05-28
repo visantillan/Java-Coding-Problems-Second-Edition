@@ -8,14 +8,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String nameAndAddress = "Mark Janson;243 West Main St;Louisville;40202;USA";        
-        
+        String nameAndAddress = "Mark Janson;243 West Main St;Louisville;40202;USA";
+
         Pattern pattern = Pattern.compile("""
-                 (?<name>[ a-zA-Z]+);\
-                 (?<address>[ 0-9a-zA-Z]+);\
-                 (?<city>[ a-zA-Z]+);\
-                 (?<zip>[\\d]+);\
-                 (?<country>[ a-zA-Z]+)$""");
+                (?<name>[ a-zA-Z]+);\
+                (?<address>[ 0-9a-zA-Z]+);\
+                (?<city>[ a-zA-Z]+);\
+                (?<zip>[\\d]+);\
+                (?<country>[ a-zA-Z]+)$""");
 
         Matcher matcher = pattern.matcher(nameAndAddress);
 

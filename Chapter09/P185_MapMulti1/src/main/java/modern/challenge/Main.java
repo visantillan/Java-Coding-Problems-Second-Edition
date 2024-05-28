@@ -1,6 +1,7 @@
 package modern.challenge;
 
 import java.util.List;
+
 import static java.util.stream.Collectors.toList;
 
 public class Main {

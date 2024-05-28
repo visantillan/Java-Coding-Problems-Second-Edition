@@ -6,5 +6,6 @@ public sealed interface ElectricBreaker extends ElectricComponent
         permits ElectricPanel {
 
     void switchOn();
+
     void switchOff();
 }

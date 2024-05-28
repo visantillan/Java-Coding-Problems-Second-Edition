@@ -103,7 +103,7 @@ public class Main {
                         ints[i] = jg.nextInt();
                         jg.jump();
                     }
-                    
+
                     return ints;
                 }) // each generator generates 10 integers                               
                 .collect(Collectors.toList()); // all 5 arrays are collected into a list
@@ -134,13 +134,13 @@ public class Main {
         // each of the 5 generators generates 10 integers in an array
         List<int[]> listOfArrOfIntsLG = leapableRnd.leaps(5) // obtain 5 generators
                 .map(r -> {
-                    LeapableGenerator lg = (LeapableGenerator) r;                    
+                    LeapableGenerator lg = (LeapableGenerator) r;
                     int[] ints = new int[10];
                     for (int i = 0; i < 10; i++) {
                         ints[i] = lg.nextInt();
                         lg.leap();
                     }
-                    
+
                     return ints;
                 }) // each generator generates 10 integers                               
                 .collect(Collectors.toList()); // all 5 arrays are collected into a list

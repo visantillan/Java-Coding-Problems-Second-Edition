@@ -6,16 +6,19 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+
 /**
  * {@snippet :
  * typedef struct localeinfo_struct _locale_tstruct;
- * }
+ *}
  */
 public final class _locale_tstruct extends localeinfo_struct {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private _locale_tstruct() {}
+    private _locale_tstruct() {
+    }
 }
 
 

@@ -22,6 +22,6 @@ public class Main {
                 BigDecimal.valueOf(integralPart2)).doubleValue();
 
         System.out.println("Fractional part (2): " + fractionalPart2);
-        System.out.println("Integral part (2): " + integralPart2);             
+        System.out.println("Integral part (2): " + integralPart2);
     }
 }

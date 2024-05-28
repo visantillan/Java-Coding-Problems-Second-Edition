@@ -3,6 +3,7 @@ package modern.challenge;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.SimpleFileServer;
 import com.sun.net.httpserver.SimpleFileServer.OutputLevel;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -24,7 +25,7 @@ public class Main {
     private static Path jrtFileSystem() {
 
         URI uri = URI.create("jrt:/");
-        
+
         FileSystem jrtfs = FileSystems.getFileSystem(uri);
         Path jrtRoot = jrtfs.getPath("modules").toAbsolutePath();
 

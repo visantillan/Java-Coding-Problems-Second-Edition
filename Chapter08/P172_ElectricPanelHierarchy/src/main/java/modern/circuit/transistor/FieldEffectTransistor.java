@@ -1,3 +1,4 @@
 package modern.circuit.transistor;
 
-public class FieldEffectTransistor extends Transistor {}
+public class FieldEffectTransistor extends Transistor {
+}

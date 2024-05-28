@@ -1,6 +1,7 @@
 package modern.challenge;
 
 import java.util.function.Predicate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public interface LogPredicate<T> extends Predicate<T> {
 
     Logger logger = LoggerFactory.getLogger(LogPredicate.class);
-   
+
     default boolean testAndLog(T t, String val) {
 
         boolean result = this.test(t);

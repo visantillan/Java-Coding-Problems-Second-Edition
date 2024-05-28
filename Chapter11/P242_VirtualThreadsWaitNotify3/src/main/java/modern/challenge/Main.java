@@ -15,15 +15,16 @@ public class Main {
         SignaledObject object = new SignaledObject();
 
         Thread wThread = Thread.ofVirtual().unstarted(() -> {
-            try {            
+            try {
                 object.callWait();
-            } catch (InterruptedException ex) {}
+            } catch (InterruptedException ex) {
+            }
         });
-        
-        Thread nThread = Thread.ofVirtual().unstarted(() -> {            
-                object.callNotify();
-        });                
-        
+
+        Thread nThread = Thread.ofVirtual().unstarted(() -> {
+            object.callNotify();
+        });
+
         // good signal
         /*
         wThread.start();
@@ -37,16 +38,16 @@ public class Main {
         logger.info("After executing 'wThread'");
         logger.info(() -> wThread + " | " + wThread.getState());
         */
-        
+
         // missed signal        
-        nThread.start();        
+        nThread.start();
         Thread.sleep(1000); // give time to 'nThread' to start
-        
+
         wThread.start();
         Thread.sleep(1000); // give time to 'wThread' to start
         logger.info("'wThread' current status");
-        logger.info(() -> wThread + " | " + wThread.getState());               
-        
+        logger.info(() -> wThread + " | " + wThread.getState());
+
         wThread.join();
     }
 }

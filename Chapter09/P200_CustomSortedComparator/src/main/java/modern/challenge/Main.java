@@ -25,8 +25,8 @@ public class Main {
         // [7(450), 1(350), 2(350), 9(350), 10(300), 5(250), 8(200), 3(150), 4(150), 6(80)]
         List<String> result1 = cars.entrySet().stream()
                 .sorted((c1, c2) -> c2.getValue().getHorsepower() == c1.getValue().getHorsepower()
-                ? c1.getKey().compareTo(c2.getKey())
-                : Integer.valueOf(c2.getValue().getHorsepower())
+                        ? c1.getKey().compareTo(c2.getKey())
+                        : Integer.valueOf(c2.getValue().getHorsepower())
                         .compareTo(c1.getValue().getHorsepower()))
                 .map(c -> c.getKey() + "(" + c.getValue().getHorsepower() + ")")
                 .toList();
@@ -34,7 +34,7 @@ public class Main {
         // [7(450), 1(350), 2(350), 9(350), 10(300), 5(250), 8(200), 3(150), 4(150), 6(80)]
         List<String> result2 = cars.entrySet().stream()
                 .sorted(Entry.<Integer, Car>comparingByValue(
-                        Comparator.comparingInt(Car::getHorsepower).reversed())
+                                Comparator.comparingInt(Car::getHorsepower).reversed())
                         .thenComparing(Entry.comparingByKey()))
                 .map(c -> c.getKey() + "(" + c.getValue().getHorsepower() + ")")
                 .toList();

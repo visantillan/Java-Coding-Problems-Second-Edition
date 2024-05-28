@@ -19,12 +19,12 @@ public class Main {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-        
+
         buildTestingTeam();
     }
 
     public static TestingTeam buildTestingTeam() throws InterruptedException, ExecutionException {
-        
+
         try (ShutdownOnFailure scope = new StructuredTaskScope.ShutdownOnFailure()) {
 
             Subtask<String> subtask1 = scope.fork(() -> fetchTester(1));
@@ -35,10 +35,10 @@ public class Main {
             scope.throwIfFailed();
 
             // because we have an exception the following code will not be executed
-            return new TestingTeam(subtask1.get(), subtask2.get(), subtask3.get());            
+            return new TestingTeam(subtask1.get(), subtask2.get(), subtask3.get());
         }
     }
-    
+
     public static String fetchTester(int id) throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();

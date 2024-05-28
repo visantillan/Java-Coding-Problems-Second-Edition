@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Before JDK 8
-        
+
         // using the '+' operator
         System.out.println("Multiline SQL/JSON/HTML before text blocks "
                 + "(using concatenation via the '+' operator):");
@@ -197,7 +197,7 @@ public class Main {
         System.out.println(html4);
 
         // Starting with JDK 8
-        
+
         // using String#join()
         System.out.println("\n Multiline SQL/JSON/HTML before text blocks (using String#join()):");
         String sql5 = String.join("\n",
@@ -295,45 +295,45 @@ public class Main {
         // using Collectors#joining()
         System.out.println("\n Multiline SQL/JSON/HTML before text blocks (using Collectors#joining()):");
         String sql7 = Stream.of(
-                "UPDATE \"public\".\"office\"",
-                "SET (\"address_first\", \"address_second\", \"phone\") =",
-                "  (SELECT \"public\".\"employee\".\"first_name\",",
-                "          \"public\".\"employee\".\"last_name\", ?",
-                "   FROM \"public\".\"employee\"",
-                "   WHERE \"public\".\"employee\".\"job_title\" = ?;")
+                        "UPDATE \"public\".\"office\"",
+                        "SET (\"address_first\", \"address_second\", \"phone\") =",
+                        "  (SELECT \"public\".\"employee\".\"first_name\",",
+                        "          \"public\".\"employee\".\"last_name\", ?",
+                        "   FROM \"public\".\"employee\"",
+                        "   WHERE \"public\".\"employee\".\"job_title\" = ?;")
                 .collect(Collectors.joining(String.valueOf("\n")));
 
         String json7 = Stream.of(
-                "{",
-                "  \"widget\": {",
-                "    \"debug\": \"on\",",
-                "    \"window\": {",
-                "      \"title\": \"Sample Widget 1\",",
-                "      \"name\": \"back_window\"",
-                "    },",
-                "    \"image\": {",
-                "      \"src\": \"images\\sw.png\"",
-                "    },",
-                "    \"text\": {",
-                "      \"data\": \"Click Me\",",
-                "      \"size\": 39",
-                "    }",
-                "  }",
-                "}")
+                        "{",
+                        "  \"widget\": {",
+                        "    \"debug\": \"on\",",
+                        "    \"window\": {",
+                        "      \"title\": \"Sample Widget 1\",",
+                        "      \"name\": \"back_window\"",
+                        "    },",
+                        "    \"image\": {",
+                        "      \"src\": \"images\\sw.png\"",
+                        "    },",
+                        "    \"text\": {",
+                        "      \"data\": \"Click Me\",",
+                        "      \"size\": 39",
+                        "    }",
+                        "  }",
+                        "}")
                 .collect(Collectors.joining(String.valueOf("\n")));
 
         String html7 = Stream.of(
-                "<table>",
-                "  <tr>",
-                "    <th colspan=\"2\">Name</th>",
-                "    <th>Age</th>",
-                "  </tr>",
-                "  <tr>",
-                "    <td>John</td>",
-                "    <td>Smith</td>",
-                "    <td>22</td>",
-                "  </tr>",
-                "<table>")
+                        "<table>",
+                        "  <tr>",
+                        "    <th colspan=\"2\">Name</th>",
+                        "    <th>Age</th>",
+                        "  </tr>",
+                        "  <tr>",
+                        "    <td>John</td>",
+                        "    <td>Smith</td>",
+                        "    <td>22</td>",
+                        "  </tr>",
+                        "<table>")
                 .collect(Collectors.joining(String.valueOf("\n")));
 
         System.out.println(sql7);
@@ -343,52 +343,52 @@ public class Main {
         System.out.println(html7);
 
         // Starting with JDK 13/15
-        
+
         // using text blocks
         System.out.println("\n Multiline SQL/JSON/HTML using text blocks:");
         String sql8 = """
-                      UPDATE "public"."office"
-                      SET ("address_first", "address_second", "phone") =
-                        (SELECT "public"."employee"."first_name",
-                                "public"."employee"."last_name", ?
-                         FROM "public"."employee"
-                         WHERE "public"."employee"."job_title" = ?""";
+                UPDATE "public"."office"
+                SET ("address_first", "address_second", "phone") =
+                  (SELECT "public"."employee"."first_name",
+                          "public"."employee"."last_name", ?
+                   FROM "public"."employee"
+                   WHERE "public"."employee"."job_title" = ?""";
 
         String json8 = """
-                       {
-                         "widget": {
-                           "debug": "on",
-                           "window": {
-                             "title": "Sample Widget 1",
-                             "name": "back_window"
-                           },
-                           "image": {
-                             "src": "images\\sw.png"
-                           },
-                           "text": {
-                             "data": "Click Me",
-                             "size": 39
-                           }
-                         }
-                       }""";
+                {
+                  "widget": {
+                    "debug": "on",
+                    "window": {
+                      "title": "Sample Widget 1",
+                      "name": "back_window"
+                    },
+                    "image": {
+                      "src": "images\\sw.png"
+                    },
+                    "text": {
+                      "data": "Click Me",
+                      "size": 39
+                    }
+                  }
+                }""";
 
         String html8 = """
-                       <table>
-                         <tr>
-                           <th colspan="2">Name</th>
-                           <th>Age</th>
-                         </tr>
-                         <tr>
-                           <td>John</td>
-                           <td>Smith</td>
-                           <td>22</td>
-                         </tr>
-                       <table>""";
+                <table>
+                  <tr>
+                    <th colspan="2">Name</th>
+                    <th>Age</th>
+                  </tr>
+                  <tr>
+                    <td>John</td>
+                    <td>Smith</td>
+                    <td>22</td>
+                  </tr>
+                <table>""";
 
         System.out.println(sql8);
         System.out.println();
         System.out.println(json8);
         System.out.println();
-        System.out.println(html8);                       
+        System.out.println(html8);
     }
 }

@@ -1,3 +1,4 @@
 package modern.challenge;
 
-interface Str {}
+interface Str {
+}

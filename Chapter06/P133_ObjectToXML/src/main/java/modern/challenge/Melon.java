@@ -1,6 +1,7 @@
 package modern.challenge;
 
 // import java.io.Serializable;
+
 import java.util.Objects;
 
 public class Melon { //implements Serializable { // this is optional
@@ -9,8 +10,9 @@ public class Melon { //implements Serializable { // this is optional
     private float weight;
 
     // this is needed for XMLEncoder and XmlMapper
-    public Melon() {} 
-    
+    public Melon() {
+    }
+
     public Melon(String type, float weight) {
         this.type = type;
         this.weight = weight;
@@ -20,18 +22,18 @@ public class Melon { //implements Serializable { // this is optional
         return type;
     }
 
-    public float getWeight() {
-        return weight;
-    }
-
     // setters are needed by the XMLEncoder
     public void setType(String type) {
         this.type = type;
     }
 
+    public float getWeight() {
+        return weight;
+    }
+
     public void setWeight(float weight) {
         this.weight = weight;
-    }        
+    }
 
     @Override
     public int hashCode() {
@@ -39,7 +41,7 @@ public class Melon { //implements Serializable { // this is optional
         hash = 97 * hash + Objects.hashCode(this.type);
         hash = 97 * hash + Float.floatToIntBits(this.weight);
         return hash;
-    }   
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -65,5 +67,5 @@ public class Melon { //implements Serializable { // this is optional
     @Override
     public String toString() {
         return "Melon{" + "type=" + type + ", weight=" + weight + '}';
-    }   
+    }
 }

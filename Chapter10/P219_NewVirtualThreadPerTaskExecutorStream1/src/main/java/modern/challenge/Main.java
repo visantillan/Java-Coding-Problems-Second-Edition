@@ -6,7 +6,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.logging.Logger;
+
 import static java.util.stream.Collectors.toList;
+
 import java.util.stream.IntStream;
 
 public class Main {
@@ -22,8 +24,8 @@ public class Main {
 
             List<Future<String>> futures = IntStream.range(0, 10)
                     .mapToObj(i -> executor.submit(() -> {
-                return Thread.currentThread().toString() + "(" + i + ")";
-            })).collect(toList());
+                        return Thread.currentThread().toString() + "(" + i + ")";
+                    })).collect(toList());
 
             futures.forEach(f -> {
                 try {

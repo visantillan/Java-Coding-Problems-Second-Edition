@@ -43,8 +43,9 @@ public class Main {
                     // sleep for 10000 ms (10 seconds)
                     try {
                         Thread.sleep(10000);
-                    } catch (InterruptedException ex) {}
-                    
+                    } catch (InterruptedException ex) {
+                    }
+
                     System.out.println("Sending date-time ...");
 
                     dtBuffer = ByteBuffer.wrap(new Date().toString().getBytes());

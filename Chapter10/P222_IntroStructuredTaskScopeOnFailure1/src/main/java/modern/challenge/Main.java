@@ -23,9 +23,9 @@ public class Main {
 
         buildTestingTeam();
     }
-    
+
     public static TestingTeam buildTestingTeam() throws InterruptedException, ExecutionException {
-        
+
         try (ShutdownOnFailure scope = new StructuredTaskScope.ShutdownOnFailure()) {
 
             Subtask<String> subtask1 = scope.fork(() -> fetchTester(1));
@@ -44,14 +44,14 @@ public class Main {
                 logger.info(() -> "Subtask-1 result: " + subtask1.get());
                 logger.info(() -> "Subtask-2 result: " + subtask2.get());
                 logger.info(() -> "Subtask-3 result: " + subtask3.get());
-                
+
                 return new TestingTeam(subtask1.get(), subtask2.get(), subtask3.get());
             } else {
                 logger.info(() -> exception.get().getMessage());
                 scope.throwIfFailed();
             }
         }
-        
+
         return new TestingTeam();
     }
 

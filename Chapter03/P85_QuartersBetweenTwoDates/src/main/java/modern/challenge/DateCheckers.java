@@ -10,15 +10,15 @@ public final class DateCheckers {
     }
 
     public static long nrOfQuarters(LocalDate startDate, LocalDate endDate) {
-        
-        if(startDate == null || endDate == null) {
+
+        if (startDate == null || endDate == null) {
             throw new IllegalArgumentException("The given dates cannot be null");
         }
 
-        if(startDate.isAfter(endDate)) {
+        if (startDate.isAfter(endDate)) {
             throw new IllegalArgumentException("The given start date cannot be after the given end date");
         }
-        
+
         return IsoFields.QUARTER_YEARS.between(startDate, endDate);
     }
 }

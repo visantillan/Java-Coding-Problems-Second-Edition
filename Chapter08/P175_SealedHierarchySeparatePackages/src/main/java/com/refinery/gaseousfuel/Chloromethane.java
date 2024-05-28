@@ -1,3 +1,4 @@
 package com.refinery.gaseousfuel;
 
-public final class Chloromethane extends Methane {}
+public final class Chloromethane extends Methane {
+}

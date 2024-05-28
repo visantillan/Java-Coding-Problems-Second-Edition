@@ -19,8 +19,8 @@ public class Main {
         ByteBuffer echoBuffer = ByteBuffer.allocateDirect(MAX_SIZE_OF_PACKET);
 
         // create a datagram channel
-        try (DatagramChannel dchannel 
-                = DatagramChannel.open(StandardProtocolFamily.INET)) {
+        try (DatagramChannel dchannel
+                     = DatagramChannel.open(StandardProtocolFamily.INET)) {
 
             // if the channel was successfully opened
             if (dchannel.isOpen()) {
@@ -33,7 +33,7 @@ public class Main {
 
                 // bind the channel to local address
                 dchannel.bind(new InetSocketAddress(SERVER_IP, SERVER_PORT));
-                
+
                 System.out.println("Echo server available at: " + dchannel.getLocalAddress());
                 System.out.println("Ready to echo ...");
 
@@ -43,12 +43,12 @@ public class Main {
                     SocketAddress clientSocketAddress = dchannel.receive(echoBuffer);
 
                     echoBuffer.flip();
-                    
+
                     System.out.println("Received " + echoBuffer.limit()
                             + " bytes from " + clientSocketAddress.toString() + "! Echo ...");
-                    
+
                     dchannel.send(echoBuffer, clientSocketAddress);
-                    
+
                     echoBuffer.clear();
                 }
             } else {

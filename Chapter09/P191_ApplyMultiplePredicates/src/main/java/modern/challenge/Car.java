@@ -59,5 +59,5 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" + "brand=" + brand + ", fuel=" + fuel + ", horsepower=" + horsepower + '}';
-    }    
+    }
 }

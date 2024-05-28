@@ -10,7 +10,7 @@ public class Main {
 
         List<Integer> ints = new ArrayList<>();
         Main.listOf(ints, 1, 2, 3);
-        
+
         Main.listsOfYeak(ints);
     }
 
@@ -18,18 +18,18 @@ public class Main {
     @SafeVarargs
     public static <T> void listOf(List<T> list, T... ts) {
 
-        list.addAll(Arrays.asList(ts));    
+        list.addAll(Arrays.asList(ts));
     }
-        
+
     // don't use @SafeVarargs in such cases
     public static void listsOfYeak(List<Integer>... lists) {
-        
-    Object[] listsAsArray = lists;     
-    
-    listsAsArray[0] = Arrays.asList(4, 5, 6);        
-    Integer someInt = lists[0].get(0);   
-    
-    listsAsArray[0] = Arrays.asList("a", "b", "c");    
-    Integer someIntYeak = lists[0].get(0);   // ClassCastException
-  }
+
+        Object[] listsAsArray = lists;
+
+        listsAsArray[0] = Arrays.asList(4, 5, 6);
+        Integer someInt = lists[0].get(0);
+
+        listsAsArray[0] = Arrays.asList("a", "b", "c");
+        Integer someIntYeak = lists[0].get(0);   // ClassCastException
+    }
 }

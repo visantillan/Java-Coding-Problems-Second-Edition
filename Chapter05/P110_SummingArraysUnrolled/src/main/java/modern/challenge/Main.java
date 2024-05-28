@@ -1,6 +1,7 @@
 package modern.challenge;
 
 import java.util.Arrays;
+
 import jdk.incubator.vector.IntVector;
 import jdk.incubator.vector.VectorSpecies;
 

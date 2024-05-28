@@ -9,7 +9,7 @@ public class Main {
         PhoneProcessor pp = new PhoneProcessor();
         String workPhone = "072-825-9009";
         String homePhone = "(040)234-9670";
-        
+
         JsonNode jsonMessage = pp."""
            { "contact": {
                "work": "\{workPhone}",
@@ -17,7 +17,7 @@ public class Main {
                }
            }  
            """;
-           
+
         System.out.println(jsonMessage);
     }
 }

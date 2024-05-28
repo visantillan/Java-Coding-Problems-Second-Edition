@@ -1,4 +1,4 @@
 package modern.challenge;
 
-public interface Book extends Printable {        
+public interface Book extends Printable {
 }

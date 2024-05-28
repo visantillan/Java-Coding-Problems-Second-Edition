@@ -23,22 +23,22 @@ public class Main {
     }
 
     public static void main(String[] args) throws Throwable {
-        
+
         MethodHandle comparatorHandle = MethodHandles.lookup()
                 .findStatic(Main.class, "comparator", MethodType.methodType(
                         int.class, MemorySegment.class, MemorySegment.class));
 
         Linker linker = Linker.nativeLinker();
-        SymbolLookup libLookup = linker.defaultLookup();               
+        SymbolLookup libLookup = linker.defaultLookup();
 
         try (Arena arena = Arena.ofConfined()) {
-            
+
             MemorySegment comparatorFunc = linker.upcallStub(comparatorHandle,
-                FunctionDescriptor.of(ValueLayout.JAVA_INT,
-                        ValueLayout.ADDRESS.withTargetLayout(
-                                MemoryLayout.sequenceLayout(ValueLayout.JAVA_INT)),
-                        ValueLayout.ADDRESS.withTargetLayout(
-                                MemoryLayout.sequenceLayout(ValueLayout.JAVA_INT))), arena);
+                    FunctionDescriptor.of(ValueLayout.JAVA_INT,
+                            ValueLayout.ADDRESS.withTargetLayout(
+                                    MemoryLayout.sequenceLayout(ValueLayout.JAVA_INT)),
+                            ValueLayout.ADDRESS.withTargetLayout(
+                                    MemoryLayout.sequenceLayout(ValueLayout.JAVA_INT))), arena);
 
             MemorySegment segmentBsearch = libLookup.find("bsearch").get();
 
@@ -54,7 +54,7 @@ public class Main {
                     key, array, 10, ValueLayout.JAVA_INT.byteSize(), comparatorFunc);
 
             if (result.equals(MemorySegment.NULL)) {
-                System.out.println("Element " + elem 
+                System.out.println("Element " + elem
                         + " not found in the given array " + Arrays.toString(arr));
             } else {
                 long offset = array.segmentOffset(result);

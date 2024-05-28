@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Post {
-    
+
     private final int id;
     private final String title;
     private final String tags;
@@ -13,6 +13,11 @@ public class Post {
         this.id = id;
         this.title = title;
         this.tags = tags;
+    }
+
+    public static List<String> allTags(Post post) {
+
+        return Arrays.asList(post.getTags().split("#"));
     }
 
     public int getId() {
@@ -25,10 +30,5 @@ public class Post {
 
     public String getTags() {
         return tags;
-    }
-            
-    public static List<String> allTags(Post post) {
-        
-        return Arrays.asList(post.getTags().split("#"));
     }
 }

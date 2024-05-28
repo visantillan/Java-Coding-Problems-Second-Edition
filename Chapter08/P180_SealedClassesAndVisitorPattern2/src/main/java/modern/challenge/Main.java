@@ -42,41 +42,37 @@ public class Main {
 
         for (ElectricComponent comp : comps) {
             switch (comp) {
-                case Capacitor c ->
-                    sb.append("""
-                        <capacitor>
-                           <maxImpedance>%s</maxImpedance>
-                           <dielectricResistance>%s</dielectricResistance>
-                           <coreTemperature>%s</coreTemperature>   
-                        </capacitor>
-                     """.formatted(c.getMaxImpedance(), c.getDielectricResistance(), c.getCoreTemperature())).toString();
-                case Transistor t ->
-                    sb.append("""
-                        <transistor>
-                           <length>%s</length>
-                           <width>%s</width>
-                           <threshholdVoltage>%s</threshholdVoltage>   
-                        </transistor>
-                     """.formatted(t.getLength(), t.getWidth(), t.getThreshholdVoltage())).toString();
-                case Resistor r ->
-                    sb.append("""
-                        <resistor>
-                           <resistance>%s</resistance>
-                           <clazz>%s</clazz>
-                           <voltage>%s</voltage>
-                           <current>%s</current>
-                           <power>%s</power>      
-                        </resistor>      
-                     """.formatted(r.getResistance(), r.getClazz(),
-                            r.getVoltage(), r.getCurrent(), r.getPower())).toString();
-                case ElectricCircuit ec ->
-                    sb.append("""
-                    <electric_circuit_%s>            
-                    %s\
-                    </electric_circuit_%s>
-                    """.formatted(ec.getId(),
-                            export(new StringBuilder(), ec.getComps().toArray(ElectricComponent[]::new)),
-                            ec.getId()).indent(3)).toString();
+                case Capacitor c -> sb.append("""
+                           <capacitor>
+                              <maxImpedance>%s</maxImpedance>
+                              <dielectricResistance>%s</dielectricResistance>
+                              <coreTemperature>%s</coreTemperature>   
+                           </capacitor>
+                        """.formatted(c.getMaxImpedance(), c.getDielectricResistance(), c.getCoreTemperature())).toString();
+                case Transistor t -> sb.append("""
+                           <transistor>
+                              <length>%s</length>
+                              <width>%s</width>
+                              <threshholdVoltage>%s</threshholdVoltage>   
+                           </transistor>
+                        """.formatted(t.getLength(), t.getWidth(), t.getThreshholdVoltage())).toString();
+                case Resistor r -> sb.append("""
+                           <resistor>
+                              <resistance>%s</resistance>
+                              <clazz>%s</clazz>
+                              <voltage>%s</voltage>
+                              <current>%s</current>
+                              <power>%s</power>      
+                           </resistor>      
+                        """.formatted(r.getResistance(), r.getClazz(),
+                        r.getVoltage(), r.getCurrent(), r.getPower())).toString();
+                case ElectricCircuit ec -> sb.append("""
+                        <electric_circuit_%s>            
+                        %s\
+                        </electric_circuit_%s>
+                        """.formatted(ec.getId(),
+                        export(new StringBuilder(), ec.getComps().toArray(ElectricComponent[]::new)),
+                        ec.getId()).indent(3)).toString();
             }
         }
 

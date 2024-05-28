@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>java.modern.challenge</groupId>
     <artifactId>P111_BenchmarkVectors</artifactId>
@@ -9,20 +10,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        
+
         <guava.version>23.0</guava.version>
         <jmh.version>1.35</jmh.version>
         <oamp.version>3.10.1</oamp.version>
-        <ocm.version>3.1.0</ocm.version>            
+        <ocm.version>3.1.0</ocm.version>
     </properties>
     <name>P111_BenchmarkVectors</name>
-    
-    <dependencies>        
+
+    <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>   
+        </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
@@ -32,15 +33,15 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
-        </dependency>     
-    </dependencies>    
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
-            <plugin>    
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${oamp.version}</version>
-                <configuration>                    
+                <configuration>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.openjdk.jmh</groupId>
@@ -66,7 +67,7 @@
                             <executable>java</executable>
                             <arguments>
                                 <argument>-classpath</argument>
-                                <classpath />
+                                <classpath/>
                                 <argument>org.openjdk.jmh.Main</argument>
                                 <argument>.*</argument>
                             </arguments>
@@ -74,6 +75,6 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>  
+        </plugins>
     </build>
 </project>

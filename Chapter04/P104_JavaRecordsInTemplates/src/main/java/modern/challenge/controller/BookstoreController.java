@@ -18,9 +18,9 @@ public class BookstoreController {
 
     @GetMapping("/bookstore")
     public String bookstorePage(Model model) {
-        
+
         model.addAttribute("authors", bookstoreService.fetchAuthors());
-        
+
         return "bookstore";
     }
 

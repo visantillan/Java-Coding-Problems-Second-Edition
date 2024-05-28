@@ -6,35 +6,38 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+
 final class constants$49 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$49() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "fdimf",
-        constants$26.const$5
+            "fdimf",
+            constants$26.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "fdiml",
-        constants$12.const$0
+            "fdiml",
+            constants$12.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fmax",
-        constants$12.const$0
+            "fmax",
+            constants$12.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "fmaxf",
-        constants$26.const$5
+            "fmaxf",
+            constants$26.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fmaxl",
-        constants$12.const$0
+            "fmaxl",
+            constants$12.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fmin",
-        constants$12.const$0
+            "fmin",
+            constants$12.const$0
     );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$49() {
+    }
 }
 
 

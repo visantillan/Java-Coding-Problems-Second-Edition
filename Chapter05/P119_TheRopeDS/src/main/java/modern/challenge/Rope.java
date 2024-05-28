@@ -24,7 +24,7 @@ public class Rope {
             return indexAt(node.right, index - node.weight);
         } else if (node.left != null) {
             return indexAt(node.left, index);
-        } else {            
+        } else {
             return node.str.charAt(index);
         }
     }
@@ -173,7 +173,7 @@ public class Rope {
             } else {
                 resultNode = Rope.concat(splitRopes.get(0), insertNode);
             }
-        } else {                          
+        } else {
             resultNode = Rope.concat(splitRopes.get(0), insertNode);
             resultNode = Rope.concat(resultNode, splitRopes.get(1));
         }
@@ -192,11 +192,11 @@ public class Rope {
         if (start < 0 || start > len) {
             throw new IndexOutOfBoundsException("The given start cannot be negative or greater than " + len);
         }
-        
+
         if (end < 0 || end > len) {
             throw new IndexOutOfBoundsException("The end index cannot be negative or greater than " + len);
         }
-        
+
         if (start >= end) {
             throw new IndexOutOfBoundsException("The given start cannot >= than the given end");
         }
@@ -244,15 +244,7 @@ public class Rope {
             this.weight = weight;
         }
 
-        public String buildStr() {
-
-            StringBuilder treeString = new StringBuilder();
-            buildStr(this, treeString);
-
-            return treeString.toString();
-        }
-    
-        private static void buildStr(Node node, StringBuilder treeString) {                       
+        private static void buildStr(Node node, StringBuilder treeString) {
 
             if (node.str != null) {
                 treeString.append(node.str);
@@ -262,6 +254,35 @@ public class Rope {
                     buildStr(node.right, treeString);
                 }
             }
+        }
+
+        private static void treeRope(Node node, StringBuilder treeString, int deep) {
+
+            if (node == null) {
+                treeString.append("null");
+                return;
+            }
+
+            String padding = "    ".repeat(deep);
+            treeString.append("{\n");
+            treeString.append(padding).append("  weight: ").append(node.weight).append(", \n");
+
+            treeString.append(padding).append("  left: ");
+            treeRope(node.left, treeString, deep + 1);
+            treeString.append(", \n");
+
+            treeString.append(padding).append("  right: ");
+            treeRope(node.right, treeString, deep + 1);
+            treeString.append(", \n");
+            treeString.append(padding).append("  str: ").append(node.str);
+        }
+
+        public String buildStr() {
+
+            StringBuilder treeString = new StringBuilder();
+            buildStr(this, treeString);
+
+            return treeString.toString();
         }
 
         @Override
@@ -291,27 +312,6 @@ public class Rope {
             treeRope(this, treeString, 0);
 
             return treeString.toString();
-        }
-
-        private static void treeRope(Node node, StringBuilder treeString, int deep) {
-
-            if (node == null) {
-                treeString.append("null");
-                return;
-            }
-
-            String padding = "    ".repeat(deep);
-            treeString.append("{\n");
-            treeString.append(padding).append("  weight: ").append(node.weight).append(", \n");
-
-            treeString.append(padding).append("  left: ");
-            treeRope(node.left, treeString, deep + 1);
-            treeString.append(", \n");
-
-            treeString.append(padding).append("  right: ");
-            treeRope(node.right, treeString, deep + 1);
-            treeString.append(", \n");
-            treeString.append(padding).append("  str: ").append(node.str);
         }
     }
 }

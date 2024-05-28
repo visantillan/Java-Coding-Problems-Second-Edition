@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public final class Hydrogen implements NaturalGas {}
+public final class Hydrogen implements NaturalGas {
+}

@@ -39,7 +39,7 @@ public class Main {
 
         VarHandle pHandle = union.varHandle(PathElement.groupElement("price"));
         VarHandle sHandle = union.varHandle(PathElement.groupElement("sku"));
-        
+
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment segment = arena.allocate(union);
 

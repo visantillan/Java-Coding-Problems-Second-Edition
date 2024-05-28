@@ -15,30 +15,6 @@ public class SkipList {
     private int size;
     private int topLayer;
 
-    private final class Node {
-
-        private final Integer data;
-        private final int layer;
-
-        public Node[] next;
-
-        public Node(Integer data, int layer) {
-
-            this.data = data;
-            this.layer = layer;
-            this.next = new Node[layer + 1];
-        }
-
-        public Integer getData() {
-            return this.data;
-        }
-
-        @Override
-        public String toString() {
-            return "{ layer " + layer + " :: data " + data + " }";
-        }
-    }
-
     public SkipList() {
 
         this.size = 0;
@@ -72,12 +48,12 @@ public class SkipList {
 
         size++;
     }
-    
+
     public boolean delete(Integer data) {
 
         Node cursorNode = head;
         boolean deleted = false;
-        
+
         for (int i = topLayer - 1; i >= 0; i--) {
             while (cursorNode.next[i] != null) {
 
@@ -85,7 +61,7 @@ public class SkipList {
                     break;
                 }
 
-                if (cursorNode.next[i].getData().equals(data)) {                    
+                if (cursorNode.next[i].getData().equals(data)) {
                     cursorNode.next[i] = cursorNode.next[i].next[i];
                     deleted = true;
                     size--;
@@ -99,11 +75,11 @@ public class SkipList {
 
         return deleted;
     }
-    
+
     public boolean contains(Integer data) {
 
         Node cursorNode = head;
-        
+
         for (int i = topLayer - 1; i >= 0; i--) {
             while (cursorNode.next[i] != null) {
                 if (cursorNode.next[i].getData() > data) {
@@ -129,9 +105,9 @@ public class SkipList {
 
         Node cursorNode = head;
         int layer = MAX_NUMBER_OF_LAYERS - 1;
-        
+
         while (cursorNode.next[layer] == null && layer > 0) {
-            layer--;            
+            layer--;
         }
 
         cursorNode = head;
@@ -187,5 +163,29 @@ public class SkipList {
         }
 
         return layer;
+    }
+
+    private final class Node {
+
+        private final Integer data;
+        private final int layer;
+
+        public Node[] next;
+
+        public Node(Integer data, int layer) {
+
+            this.data = data;
+            this.layer = layer;
+            this.next = new Node[layer + 1];
+        }
+
+        public Integer getData() {
+            return this.data;
+        }
+
+        @Override
+        public String toString() {
+            return "{ layer " + layer + " :: data " + data + " }";
+        }
     }
 }

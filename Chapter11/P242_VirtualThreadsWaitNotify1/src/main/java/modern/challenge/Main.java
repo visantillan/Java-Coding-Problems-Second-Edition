@@ -22,25 +22,26 @@ public class Main {
                     object.wait();
                     logger.info("After calling notify()");
                     logger.info(() -> Thread.currentThread() + " | " + Thread.currentThread().getState());
-                } catch (InterruptedException e) {}
+                } catch (InterruptedException e) {
+                }
             }
         });
-        
+
         Thread nThread = Thread.ofVirtual().unstarted(() -> {
             synchronized (object) {
                 logger.info(() -> Thread.currentThread() + " calls notify()");
                 object.notify();
             }
         });
-        
+
         wThread.start();
         Thread.sleep(1000); // give time to 'wThread' to start
         logger.info("'wThread' current status");
         logger.info(() -> wThread + " | " + wThread.getState());
-        
-        nThread.start();        
+
+        nThread.start();
         Thread.sleep(1000); // give time to 'nThread' to start
-        
+
         logger.info("After executing 'wThread'");
         logger.info(() -> wThread + " | " + wThread.getState());
     }

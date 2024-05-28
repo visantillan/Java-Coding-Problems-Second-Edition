@@ -5,6 +5,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.ByteOrder;
 import java.util.Arrays;
+
 import jdk.incubator.vector.IntVector;
 import jdk.incubator.vector.VectorSpecies;
 
@@ -86,6 +87,6 @@ public class Main {
                     .orElse(MemorySegment.NULL).toArray(ValueLayout.JAVA_INT);
 
             System.out.println("\nSub-array: " + Arrays.toString(subarray));
-        }       
+        }
     }
 }

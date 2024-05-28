@@ -19,7 +19,7 @@ public final class Filters {
                 .filter(item -> predicate.test(item.getKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
-    
+
     public static <K, V> Map<K, V> sortedByKey(Map<K, V> map, Predicate<K> predicate, Comparator<K> c) {
 
         return map.entrySet()

@@ -50,7 +50,7 @@ public final class MyCollectors {
     }
 
     public static <T, A extends T, R extends Collection<A>> Collector<T, ?, R>
-            toType(Class<A> type, Supplier<R> supplier) {
+    toType(Class<A> type, Supplier<R> supplier) {
 
         return Collector.of(supplier,
                 (R r, T t) -> {

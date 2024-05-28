@@ -24,49 +24,49 @@ public class Main {
                 9, new Car("Chevrolet", "gasoline", 350),
                 10, new Car("Lexus", "diesel", 300)
         );
-        
+
         TreeSet<String> electricBrands = cars.values().stream()
                 .filter(c -> "electric".equals(c.getFuel()))
                 .map(c -> c.getBrand())
                 .collect(MyCollectors.toTreeSet());
 
         System.out.println("Electric brands: " + electricBrands);
-        
+
         LinkedHashSet<Integer> hpSorted = cars.values().stream()
                 .map(c -> c.getHorsepower())
                 .sorted()
                 .collect(MyCollectors.toLinkedHashSet());
-        
+
         System.out.println("Sorted horsepower: " + hpSorted);
-        
+
         LinkedHashSet<Integer> excludeHp200 = cars.values().stream()
                 .map(c -> c.getHorsepower())
                 .sorted()
                 .collect(MyCollectors.exclude(c -> c > 200, MyCollectors.toLinkedHashSet()));
-        
+
         System.out.println("Sorted horsepower less than 200: " + excludeHp200);
-        
+
         Vehicle mazda = new Car("Mazda", "diesel", 155);
         Vehicle ferrari = new Car("Ferrari", "gasoline", 500);
-        
+
         Vehicle hov = new Submersible("HOV", 3000);
         Vehicle rov = new Submersible("ROV", 7000);
-        
+
         List<Vehicle> vehicles = List.of(mazda, hov, ferrari, rov);
-        
+
         List<Car> onlyCars = vehicles.stream()
                 .collect(MyCollectors.toType(Car.class, ArrayList::new));
-        
+
         Set<Submersible> onlySubmersible = vehicles.stream()
                 .collect(MyCollectors.toType(Submersible.class, HashSet::new));
-        
+
         System.out.println("Only cars:" + onlyCars);
-        System.out.println("Only submersible:" + onlySubmersible);       
-        
+        System.out.println("Only submersible:" + onlySubmersible);
+
         SplayTree st = cars.values().stream()
                 .map(c -> c.getHorsepower())
                 .collect(MyCollectors.toSplayTree());
-                
+
         System.out.println("SplayTree:");
         st.print(SplayTree.TraversalOrder.IN);
     }

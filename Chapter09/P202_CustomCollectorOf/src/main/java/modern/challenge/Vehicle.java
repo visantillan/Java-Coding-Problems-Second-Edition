@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public interface Vehicle {}
+public interface Vehicle {
+}

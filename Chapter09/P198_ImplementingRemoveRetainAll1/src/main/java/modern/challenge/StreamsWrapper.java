@@ -33,10 +33,10 @@ public class StreamsWrapper<T> implements Streams<T> {
 
     public StreamsWrapper(Stream<? extends T> delegator) {
         this.delegator = delegator.sequential();
-    }       
+    }
 
     @Override
-    public Streams<T> filter(Predicate<? super T> predicate) {        
+    public Streams<T> filter(Predicate<? super T> predicate) {
         return Streams.from(delegator.filter(predicate));
     }
 
@@ -193,7 +193,7 @@ public class StreamsWrapper<T> implements Streams<T> {
     @Override
     public Optional<T> findAny() {
         return ((Stream<T>) delegator).findAny();
-    }         
+    }
 
     @Override
     public List<T> toList() {
@@ -229,8 +229,8 @@ public class StreamsWrapper<T> implements Streams<T> {
     public <R> Streams<R> mapMulti(BiConsumer<? super T, ? super Consumer<R>> mapper) {
         return Streams.from(delegator.mapMulti(mapper));
     }
-    
-       @Override
+
+    @Override
     public Iterator<T> iterator() {
         return ((Stream<T>) delegator).iterator();
     }
@@ -239,7 +239,7 @@ public class StreamsWrapper<T> implements Streams<T> {
     public Spliterator<T> spliterator() {
         return ((Stream<T>) delegator).spliterator();
     }
-    
+
     @Override
     public Streams<T> onClose(Runnable closeHandler) {
         return Streams.from(delegator.onClose(closeHandler));
@@ -248,5 +248,5 @@ public class StreamsWrapper<T> implements Streams<T> {
     @Override
     public void close() {
         delegator.close();
-    }    
+    }
 }

@@ -82,9 +82,9 @@ public class Main {
 
         StructLayout product1
                 = MemoryLayout.structLayout(
-                        ValueLayout.JAVA_INT.withName("sku"),
-                        ValueLayout.JAVA_CHAR.withName("energy"),
-                        ValueLayout.JAVA_BYTE.withName("weight"));
+                ValueLayout.JAVA_INT.withName("sku"),
+                ValueLayout.JAVA_CHAR.withName("energy"),
+                ValueLayout.JAVA_BYTE.withName("weight"));
 
         System.out.println("Size: " + product1.byteSize());
         System.out.println("Alignment: " + product1.byteAlignment());
@@ -95,29 +95,29 @@ public class Main {
                 + product1.byteOffset(PathElement.groupElement("energy")));
         System.out.println("Weight byte offset: "
                 + product1.byteOffset(PathElement.groupElement("weight")));
-                                        
+
         VarHandle spHandle1 = product1.varHandle(PathElement.groupElement("sku"));
-        VarHandle epHandle1 = product1.varHandle(PathElement.groupElement("energy"));        
+        VarHandle epHandle1 = product1.varHandle(PathElement.groupElement("energy"));
         VarHandle wpHandle1 = product1.varHandle(PathElement.groupElement("weight"));
-        
-         try (Arena arena = Arena.openConfined()) {
-            
+
+        try (Arena arena = Arena.openConfined()) {
+
             MemorySegment segment = arena.allocate(product1);
-                        
-            spHandle1.set(segment, 10102);            
-            epHandle1.set(segment, 'D');                        
-            wpHandle1.set(segment, (byte) 12);            
-            
+
+            spHandle1.set(segment, 10102);
+            epHandle1.set(segment, 'D');
+            wpHandle1.set(segment, (byte) 12);
+
             System.out.println();
             System.out.println("Sku: " + spHandle1.get(segment));
-            System.out.println("Energy: " + epHandle1.get(segment));            
+            System.out.println("Energy: " + epHandle1.get(segment));
             System.out.println("Weight: " + wpHandle1.get(segment));
-         }
-        
+        }
+
         System.out.println("--------------------------------------------------");
         System.out.println();
         System.out.println("----------------------Case 2----------------------");
-        
+
         StructLayout product2 = MemoryLayout.structLayout(
                 ValueLayout.JAVA_CHAR.withName("energy"),
                 MemoryLayout.paddingLayout(16),
@@ -134,44 +134,44 @@ public class Main {
                 + product2.byteOffset(PathElement.groupElement("sku")));
         System.out.println("Weight byte offset: "
                 + product2.byteOffset(PathElement.groupElement("weight")));
-        
+
         // use arrayElementVarHandle()
         VarHandle erHandle2 = ValueLayout.JAVA_CHAR.arrayElementVarHandle();
         VarHandle srHandle2 = ValueLayout.JAVA_INT.arrayElementVarHandle();
         VarHandle wrHandle2 = ValueLayout.JAVA_BYTE.arrayElementVarHandle();
-        
-         try (Arena arena = Arena.openConfined()) {
-            
+
+        try (Arena arena = Arena.openConfined()) {
+
             MemorySegment segment = arena.allocate(product2);
-                        
-            erHandle2.set(segment, 0, 'D');            
-            srHandle2.set(segment, 1, 10102);            
-            wrHandle2.set(segment, 2, (byte) 12);            
-            
+
+            erHandle2.set(segment, 0, 'D');
+            srHandle2.set(segment, 1, 10102);
+            wrHandle2.set(segment, 2, (byte) 12);
+
             System.out.println();
             System.out.println("Energy: " + erHandle2.get(segment, 0));
             System.out.println("Sku: " + srHandle2.get(segment, 1));
             System.out.println("Weight: " + wrHandle2.get(segment, 2));
-         }
+        }
 
         // use PathElement
         VarHandle epHandle2 = product2.varHandle(PathElement.groupElement("energy"));
         VarHandle spHandle2 = product2.varHandle(PathElement.groupElement("sku"));
         VarHandle wpHandle2 = product2.varHandle(PathElement.groupElement("weight"));
-        
-         try (Arena arena = Arena.openConfined()) {
-            
+
+        try (Arena arena = Arena.openConfined()) {
+
             MemorySegment segment = arena.allocate(product2);
-                        
-            epHandle2.set(segment, 'D');            
-            spHandle2.set(segment, 10102);            
-            wpHandle2.set(segment, (byte) 12);            
-            
+
+            epHandle2.set(segment, 'D');
+            spHandle2.set(segment, 10102);
+            wpHandle2.set(segment, (byte) 12);
+
             System.out.println();
             System.out.println("Energy: " + epHandle2.get(segment));
             System.out.println("Sku: " + spHandle2.get(segment));
             System.out.println("Weight: " + wpHandle2.get(segment));
-         }
+        }
 
         System.out.println("--------------------------------------------------");
 
@@ -192,50 +192,50 @@ public class Main {
 
         System.out.println("Energy byte offset (0): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(0), PathElement.groupElement("energy")));
+                PathElement.sequenceElement(0), PathElement.groupElement("energy")));
         System.out.println("Energy byte offset (1): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(1), PathElement.groupElement("energy")));
+                PathElement.sequenceElement(1), PathElement.groupElement("energy")));
         System.out.println("Sku byte offset (0): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(0), PathElement.groupElement("sku")));
+                PathElement.sequenceElement(0), PathElement.groupElement("sku")));
         System.out.println("Sku byte offset (1): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(1), PathElement.groupElement("sku")));
+                PathElement.sequenceElement(1), PathElement.groupElement("sku")));
         System.out.println("Weight byte offset (0): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(0), PathElement.groupElement("weight")));
+                PathElement.sequenceElement(0), PathElement.groupElement("weight")));
         System.out.println("Weight byte offset (1): "
                 + product3.byteOffset(
-                        PathElement.sequenceElement(1), PathElement.groupElement("weight")));
-       
+                PathElement.sequenceElement(1), PathElement.groupElement("weight")));
+
         // use arrayElementVarHandle()
         VarHandle erHandle3 = ValueLayout.JAVA_CHAR.arrayElementVarHandle(2);
         VarHandle srHandle3 = ValueLayout.JAVA_INT.arrayElementVarHandle(2);
         VarHandle wrHandle3 = ValueLayout.JAVA_BYTE.arrayElementVarHandle(2);
-        
-         try (Arena arena = Arena.openConfined()) {
-            
+
+        try (Arena arena = Arena.openConfined()) {
+
             MemorySegment segment = arena.allocate(product3);
-                        
-            erHandle3.set(segment, 0, 0, 'D');            
-            srHandle3.set(segment, 1, 0, 10102);            
-            wrHandle3.set(segment, 2, 0, (byte) 12);            
-            
-            erHandle3.set(segment, 0, 1, 'A');            
-            srHandle3.set(segment, 1, 1, 454402);            
+
+            erHandle3.set(segment, 0, 0, 'D');
+            srHandle3.set(segment, 1, 0, 10102);
+            wrHandle3.set(segment, 2, 0, (byte) 12);
+
+            erHandle3.set(segment, 0, 1, 'A');
+            srHandle3.set(segment, 1, 1, 454402);
             wrHandle3.set(segment, 2, 1, (byte) 9);
-            
+
             System.out.println();
             System.out.println("Energy (1): " + erHandle3.get(segment, 0, 0));
             System.out.println("Sku (1): " + srHandle3.get(segment, 1, 0));
             System.out.println("Weight (1): " + wrHandle3.get(segment, 2, 0));
-            
+
             System.out.println();
             System.out.println("Energy (2): " + erHandle3.get(segment, 0, 1));
             System.out.println("Sku (2): " + srHandle3.get(segment, 1, 1));
             System.out.println("Weight (2): " + wrHandle3.get(segment, 2, 1));
-         }
+        }
 
         // use PathElement
         VarHandle epHandle3 = product3.varHandle(
@@ -244,40 +244,40 @@ public class Main {
                 PathElement.sequenceElement(), PathElement.groupElement("sku"));
         VarHandle wpHandle3 = product3.varHandle(
                 PathElement.sequenceElement(), PathElement.groupElement("weight"));
-        
-         try (Arena arena = Arena.openConfined()) {
-            
+
+        try (Arena arena = Arena.openConfined()) {
+
             MemorySegment segment = arena.allocate(product3);
-                        
-            epHandle3.set(segment, 0, 'D');            
-            spHandle3.set(segment, 0, 10102);            
-            wpHandle3.set(segment, 0, (byte) 12);            
-            
-            epHandle3.set(segment, 1, 'A');            
-            spHandle3.set(segment, 1, 454402);            
-            wpHandle3.set(segment, 1, (byte) 9);            
-            
+
+            epHandle3.set(segment, 0, 'D');
+            spHandle3.set(segment, 0, 10102);
+            wpHandle3.set(segment, 0, (byte) 12);
+
+            epHandle3.set(segment, 1, 'A');
+            spHandle3.set(segment, 1, 454402);
+            wpHandle3.set(segment, 1, (byte) 9);
+
             System.out.println();
             System.out.println("Energy (1): " + epHandle3.get(segment, 0));
             System.out.println("Sku (1): " + spHandle3.get(segment, 0));
             System.out.println("Weight (1): " + wpHandle3.get(segment, 0));
-            
+
             System.out.println();
             System.out.println("Energy (2): " + epHandle3.get(segment, 1));
             System.out.println("Sku (2): " + spHandle3.get(segment, 1));
             System.out.println("Weight (2): " + wpHandle3.get(segment, 1));
-         }
+        }
 
         System.out.println("--------------------------------------------------");
-        
+
         System.out.println();
         System.out.println("----------------------Case 4----------------------");
 
         StructLayout product4 = MemoryLayout.structLayout(
                 ValueLayout.JAVA_BYTE.withName("weight"),
                 MemoryLayout.paddingLayout(8),  // 1 byte (8 bits)
-                ValueLayout.JAVA_CHAR.withName("energy"),                
-                ValueLayout.JAVA_INT.withName("sku")            
+                ValueLayout.JAVA_CHAR.withName("energy"),
+                ValueLayout.JAVA_INT.withName("sku")
         );
 
         System.out.println("Size: " + product4.byteSize());
@@ -288,12 +288,12 @@ public class Main {
         System.out.println("Energy byte offset: "
                 + product4.byteOffset(PathElement.groupElement("energy")));
         System.out.println("Sku byte offset: "
-                + product4.byteOffset(PathElement.groupElement("sku")));        
+                + product4.byteOffset(PathElement.groupElement("sku")));
 
         /* challenge yourself to use arrayElementVarHandle() or PathElement */
 
         System.out.println("--------------------------------------------------");
-        
+
         System.out.println();
         System.out.println("----------------------Case 5----------------------");
 
@@ -301,18 +301,18 @@ public class Main {
                 ValueLayout.JAVA_INT.withName("sku"),
                 ValueLayout.JAVA_BYTE.withName("weight"),
                 MemoryLayout.paddingLayout(8),  // 1 byte (8 bits)
-                ValueLayout.JAVA_CHAR.withName("energy")                
+                ValueLayout.JAVA_CHAR.withName("energy")
         );
 
         System.out.println("Size: " + product5.byteSize());
         System.out.println("Alignment: " + product5.byteAlignment());
 
         System.out.println("Sku byte offset: "
-                + product5.byteOffset(PathElement.groupElement("sku")));        
+                + product5.byteOffset(PathElement.groupElement("sku")));
         System.out.println("Weight byte offset: "
                 + product5.byteOffset(PathElement.groupElement("weight")));
         System.out.println("Energy byte offset: "
-                + product5.byteOffset(PathElement.groupElement("energy")));        
+                + product5.byteOffset(PathElement.groupElement("energy")));
 
         /* challenge yourself to use arrayElementVarHandle() or PathElement */
 

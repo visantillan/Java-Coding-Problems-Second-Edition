@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public record MelonContainerRecord(LocalDate expiration, String batch, Melon melon) implements Serializable {
 
-    public MelonContainerRecord   {
+    public MelonContainerRecord {
 
         Objects.requireNonNull(expiration, "The expiration date cannot be null");
         Objects.requireNonNull(batch, "The batch cannot be null");
@@ -22,7 +22,7 @@ public record MelonContainerRecord(LocalDate expiration, String batch, Melon mel
             throw new IllegalArgumentException("The expiration date cannot be before the current date");
         }
     }
-    
+
     @Serial
     private Object readResolve() throws ObjectStreamException {
         System.out.println("Deserialization is done via readResolve() ...");

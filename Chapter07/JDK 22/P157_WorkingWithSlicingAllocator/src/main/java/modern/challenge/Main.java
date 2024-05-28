@@ -23,13 +23,13 @@ public class Main {
             System.out.println("Segment 2: " + Arrays.toString(segment2.toArray(ValueLayout.JAVA_INT)));
             System.out.println("Segment 3: " + Arrays.toString(segment3.toArray(ValueLayout.JAVA_INT)));
         }
-        
+
         System.out.println();
 
         // using a pre-allocated segment that doesn't fit all data
         try (Arena arena = Arena.ofConfined()) {
-                                                                  // it should be 10 * 4 + 4 * 4
-            SegmentAllocator allocator = SegmentAllocator.slicingAllocator(arena.allocate(10 * 4)); 
+            // it should be 10 * 4 + 4 * 4
+            SegmentAllocator allocator = SegmentAllocator.slicingAllocator(arena.allocate(10 * 4));
 
             MemorySegment segment1 = allocator.allocateFrom(ValueLayout.JAVA_INT, arr1);
             MemorySegment segment2 = allocator.allocateFrom(ValueLayout.JAVA_INT, arr2);

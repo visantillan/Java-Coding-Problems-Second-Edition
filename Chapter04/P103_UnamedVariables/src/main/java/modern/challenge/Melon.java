@@ -3,8 +3,8 @@ package modern.challenge;
 import java.util.Objects;
 
 public class Melon {
-    
-private final String type;
+
+    private final String type;
     private final int weight;
 
     public Melon(String type, int weight) {
@@ -48,7 +48,7 @@ private final String type;
         }
         return true;
     }
-        
+
     @Override
     public String toString() {
         return type + "(" + weight + "g)";

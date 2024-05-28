@@ -17,12 +17,12 @@ public final class Strings {
         }
 
         Map<Character, Character> map = new HashMap<>();
-        
+
         for (int i = 0; i < s1.length(); i++) {
 
             char chs1 = s1.charAt(i);
             char chs2 = s2.charAt(i);
-                        
+
             if (map.containsKey(chs1)) {
                 if (map.get(chs1) != chs2) {
                     return false;

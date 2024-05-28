@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public class B {}
+public class B {
+}

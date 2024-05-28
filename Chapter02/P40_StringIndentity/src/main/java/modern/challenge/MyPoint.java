@@ -1,7 +1,7 @@
 package modern.challenge;
 
 public class MyPoint {
-    
+
     private final int x;
     private final int y;
     private final int z;
@@ -53,9 +53,9 @@ public class MyPoint {
         }
         return this.z == other.z;
     }
-       
+
     @Override
     public String toString() {
         return "MyPoint{" + "x=" + x + ", y=" + y + ", z=" + z + '}';
-    }        
+    }
 }

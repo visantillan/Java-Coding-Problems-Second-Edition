@@ -16,7 +16,7 @@ public class Main {
 
                     if (m.isDefault()) {
                         return MethodHandles.lookup().findSpecial(Printable.class, "print",
-                                MethodType.methodType(void.class, String.class), Printable.class)
+                                        MethodType.methodType(void.class, String.class), Printable.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
                     }
@@ -33,7 +33,7 @@ public class Main {
 
                     if (m.isDefault()) {
                         return MethodHandles.lookup().findSpecial(Writable.class, "write",
-                                MethodType.methodType(void.class, String.class), Writable.class)
+                                        MethodType.methodType(void.class, String.class), Writable.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
                     }
@@ -50,7 +50,7 @@ public class Main {
 
                     if (m.isDefault()) {
                         return MethodHandles.lookup().findSpecial(Draft.class, "write",
-                                MethodType.methodType(void.class, String.class), Draft.class)
+                                        MethodType.methodType(void.class, String.class), Draft.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
                     }
@@ -68,12 +68,12 @@ public class Main {
                     if (m.isDefault() && m.getName().equals("write")) {
 
                         MethodHandles.lookup().findSpecial(Draft.class, m.getName(),
-                                MethodType.methodType(void.class, m.getParameterTypes()), Draft.class)
+                                        MethodType.methodType(void.class, m.getParameterTypes()), Draft.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
 
                         return MethodHandles.lookup().findSpecial(Writable.class, m.getName(),
-                                MethodType.methodType(void.class, m.getParameterTypes()), Writable.class)
+                                        MethodType.methodType(void.class, m.getParameterTypes()), Writable.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
                     }
@@ -90,7 +90,7 @@ public class Main {
 
                     if (m.isDefault()) {
                         return MethodHandles.lookup().findSpecial(Book.class, "print",
-                                MethodType.methodType(void.class, String.class), Book.class)
+                                        MethodType.methodType(void.class, String.class), Book.class)
                                 .bindTo(o)
                                 .invokeWithArguments(p);
                     }

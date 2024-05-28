@@ -41,46 +41,46 @@ public final class DateConverters {
                 .with(weekFields.weekOfYear(), week)
                 .with(weekFields.dayOfWeek(), 1);
     }
-    
+
     public static int getYearV1(Date date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given name cannot be null");
-        }        
-        
+        }
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-       
+
         return calendar.get(Calendar.YEAR);
     }
-    
+
     public static int getWeekV1(Date date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given name cannot be null");
         }
-        
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-       
+
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
-    
+
     public static int getYearV2(LocalDate date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given name cannot be null");
         }
-                
+
         return date.get(ChronoField.YEAR);
     }
-    
+
     public static int getWeekV2(LocalDate date) {
-        
-        if(date == null) {
+
+        if (date == null) {
             throw new IllegalArgumentException("The given name cannot be null");
         }
-          
+
         // return date.get(WeekFields.of(Locale.getDefault()).weekOfYear());         
         return date.get(ChronoField.ALIGNED_WEEK_OF_YEAR);
     }

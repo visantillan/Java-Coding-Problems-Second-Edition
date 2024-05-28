@@ -19,7 +19,7 @@ public class Charsets {
         final StringBuilder strBinary = new StringBuilder();
 
         for (byte strByte : strBytes) {
-           
+
             for (int i = 0; i < 8; i++) {
 
                 strBinary.append((strByte & 128) == 0 ? 0 : 1);

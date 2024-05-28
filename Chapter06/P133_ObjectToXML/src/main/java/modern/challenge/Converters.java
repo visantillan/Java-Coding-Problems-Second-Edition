@@ -2,6 +2,7 @@ package modern.challenge;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedOutputStream;
@@ -20,7 +21,7 @@ public final class Converters {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        try ( XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(baos))) {
+        try (XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(baos))) {
             encoder.writeObject(obj);
         }
 
@@ -31,8 +32,8 @@ public final class Converters {
 
     public static Object XMLToObject(String xml) throws IOException {
 
-        try ( InputStream is = new ByteArrayInputStream(xml.getBytes());  
-                XMLDecoder decoder = new XMLDecoder(is)) {
+        try (InputStream is = new ByteArrayInputStream(xml.getBytes());
+             XMLDecoder decoder = new XMLDecoder(is)) {
 
             return decoder.readObject();
         }

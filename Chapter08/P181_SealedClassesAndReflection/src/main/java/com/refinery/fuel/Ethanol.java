@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public final class Ethanol extends Petroleum {}
+public final class Ethanol extends Petroleum {
+}

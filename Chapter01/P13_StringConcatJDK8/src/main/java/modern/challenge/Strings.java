@@ -24,25 +24,25 @@ public class Strings {
 
         return sb.toString();
     }
-    
+
     public static String concatListViaPlus(List<String> strs) {
 
         String result = "";
-        for(String str: strs) {
+        for (String str : strs) {
             result = result + str;
         }
-        
+
         return result;
     }
-    
+
     public static String concatListViaStringBuilder(List<String> strs) {
 
         StringBuilder result = new StringBuilder();
-        
-        for(String str: strs) {
+
+        for (String str : strs) {
             result.append(str);
         }
-        
+
         return result.toString();
     }
 }

@@ -11,7 +11,7 @@ public record MelonRecord(String type, float weight) {
     private static Set<String> countries = new HashSet<>();
 
     // using the compact constructor specific to records
-    public MelonRecord  {
+    public MelonRecord {
 
         if (type == null) {
             throw new IllegalArgumentException("The melon's type cannot be null");
@@ -25,7 +25,7 @@ public record MelonRecord(String type, float weight) {
     MelonRecord() {
         this(DEFAULT_MELON_TYPE, DEFAULT_MELON_WEIGHT);
     }
-    
+
     MelonRecord(String type) {
         this(type, DEFAULT_MELON_WEIGHT);
     }

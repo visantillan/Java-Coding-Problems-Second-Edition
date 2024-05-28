@@ -23,14 +23,14 @@ public class Main {
     }
 
     public static void main(String[] args) throws Throwable {
-        
+
         MethodHandle comparatorHandle = MethodHandles.lookup()
                 .findStatic(Main.class, "comparator", MethodType.methodType(
                         int.class, MemorySegment.class, MemorySegment.class));
 
         Linker linker = Linker.nativeLinker();
         SymbolLookup libLookup = linker.defaultLookup();
-        
+
         MemorySegment comparatorFunc = linker.upcallStub(comparatorHandle,
                 FunctionDescriptor.of(ValueLayout.JAVA_INT,
                         ValueLayout.ADDRESS.asUnbounded(),
@@ -53,7 +53,7 @@ public class Main {
                     key, array, 10, ValueLayout.JAVA_INT.byteSize(), comparatorFunc);
 
             if (result.equals(MemorySegment.NULL)) {
-                System.out.println("Element " + elem 
+                System.out.println("Element " + elem
                         + " not found in the given array " + Arrays.toString(arr));
             } else {
                 long offset = array.segmentOffset(result);

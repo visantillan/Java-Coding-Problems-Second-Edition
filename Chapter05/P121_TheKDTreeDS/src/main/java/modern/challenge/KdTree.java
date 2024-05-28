@@ -10,51 +10,6 @@ public class KdTree {
     private double foundDistance;
     private int visited;
 
-    private final class Node {
-
-        private final double[] coords;
-
-        private Node left;
-        private Node right;
-
-        public Node(double[] coords) {
-            this.coords = coords;
-        }
-
-        double get(int index) {
-            return coords[index];
-        }
-
-        double theDistance(Node node) {
-
-            double distTotal = 0;
-            for (int i = 0; i < coords.length; ++i) {
-                double dist = coords[i] - node.coords[i];
-                distTotal += dist * dist;
-            }
-
-            return distTotal;
-        }
-
-        @Override
-        public String toString() {
-
-            StringBuilder sb = new StringBuilder("(");
-            for (int i = 0; i < coords.length; ++i) {
-
-                if (i > 0) {
-                    sb.append(", ");
-                }
-
-                sb.append(coords[i]);
-            }
-
-            sb.append(')');
-
-            return sb.toString();
-        }
-    }
-
     public void insert(double[] coords) {
         root = insert(root, coords, 0);
     }
@@ -152,5 +107,50 @@ public class KdTree {
 
     private Node newNode(double[] coords) {
         return new Node(coords);
+    }
+
+    private final class Node {
+
+        private final double[] coords;
+
+        private Node left;
+        private Node right;
+
+        public Node(double[] coords) {
+            this.coords = coords;
+        }
+
+        double get(int index) {
+            return coords[index];
+        }
+
+        double theDistance(Node node) {
+
+            double distTotal = 0;
+            for (int i = 0; i < coords.length; ++i) {
+                double dist = coords[i] - node.coords[i];
+                distTotal += dist * dist;
+            }
+
+            return distTotal;
+        }
+
+        @Override
+        public String toString() {
+
+            StringBuilder sb = new StringBuilder("(");
+            for (int i = 0; i < coords.length; ++i) {
+
+                if (i > 0) {
+                    sb.append(", ");
+                }
+
+                sb.append(coords[i]);
+            }
+
+            sb.append(')');
+
+            return sb.toString();
+        }
     }
 }

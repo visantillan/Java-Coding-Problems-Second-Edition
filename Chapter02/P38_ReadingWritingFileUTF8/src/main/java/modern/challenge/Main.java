@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println("\n\nRead a text file using UTF-8 (before JDK 18):");
         System.out.println("-------------------------------------------------");
-        try ( BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new FileReader(chineseUtf8File.toFile(), StandardCharsets.UTF_8))) {
 
             String line;
@@ -30,7 +30,7 @@ public class Main {
 
         System.out.println("\n\nRead a text file using UTF-8 (JDK 18+):");
         System.out.println("-------------------------------------------");
-        try ( BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new FileReader(chineseUtf8File.toFile()))) {
 
             String line;
@@ -41,7 +41,7 @@ public class Main {
 
         System.out.println("\n\nRead a text file using UTF-16 (all JDKs):");
         System.out.println("---------------------------------------------");
-        try ( BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new FileReader(chineseUtf16File.toFile(), StandardCharsets.UTF_16))) {
 
             String line;
@@ -54,7 +54,7 @@ public class Main {
         System.out.println("-----------------------------------------------");
 
         Path textFile1 = Paths.get("sampleUtf8BeforeJDK18.txt");
-        try ( BufferedWriter bw = Files.newBufferedWriter(
+        try (BufferedWriter bw = Files.newBufferedWriter(
                 textFile1, StandardCharsets.UTF_8,
                 StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
 
@@ -67,7 +67,7 @@ public class Main {
         System.out.println("-----------------------------------------");
 
         Path textFile2 = Paths.get("sampleUtf8AfterJDK18.txt");
-        try ( BufferedWriter bw = Files.newBufferedWriter(textFile2,
+        try (BufferedWriter bw = Files.newBufferedWriter(textFile2,
                 StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
 
             bw.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit, ");
@@ -79,7 +79,7 @@ public class Main {
         System.out.println("-------------------------------------------");
 
         Path textFile3 = Paths.get("sampleUtf16.txt");
-        try ( BufferedWriter bw = Files.newBufferedWriter(
+        try (BufferedWriter bw = Files.newBufferedWriter(
                 textFile3, StandardCharsets.UTF_16,
                 StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
 

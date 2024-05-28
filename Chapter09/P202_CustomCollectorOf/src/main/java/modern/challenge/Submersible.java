@@ -3,7 +3,7 @@ package modern.challenge;
 import java.util.Objects;
 
 public class Submersible implements Vehicle {
-    
+
     private final String type;
     private final double maxdepth;
 
@@ -49,5 +49,5 @@ public class Submersible implements Vehicle {
     @Override
     public String toString() {
         return "Submersible{" + "type=" + type + ", maxdepth=" + maxdepth + '}';
-    }        
+    }
 }

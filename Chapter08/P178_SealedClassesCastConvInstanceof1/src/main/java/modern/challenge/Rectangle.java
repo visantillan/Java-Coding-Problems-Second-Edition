@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public class Rectangle extends Triangle implements Quadrilateral {}
+public class Rectangle extends Triangle implements Quadrilateral {
+}

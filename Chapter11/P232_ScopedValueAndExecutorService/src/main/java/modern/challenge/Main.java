@@ -9,17 +9,17 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-    
+
     private static final ScopedValue<String> SCOPED_VALUE = ScopedValue.newInstance();
 
     public static void main(String[] args) throws InterruptedException, Exception {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
-                "[%1$tT] [%4$-7s] %5$s %n");        
-        
-        Runnable task = () -> {           
-                         
-            logger.info(() -> Thread.currentThread().toString() 
+                "[%1$tT] [%4$-7s] %5$s %n");
+
+        Runnable task = () -> {
+
+            logger.info(() -> Thread.currentThread().toString()
                     + " | before sleep | " + (SCOPED_VALUE.isBound() ? SCOPED_VALUE.get() : "Not bound"));
 
             try {
@@ -27,12 +27,12 @@ public class Main {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 logger.severe(() -> "Exception: " + ex);
-            }                        
-            
-            logger.info(() -> Thread.currentThread().toString() 
+            }
+
+            logger.info(() -> Thread.currentThread().toString()
                     + " | after sleep | " + (SCOPED_VALUE.isBound() ? SCOPED_VALUE.get() : "Not bound"));
         };
-        
+
         // Executors.newFixedThreadPool(10)
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
@@ -41,5 +41,5 @@ public class Main {
                 executor.submit(() -> ScopedValue.where(SCOPED_VALUE, "Kaboooom-" + copy_i).run(task));
             }
         }
-    }  
+    }
 }

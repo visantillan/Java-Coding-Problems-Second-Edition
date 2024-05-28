@@ -14,38 +14,38 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-    
+
     private static final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "[%1$tT] [%4$-7s] %5$s %n");
-               
+
         logger.info(buildTestingTeam().toString());
     }
-    
+
     public static TestingTeam buildTestingTeam() throws InterruptedException, ExecutionException {
-        
+
         CompletableFuture<String> cfTester1 = fetchTester1();
         CompletableFuture<String> cfTester2 = fetchTester2();
         CompletableFuture<String> cfTester3 = fetchTester3();
-        
+
         CompletableFuture<Void> fetchTesters = CompletableFuture.allOf(
                 cfTester1, cfTester2, cfTester3);
 
         fetchTesters.get();
-        
+
         TestingTeam team = new TestingTeam(
                 cfTester1.resultNow(), cfTester2.resultNow(), cfTester3.resultNow());
-        
+
         return team;
     }
 
     public static CompletableFuture<String> fetchTester1() {
 
         return CompletableFuture.supplyAsync(() -> {
-            
+
             String tester1 = null;
             try {
                 logger.info(Thread.currentThread().toString());
@@ -56,12 +56,12 @@ public class Main {
 
         }, executor);
     }
-    
+
     public static CompletableFuture<String> fetchTester2() {
-    
+
 
         return CompletableFuture.supplyAsync(() -> {
-            
+
             String tester2 = null;
             try {
                 logger.info(Thread.currentThread().toString());
@@ -72,11 +72,11 @@ public class Main {
 
         }, executor);
     }
-    
+
     public static CompletableFuture<String> fetchTester3() {
 
         return CompletableFuture.supplyAsync(() -> {
-            
+
             String tester3 = null;
             try {
                 logger.info(Thread.currentThread().toString());

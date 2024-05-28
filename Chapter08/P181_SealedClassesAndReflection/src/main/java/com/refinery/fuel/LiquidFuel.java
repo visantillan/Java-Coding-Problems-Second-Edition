@@ -1,3 +1,4 @@
 package com.refinery.fuel;
 
-public sealed interface LiquidFuel extends Fuel permits Petroleum {}
+public sealed interface LiquidFuel extends Fuel permits Petroleum {
+}

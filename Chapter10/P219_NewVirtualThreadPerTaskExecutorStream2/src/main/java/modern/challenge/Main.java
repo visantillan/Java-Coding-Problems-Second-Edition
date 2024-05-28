@@ -19,7 +19,7 @@ public class Main {
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
             List<String> results1 = executor.invokeAll(
-                    List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
+                            List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
                     .stream()
                     .filter(f -> f.state() == Future.State.SUCCESS)
                     .<String>mapMulti((f, c) -> {
@@ -27,14 +27,14 @@ public class Main {
                     }).collect(Collectors.toList());
 
             List<String> results2 = executor.invokeAll(
-                    List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
+                            List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
                     .stream()
                     .filter(f -> f.state() == Future.State.SUCCESS)
                     .map(f -> f.resultNow().toString())
                     .toList();
 
             List<Object> results3 = executor.invokeAll(
-                    List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
+                            List.of(() -> "pass01", () -> "pass02", () -> "pass03"))
                     .stream()
                     .filter(f -> f.state() == Future.State.SUCCESS)
                     .map(Future::resultNow)
@@ -45,15 +45,15 @@ public class Main {
             logger.info(results3.toString());
 
             List<Throwable> exceptions1 = executor.invokeAll(
-                    List.of(() -> "pass01", () -> "pass02".substring(50), () -> "pass03"))
+                            List.of(() -> "pass01", () -> "pass02".substring(50), () -> "pass03"))
                     .stream()
                     .filter(f -> f.state() == Future.State.FAILED)
                     .<Throwable>mapMulti((f, c) -> {
                         c.accept((Throwable) f.exceptionNow());
                     }).collect(Collectors.toList());
-            
+
             List<Throwable> exceptions2 = executor.invokeAll(
-                    List.of(() -> "pass01", () -> "pass02".substring(50), () -> "pass03"))
+                            List.of(() -> "pass01", () -> "pass02".substring(50), () -> "pass03"))
                     .stream()
                     .filter(f -> f.state() == Future.State.FAILED)
                     .map(Future::exceptionNow)

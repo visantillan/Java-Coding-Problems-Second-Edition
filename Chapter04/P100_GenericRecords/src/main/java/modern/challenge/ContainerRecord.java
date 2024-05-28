@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public record ContainerRecord<C>(C c) {}
+public record ContainerRecord<C>(C c) {
+}

@@ -21,16 +21,16 @@ public class Main {
             List<Future<String>> futures = executor.invokeAll(
                     List.of(() -> "pass01", () -> "pass02", () -> "pass03")
             );
-            
+
             futures.forEach(f -> logger.info(() -> "State: " + f.state()));
         }
-        
+
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
             String result = executor.invokeAny(
                     List.of(() -> "pass01", () -> "pass02", () -> "pass03")
             );
-            
+
             logger.info(result);
         }
     }

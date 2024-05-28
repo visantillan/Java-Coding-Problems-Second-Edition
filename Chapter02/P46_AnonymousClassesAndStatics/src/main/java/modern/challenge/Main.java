@@ -39,7 +39,7 @@ public class Main {
             }
         };    
         */
-        
+
         // before JDK 16 
         /*
         Printer printer = new Printer() {
@@ -70,7 +70,7 @@ public class Main {
             }            
         };
         */
-        
+
         // JDK 16+        
         /*
         Printer printer = new Printer() {
@@ -94,8 +94,8 @@ public class Main {
                 System.out.println("Set high resolution ...");
             }
         };
-        */           
-        
+        */
+
         Printer printer = new Printer() {
 
             @Override
@@ -120,7 +120,7 @@ public class Main {
                 }
             }
         };
-         
+
         printer.print("ok");
         System.out.println();
         printer.print("best");

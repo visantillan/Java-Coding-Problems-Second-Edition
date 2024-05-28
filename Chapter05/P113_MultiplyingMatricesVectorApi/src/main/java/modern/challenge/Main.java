@@ -2,12 +2,14 @@ package modern.challenge;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
+
 import jdk.incubator.vector.FloatVector;
 import jdk.incubator.vector.VectorSpecies;
 
 public class Main {
 
     private static final VectorSpecies<Float> VS = FloatVector.SPECIES_PREFERRED;
+    private static final VectorSpecies<Float> VS_512 = FloatVector.SPECIES_512;
 
     public static float[] mulMatrix(float[] x, float[] y, int size) {
 
@@ -29,8 +31,6 @@ public class Main {
 
         return z;
     }
-
-    private static final VectorSpecies<Float> VS_512 = FloatVector.SPECIES_512;
 
     public static float[] mulMatrixAVX512(float[] x, float[] y, int size) {
 
@@ -63,7 +63,7 @@ public class Main {
         //                 | 5 4 3 7 |   | 7 4 9 9 |   | 93  110 111 134 |
         //   x * y = z,    | 2 2 6 2 | * | 5 6 7 3 | = | 60  68  76  66  |
         //                 | 4 1 2 5 |   | 5 8 7 7 |   | 54  72  62  82  |
-        
+
         float[] x = new float[]{1, 2, 5, 4, 5, 4, 3, 7, 2, 2, 6, 2, 4, 1, 2, 5};
         float[] y = new float[]{3, 4, 1, 8, 7, 4, 9, 9, 5, 6, 7, 3, 5, 8, 7, 7};
 

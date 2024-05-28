@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unchecked") 
+@SuppressWarnings("unchecked")
 public final class Joins {
 
     private Joins() {

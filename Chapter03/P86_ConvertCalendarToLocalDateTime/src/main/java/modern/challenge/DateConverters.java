@@ -30,7 +30,7 @@ public final class DateConverters {
         }
 
         Date date = calendar.getTime();
-        
+
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
@@ -43,7 +43,7 @@ public final class DateConverters {
         return ZonedDateTime.ofInstant(calendar.toInstant(), // or, Instant.ofEpochMilli(calendar.getTimeInMillis())
                 calendar.getTimeZone().toZoneId());
     }
-    
+
     public static ZonedDateTime toZonedDateTimeV2(Calendar calendar) {
 
         if (calendar == null) {
@@ -51,7 +51,7 @@ public final class DateConverters {
         }
 
         Date date = calendar.getTime();
-        
+
         return date.toInstant().atZone(calendar.getTimeZone().toZoneId());
     }
 }

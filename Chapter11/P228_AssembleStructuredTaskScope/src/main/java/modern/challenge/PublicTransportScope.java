@@ -14,17 +14,14 @@ public class PublicTransportScope extends StructuredTaskScope<List<PublicTranspo
     protected void handleComplete(Subtask<? extends List<PublicTransportOffer>> subtask) {
 
         switch (subtask.state()) {
-            case SUCCESS ->
-                results.add(subtask.get());
-            case FAILED ->
-                exceptions.add(subtask.exception());
-            case UNAVAILABLE ->
-                throw new IllegalStateException("Subtask may still running ...");
+            case SUCCESS -> results.add(subtask.get());
+            case FAILED -> exceptions.add(subtask.exception());
+            case UNAVAILABLE -> throw new IllegalStateException("Subtask may still running ...");
         }
     }
 
     public PublicTransportOffer recommendedPublicTransport() {
-        
+
         super.ensureOwnerAndJoined();
 
         return results.stream()
@@ -34,10 +31,10 @@ public class PublicTransportScope extends StructuredTaskScope<List<PublicTranspo
     }
 
     private PublicTransportException wrappingExceptions() {
-        
+
         super.ensureOwnerAndJoined();
 
-        PublicTransportException exceptionWrapper 
+        PublicTransportException exceptionWrapper
                 = new PublicTransportException("Public transport exception");
         exceptions.forEach(exceptionWrapper::addSuppressed);
 

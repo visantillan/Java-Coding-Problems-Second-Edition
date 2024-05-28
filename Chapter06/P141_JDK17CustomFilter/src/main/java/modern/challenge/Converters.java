@@ -19,7 +19,7 @@ public final class Converters {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        try ( ObjectOutputStream ois = new ObjectOutputStream(baos)) {
+        try (ObjectOutputStream ois = new ObjectOutputStream(baos)) {
             ois.writeObject(obj);
         }
 
@@ -28,17 +28,17 @@ public final class Converters {
         return baos.toByteArray();
     }
 
-    public static Object bytesToObject(byte[] bytes, 
-            ObjectInputFilter allowFilter, ObjectInputFilter rejectFilter)
+    public static Object bytesToObject(byte[] bytes,
+                                       ObjectInputFilter allowFilter, ObjectInputFilter rejectFilter)
             throws IOException, ClassNotFoundException {
 
-        try ( InputStream is = new ByteArrayInputStream(bytes);  
-                ObjectInputStream ois = new ObjectInputStream(is)) {
+        try (InputStream is = new ByteArrayInputStream(bytes);
+             ObjectInputStream ois = new ObjectInputStream(is)) {
 
             // set the filters
             ObjectInputFilter filters = ObjectInputFilter.merge(allowFilter, rejectFilter);
             ois.setObjectInputFilter(filters);
-            
+
             return ois.readObject();
         }
     }

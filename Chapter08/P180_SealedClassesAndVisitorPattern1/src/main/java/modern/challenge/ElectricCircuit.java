@@ -19,14 +19,14 @@ public class ElectricCircuit implements ElectricComponent {
 
     public List<ElectricComponent> getComps() {
         return comps;
-    }        
+    }
 
     public void add(ElectricComponent... comp) {
         comps.addAll(Arrays.asList(comp));
     }
-    
+
     @Override
     public String accept(ElectricComponentVisitor visitor) {
         return visitor.visit(this);
-    }   
+    }
 }

@@ -1,6 +1,7 @@
 package modern.challenge;
 
 import java.util.Arrays;
+
 import jdk.incubator.vector.IntVector;
 import jdk.incubator.vector.VectorMask;
 import jdk.incubator.vector.VectorSpecies;
@@ -35,7 +36,7 @@ public class Main {
             zVector.intoArray(z, i);
         }
 
-        if (i <= (x.length - 1)) {            
+        if (i <= (x.length - 1)) {
             VectorMask<Integer> mask = VS256.indexInRange(i, x.length);
 
             IntVector zVector = IntVector.fromArray(VS256, x, i, mask)

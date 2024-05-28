@@ -29,9 +29,9 @@ public class Main {
                         logger.info(() -> "Added in list " + nextInt
                                 + " by generator " + anotherSplittableGenerator.hashCode()
                                 + " running in thread" + Thread.currentThread().getName());
-                        listOfInts.add(nextInt);                        
+                        listOfInts.add(nextInt);
                     });
-                });        
+                });
 
         shutdownExecutor(executorService);
     }

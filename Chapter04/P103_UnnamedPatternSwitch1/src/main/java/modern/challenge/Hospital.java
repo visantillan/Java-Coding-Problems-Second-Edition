@@ -1,11 +1,11 @@
 package modern.challenge;
 
 public final class Hospital {
-    
+
     private Hospital() {
         throw new AssertionError("Cannot be instantiated");
-    }        
-    
+    }
+
     public static String cabinet(Staff staff) {
           
         /*
@@ -17,16 +17,14 @@ public final class Hospital {
             default -> "Cabinet closed";
         };
         */
-        
-        return switch(staff) { 
-            case Doctor(_, String specialty) -> 
-                "The cabinet of " + specialty + " is currently under renovation";
-            case Resident(String name, _) -> 
-                "The resident of this cabinet is : " + name;
+
+        return switch (staff) {
+            case Doctor(_, String specialty) -> "The cabinet of " + specialty + " is currently under renovation";
+            case Resident(String name, _) -> "The resident of this cabinet is : " + name;
             default -> "Cabinet closed";
-        };                          
+        };
     }
-    
+
     public static String reception(Object o) {
               
         /*
@@ -38,11 +36,10 @@ public final class Hospital {
             default -> "";
         };
         */
-        
-        return switch(o) {            
-            case Patient(String ptname, _, _) ->
-                  "Patient " + ptname + " has an appointment";
+
+        return switch (o) {
+            case Patient(String ptname, _, _) -> "Patient " + ptname + " has an appointment";
             default -> "";
-        };       
-    }    
+        };
+    }
 }

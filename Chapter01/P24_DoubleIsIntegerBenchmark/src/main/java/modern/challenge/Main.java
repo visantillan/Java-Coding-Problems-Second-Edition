@@ -1,17 +1,10 @@
 package modern.challenge;
 
 import com.google.common.math.DoubleMath;
+import org.openjdk.jmh.annotations.*;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Param;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
@@ -22,6 +15,10 @@ public class Main {
 
     @Param({"23.11", "23"})
     private double v;
+
+    public static void main(String[] args) throws IOException {
+        org.openjdk.jmh.Main.main(args);
+    }
 
     @Benchmark
     public boolean isDoubleIntegerV1() {
@@ -57,9 +54,5 @@ public class Main {
     public boolean isDoubleIntegerV6() {
 
         return DoubleMath.isMathematicalInteger(v);
-    }
-
-    public static void main(String[] args) throws IOException {
-        org.openjdk.jmh.Main.main(args);
     }
 }

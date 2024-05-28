@@ -61,6 +61,6 @@ public class Main {
             System.out.println("i1: " + i1.get(ValueLayout.JAVA_INT, 0));
             System.out.println("i2: " + i2.get(ValueLayout.JAVA_INT, 0));
             System.out.println("i3: " + i3.get(ValueLayout.JAVA_INT, 0));
-        }               
+        }
     }
 }

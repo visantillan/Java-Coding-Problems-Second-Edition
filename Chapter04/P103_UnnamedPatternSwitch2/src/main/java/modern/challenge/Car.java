@@ -1,3 +1,4 @@
 package modern.challenge;
 
-public record Car<E extends EngineType>(E engineType) {}
+public record Car<E extends EngineType>(E engineType) {
+}

@@ -19,9 +19,9 @@ public class Telemeter {
 
     /**
      * Telemeter constructor
-     * 
-     * @param precision telemeter precision (for instance, 0.15 millimeters)
-     * @param clazz telemeter class (for instance, 1 or 2)
+     *
+     * @param precision  telemeter precision (for instance, 0.15 millimeters)
+     * @param clazz      telemeter class (for instance, 1 or 2)
      * @param protection telemeter protection (for instance, IP54)
      */
     public Telemeter(double precision, int clazz, String protection) {
@@ -32,17 +32,17 @@ public class Telemeter {
 
     /**
      * Method for calculating the distance between two points
-     * 
-     * @param sc from this point
-     * @param ec to this point
+     *
+     * @param sc            from this point
+     * @param ec            to this point
      * @param interpolation use interpolation or not
      * @return the computed distance as integer
-     * 
+     *
      * <p><b>Example:</b></p>
-     * <pre>{@code     
+     * <pre>{@code
      *    Point sp = new Point(12, 56);
      *    Point ep = new Point(43, 45);
-     * 
+     *
      *    int d = telementer.distance(sp, ep, true);
      * }</pre>
      */
@@ -52,10 +52,10 @@ public class Telemeter {
     }
 
     /**
-     * Class used to calibrate the telemeter      
+     * Class used to calibrate the telemeter
      */
     public static final class Calibrate {
-        
+
         /**
          * Cannot be instantiated
          */
@@ -66,15 +66,15 @@ public class Telemeter {
         /**
          * Method used for calibrating the telemeter to the given epsilon
          * (for instance, eps = 0.00001)
-         * 
-         * @param eps the telemeter is calibrated to this precision
+         *
+         * @param eps  the telemeter is calibrated to this precision
          * @param type the type of calibration
          * @return true, if calibration was done with success
-         * 
+         *
          * <p>
          * {@code Telemeter.Calibrate.at(0.00001);}
          * </p>
-         * 
+         * <p>
          * PERFORM THE CALIBRATION BEFORE CREATING AN INSTANCE OF THIS CLASS
          */
         public static boolean at(double eps, String type) {

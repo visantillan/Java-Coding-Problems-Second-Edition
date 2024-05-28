@@ -25,7 +25,7 @@ public final class DateCheckers {
         if (n <= 1) {
             throw new IllegalArgumentException("The given number of intervals must be >= 1");
         }
-        
+
         Duration range = Duration.between(start, end);
         Duration interval = range.dividedBy(n - 1);
 

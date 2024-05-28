@@ -3,17 +3,18 @@ package modern.challenge;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
-import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 import java.util.Calendar;
 import java.util.Date;
+
+import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
+import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
 public final class DateCheckers {
 
     private DateCheckers() {
         throw new AssertionError("Cannot be instantiated");
     }
-    
+
     public static String fetchFirstDayOfYearV1(int year, boolean name) {
 
         Calendar calendar = Calendar.getInstance();
@@ -28,16 +29,16 @@ public final class DateCheckers {
 
         return new SimpleDateFormat("EEEE").format(firstDay);
     }
-    
+
     public static String fetchFirstDayOfYearV2(int year, boolean name) {
 
         LocalDate ld = LocalDate.ofYearDay(year, 1);
         LocalDate firstDay = ld.with(firstDayOfYear());
-      
+
         if (!name) {
             return firstDay.toString();
         }
-        
+
         return DateTimeFormatter.ofPattern("EEEE").format(firstDay);
     }
 
@@ -64,7 +65,7 @@ public final class DateCheckers {
         if (!name) {
             return lastDay.toString();
         }
-        
+
         return DateTimeFormatter.ofPattern("EEEE").format(lastDay);
     }
 }

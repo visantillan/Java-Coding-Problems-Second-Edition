@@ -1,1 +1,2 @@
-module P175_SealedHierarchySeparatePackages {}
+module P175_SealedHierarchySeparatePackages {
+}

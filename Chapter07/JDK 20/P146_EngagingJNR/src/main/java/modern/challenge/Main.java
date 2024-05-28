@@ -12,11 +12,11 @@ public class Main {
                 .createLibraryLoader(SimpleMath.class)
                 .search("./jnr/cpp")
                 .map("sumTwoInt", "_Z9sumTwoIntii");
-        
+
         if (Platform.getNativePlatform().getOS() == Platform.OS.WINDOWS) {
 
-            SimpleMath simpleMath = loader.load("math");                        
-            
+            SimpleMath simpleMath = loader.load("math");
+
             long result = simpleMath.sumTwoInt(3, 9);
 
             System.out.println("Result: " + result);

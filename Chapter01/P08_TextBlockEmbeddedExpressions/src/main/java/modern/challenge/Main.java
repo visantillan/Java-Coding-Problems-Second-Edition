@@ -16,37 +16,37 @@ public class Main {
         System.out.println("String literal:\n" + str1);
 
         String xml1 = """
-                     <user>
-                        <firstName>\
-                     """
+                <user>
+                   <firstName>\
+                """
                 + fn
                 + """
-                     </firstName>
-                        <lastName>\
-                     """
+                </firstName>
+                   <lastName>\
+                """
                 + ln
                 + """
-                     </lastName>
-                     </user>
-                     """;
+                </lastName>
+                </user>
+                """;
 
         System.out.println();
         System.out.println("Text block:\n" + xml1);
 
         String xml2 = """
-                     <user>
-                        <firstName>
-                     """
+                <user>
+                   <firstName>
+                """
                 + fn.indent(4)
                 + """
-                        </firstName>
-                        <lastName>
-                     """
+                   </firstName>
+                   <lastName>
+                """
                 + ln.indent(4)
                 + """
-                        </lastName>
-                     </user>
-                     """;
+                   </lastName>
+                </user>
+                """;
 
         System.out.println();
         System.out.println("Text block:\n" + xml2);
@@ -66,37 +66,37 @@ public class Main {
         StringBuilder sbXml1 = new StringBuilder();
 
         sbXml1.append("""
-                     <user>
-                        <firstName>""")
+                        <user>
+                           <firstName>""")
                 .append(fn)
                 .append("""
                         </firstName>
                            <lastName>""")
                 .append(ln)
                 .append("""
-                     </lastName>
-                     </user>""");
-        
+                        </lastName>
+                        </user>""");
+
         System.out.println();
         System.out.println("Text block:\n" + sbXml1.toString());
-        
+
         StringBuilder sbXml2 = new StringBuilder();
 
         sbXml2.append("""
-                     <user>
-                        <firstName>
-                      """)
+                        <user>
+                           <firstName>
+                         """)
                 .append(fn.indent(4))
                 .append("""
-                        </firstName>
-                        <lastName>
-                     """)
+                           </firstName>
+                           <lastName>
+                        """)
                 .append(ln.indent(4))
                 .append("""
-                        </lastName>
-                     </user>
-                     """);
-        
+                           </lastName>
+                        </user>
+                        """);
+
         System.out.println();
         System.out.println("Text block:\n" + sbXml2.toString());
 
@@ -107,25 +107,25 @@ public class Main {
         System.out.println("String literal:\n" + str2);
 
         String xml3 = MessageFormat.format("""
-                                    <user>
-                                        <firstName>{0}</firstName>
-                                        <lastName>{1}</lastName>
-                                    </user>
-                                    """, fn, ln);
+                <user>
+                    <firstName>{0}</firstName>
+                    <lastName>{1}</lastName>
+                </user>
+                """, fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml3);
 
         String xml4 = MessageFormat.format("""
-                                    <user>
-                                        <firstName>
-                                         {0}
-                                        </firstName>
-                                        <lastName>
-                                         {1}
-                                        </lastName>
-                                    </user>
-                                    """, fn, ln);
+                <user>
+                    <firstName>
+                     {0}
+                    </firstName>
+                    <lastName>
+                     {1}
+                    </lastName>
+                </user>
+                """, fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml4);
@@ -137,25 +137,25 @@ public class Main {
         System.out.println("String literal:\n" + str3);
 
         String xml5 = String.format("""
-                                    <user>
-                                        <firstName>%s</firstName>
-                                        <lastName>%s</lastName>
-                                    </user>
-                                    """, fn, ln);
+                <user>
+                    <firstName>%s</firstName>
+                    <lastName>%s</lastName>
+                </user>
+                """, fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml5);
 
         String xml6 = String.format("""
-                                    <user>
-                                        <firstName>
-                                         %s
-                                        </firstName>
-                                        <lastName>
-                                         %s
-                                        </lastName>
-                                    </user>
-                                    """, fn, ln);
+                <user>
+                    <firstName>
+                     %s
+                    </firstName>
+                    <lastName>
+                     %s
+                    </lastName>
+                </user>
+                """, fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml6);
@@ -167,25 +167,25 @@ public class Main {
         System.out.println("String literal:\n" + str4);
 
         String xml7 = """
-                      <user>
-                          <firstName>%s</firstName>
-                          <lastName>%s</lastName>
-                      </user>
-                      """.formatted(fn, ln);
+                <user>
+                    <firstName>%s</firstName>
+                    <lastName>%s</lastName>
+                </user>
+                """.formatted(fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml7);
 
         String xml8 = """
-                      <user>
-                          <firstName>
-                           %s
-                          </firstName>
-                          <lastName>
-                           %s
-                          </lastName>
-                      </user>
-                      """.formatted(fn, ln);
+                <user>
+                    <firstName>
+                     %s
+                    </firstName>
+                    <lastName>
+                     %s
+                    </lastName>
+                </user>
+                """.formatted(fn, ln);
 
         System.out.println();
         System.out.println("Text block:\n" + xml8);
